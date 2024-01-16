@@ -86,11 +86,11 @@ enum GenresType {
 export default async function Home() {
   const animes = await fetchTopAnimes();
   const animeToAdventure = await fetchAnimes(GenresType.Adventure);
-  const animeToComedy = await fetchAnimes(GenresType.Comedy);
+  const animeToIsekai = await fetchAnimes(GenresType.Isekai);
   //  const animeToRomance = await fetchAnimes(GenresType.Romance);
   //  const animeToAction = await fetchAnimes(GenresType.Action);
-  const animeToIsekai = await fetchAnimes(GenresType.Isekai);
   //const animeToSchool = await fetchAnimes(GenresType.School);
+  const animeToComedy = await fetchAnimes(GenresType.Comedy);
 
   return (
     <Container>

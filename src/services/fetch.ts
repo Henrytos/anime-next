@@ -95,24 +95,29 @@ export async function fetchTopAnimes() {
 }
 
 export async function fetchAnimes(id: number) {
-  const res = await fetch(
-    `https://api.jikan.moe/v4/anime?genres=${id}&limit=10&order_by=score&sort=desc`
-  );
-  if (!res.ok) {
-    throw new Error(`Error fetching characters for anime ${id}`);
-  }
-  const { data }: ApiResponseAnimeTop = await res.json();
-  const animes = data.reduce((animesPosters, anime) => {
-    let animePoster = {
-      id: anime.mal_id,
-      name: anime.title,
-      img: anime.images.jpg.large_image_url,
-    };
-    animesPosters.push(animePoster);
-    return animesPosters;
-  }, [] as Poster[]);
+  try {
+    const res = await fetch(
+      `https://api.jikan.moe/v4/anime?genres=${id}&limit=10&order_by=score&sort=desc`
+    );
+    if (!res.ok) {
+      throw new Error(`Error fetching characters for anime ${id}`);
+    }
+    const { data }: ApiResponseAnimeTop = await res.json();
+    const animes = data.reduce((animesPosters, anime) => {
+      let animePoster = {
+        id: anime.mal_id,
+        name: anime.title,
+        img: anime.images.jpg.large_image_url,
+      };
+      animesPosters.push(animePoster);
+      return animesPosters;
+    }, [] as Poster[]);
 
-  return animes;
+    return animes;
+  } catch (error) {
+    console.log(error);
+    return [] as Poster[];
+  }
 }
 
 export async function fetchAnimePictures(id: number) {
