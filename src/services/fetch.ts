@@ -95,6 +95,7 @@ export async function fetchTopAnimes() {
 }
 
 export async function fetchAnimes(id: number) {
+  await new Promise((resolve) => setTimeout(resolve, 500));
   try {
     const res = await fetch(
       `https://api.jikan.moe/v4/anime?genres=${id}&limit=10&order_by=score&sort=desc`
