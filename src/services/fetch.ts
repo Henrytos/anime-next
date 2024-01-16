@@ -65,6 +65,24 @@ export async function fetchAnime(id: number) {
 export async function fetchTopAnimes() {
   const res = await fetch("https://api.jikan.moe/v4/top/anime");
   const { data }: ApiResponseAnimeTop = await res.json();
+  const animes = data.slice(0, 9).reduce((animesPosters, anime) => {
+    let animePoster = {
+      id: anime.mal_id,
+      name: anime.title,
+      img: anime.images.jpg.large_image_url,
+    };
+    animesPosters.push(animePoster);
+    return animesPosters;
+  }, [] as Poster[]);
+
+  return animes;
+}
+
+export async function fetchAnimes(id: number) {
+  const res = await fetch(
+    `https://api.jikan.moe/v4/anime?genres=${id}&limit=10&order_by=score&sort=desc`
+  );
+  const { data }: ApiResponseAnimeTop = await res.json();
   const animes = data.reduce((animesPosters, anime) => {
     let animePoster = {
       id: anime.mal_id,

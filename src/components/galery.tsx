@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { AnimePicture, fetchAnimePictures } from "@/services/fetch";
+import { AnimePicture } from "@/services/fetch";
 import Image from "next/image";
 import { ReactNode } from "react";
 
@@ -41,21 +41,19 @@ export function Galery({ pictures }: { pictures: AnimePicture[] }) {
               key={index}
               width={200}
               height={200}
-              className="w-full h-full object-cover rounded  shadow"
+              className="w-full h-56 object-cover rounded  shadow"
               alt={`${index}-`}
             />
           </DialogTrigger>
           <DialogContent className="bg-neutral-900 p-2">
-            <DialogHeader>
-              <Image
-                src={picture.img}
-                key={index}
-                width={500}
-                height={500}
-                className="w-full h-full object-cover rounded  shadow"
-                alt={`${index}-`}
-              />
-            </DialogHeader>
+            <Image
+              src={picture.img}
+              key={index}
+              width={1000}
+              height={1000}
+              className="w-full h-full object-cover rounded  shadow"
+              alt={`${index}-`}
+            />
           </DialogContent>
         </Dialog>
       ))}
