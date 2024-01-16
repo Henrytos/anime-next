@@ -1,4 +1,4 @@
-// File: /home/henry/tomato/src/app/anime/[id]/page.tsx
+// File: /home/henry/ajudando/next-anime/src/app/anime/[id]/page.tsx
 import * as entry from '../../../../../src/app/anime/[id]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

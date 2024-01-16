@@ -23,13 +23,13 @@ interface VoiceActor {
       jpg: {
         image_url: string;
       };
-      name: string;
     };
+    name: string;
   };
   language: string;
 }
 
-interface DataItem {
+export interface DataItem {
   character: Character;
   role: string;
   favorites: number;
