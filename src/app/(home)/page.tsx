@@ -90,7 +90,7 @@ export default async function Home() {
   //  const animeToRomance = await fetchAnimes(GenresType.Romance);
   //  const animeToAction = await fetchAnimes(GenresType.Action);
   //  const animeToIsekai = await fetchAnimes(GenresType.Isekai);
-  //  const animeToSchool = await fetchAnimes(GenresType.School);
+  const animeToSchool = await fetchAnimes(GenresType.School);
 
   return (
     <Container>
@@ -107,6 +107,7 @@ export default async function Home() {
         <SubTitle>Aventura</SubTitle>
         <CarouselPosters posters={animeToAdventure} />
         <SubTitle>School</SubTitle>
+        <CarouselPosters posters={animeToSchool} />
       </Content>
     </Container>
   );
