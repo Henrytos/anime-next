@@ -13,40 +13,44 @@ export type AnimePicture = {
 };
 
 export async function fetchCharacters(id: number) {
-  const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/characters`);
-  if (!res.ok) {
-    throw new Error(`Error fetching characters for anime ${id}`);
-  }
-  const { data }: ApiResponseCharacter = await res.json();
-  let characters: DataItem[] = data.slice(0, 20);
-  const charactesPoster = characters.reduce((posters, character) => {
-    let poster = {
-      id: character.character.mal_id,
-      name: character.character.name,
-      img: character.character.images.jpg.image_url,
-    };
-    posters.push(poster);
-    return posters;
-  }, [] as Poster[]);
-
-  const characterVoice = characters.reduce((posters, character) => {
-    if (
-      character.voice_actors &&
-      character.voice_actors[0] &&
-      character.voice_actors[0].person
-    ) {
+  try {
+    const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/characters`);
+    if (!res.ok) {
+      throw new Error(`Error fetching characters for anime ${id}`);
+    }
+    const { data }: ApiResponseCharacter = await res.json();
+    let characters: DataItem[] = data.slice(0, 20);
+    const charactesPoster = characters.reduce((posters, character) => {
       let poster = {
-        id: character.voice_actors[0].person.mal_id,
-        name: character.voice_actors[0].person.name,
-        img: character.voice_actors[0].person.images.jpg.image_url,
+        id: character.character.mal_id,
+        name: character.character.name,
+        img: character.character.images.jpg.image_url,
       };
       posters.push(poster);
-    }
-    return posters;
-  }, [] as Poster[]);
+      return posters;
+    }, [] as Poster[]);
 
-  console.log(characterVoice);
-  return { charactesPoster, characterVoice };
+    const characterVoice = characters.reduce((posters, character) => {
+      if (
+        character.voice_actors &&
+        character.voice_actors[0] &&
+        character.voice_actors[0].person
+      ) {
+        let poster = {
+          id: character.voice_actors[0].person.mal_id,
+          name: character.voice_actors[0].person.name,
+          img: character.voice_actors[0].person.images.jpg.image_url,
+        };
+        posters.push(poster);
+      }
+      return posters;
+    }, [] as Poster[]);
+
+    return { charactesPoster, characterVoice };
+  } catch (error) {
+    console.log(error);
+    return { charactesPoster: [], characterVoice: [] };
+  }
 }
 
 export async function fetchOneCharacter(id: number) {
@@ -112,35 +116,44 @@ export async function fetchAnimes(id: number) {
 }
 
 export async function fetchAnimePictures(id: number) {
-  const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/pictures`);
-  if (!res.ok) {
-    throw new Error(`Error fetching characters for anime ${id}`);
+  try {
+    const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/pictures`);
+    if (!res.ok) {
+      throw new Error(`Error fetching characters for anime ${id}`);
+    }
+    const { data }: ApiResponseAnimePicture = await res.json();
+
+    const animePictures = data.reduce((pictures, picture) => {
+      let img = {
+        img: picture.jpg.large_image_url,
+      };
+      pictures.push(img);
+      return pictures;
+    }, [] as AnimePicture[]);
+
+    return animePictures;
+  } catch (e) {
+    console.log(e);
   }
-  const { data }: ApiResponseAnimePicture = await res.json();
-
-  const animePictures = data.reduce((pictures, picture) => {
-    let img = {
-      img: picture.jpg.large_image_url,
-    };
-    pictures.push(img);
-    return pictures;
-  }, [] as AnimePicture[]);
-
-  return animePictures;
 }
 
 export async function fetchCharacterPictures(id: number) {
-  const res = await fetch(`https://api.jikan.moe/v4/characters/${id}/pictures`);
-  if (!res.ok) {
-    throw new Error(`Error fetching characters for anime ${id}`);
+  try {
+    const res = await fetch(
+      `https://api.jikan.moe/v4/characters/${id}/pictures`
+    );
+
+    const { data }: ApiResponseAnimePicture = await res.json();
+    const animePictures = data.reduce((pictures, picture) => {
+      let img = {
+        img: picture.jpg.image_url,
+      };
+      pictures.push(img);
+      return pictures;
+    }, [] as AnimePicture[]);
+    return animePictures;
+  } catch (error) {
+    console.log(error);
+    return [] as AnimePicture[];
   }
-  const { data }: ApiResponseAnimePicture = await res.json();
-  const animePictures = data.reduce((pictures, picture) => {
-    let img = {
-      img: picture.jpg.image_url,
-    };
-    pictures.push(img);
-    return pictures;
-  }, [] as AnimePicture[]);
-  return animePictures;
 }

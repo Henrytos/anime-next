@@ -30,10 +30,10 @@ export async function GaleryContent({ children }: { children: ReactNode }) {
   );
 }
 
-export function Galery({ pictures }: { pictures: AnimePicture[] }) {
+export function Galery({ pictures }: { pictures: AnimePicture[] | undefined }) {
   return (
     <div className="w-full grid grid-cols-2 gap-2">
-      {pictures.map((picture, index) => (
+      {pictures?.map((picture, index) => (
         <Dialog key={index}>
           <DialogTrigger>
             <Image
