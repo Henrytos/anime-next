@@ -84,10 +84,10 @@ enum GenresType {
 }
 
 export default async function Home() {
-  const animes = await fetchTopAnimes();
-  const animeToIsekai = await fetchAnimes(GenresType.Isekai);
-  const animeToAdventure = await fetchAnimes(GenresType.Adventure);
-  const animeToRomance = await fetchAnimes(GenresType.Romance);
+  //const animes = await fetchTopAnimes();
+  //const animeToIsekai = await fetchAnimes(GenresType.Isekai);
+  //const animeToAdventure = await fetchAnimes(GenresType.Adventure);
+  //const animeToRomance = await fetchAnimes(GenresType.Romance);
   const animeToSchool = await fetchAnimes(GenresType.Shoujo);
   const animeToComedy = await fetchAnimes(GenresType.Drama);
   const animeToAction = await fetchAnimes(GenresType.Hentai);
@@ -96,17 +96,13 @@ export default async function Home() {
     <Container>
       <Content>
         <SubTitle>Em alta</SubTitle>
-        <CarouselPosters posters={animes} />
         <SubTitle>Isekai</SubTitle>
-        <CarouselPosters posters={animeToIsekai} />
         <SubTitle>Comedia</SubTitle>
         <CarouselPosters posters={animeToComedy} />
         <SubTitle>Romance</SubTitle>
-        <CarouselPosters posters={animeToRomance} />
         <SubTitle>Ação</SubTitle>
         <CarouselPosters posters={animeToAction} />
         <SubTitle>Aventura</SubTitle>
-        <CarouselPosters posters={animeToAdventure} />
         <SubTitle>School</SubTitle>
         <CarouselPosters posters={animeToSchool} />
       </Content>
