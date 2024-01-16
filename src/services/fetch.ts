@@ -100,6 +100,7 @@ export async function fetchAnimes(id: number) {
       `https://api.jikan.moe/v4/anime?genres=${id}&limit=10&order_by=score&sort=desc`
     );
     if (!res.ok) {
+      console.log(res);
       throw new Error(`Error fetching characters for anime ${id}`);
     }
     const { data }: ApiResponseAnimeTop = await res.json();

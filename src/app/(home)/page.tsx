@@ -97,13 +97,10 @@ export default async function Home() {
       <Content>
         <SubTitle>Em alta</SubTitle>
         <CarouselPosters posters={animes} />
-
         <SubTitle>Isekai</SubTitle>
         <CarouselPosters posters={animeToIsekai} />
-
         <SubTitle>Comedia</SubTitle>
         <CarouselPosters posters={animeToComedy} />
-
         <SubTitle>Romance</SubTitle>
         <CarouselPosters posters={animeToRomance} />
         <SubTitle>Ação</SubTitle>
@@ -112,7 +109,6 @@ export default async function Home() {
         <CarouselPosters posters={animeToAdventure} />
         <SubTitle>School</SubTitle>
         <CarouselPosters posters={animeToSchool} />
-        <SubTitle>School</SubTitle>
       </Content>
     </Container>
   );
