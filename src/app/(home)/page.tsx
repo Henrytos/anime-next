@@ -87,9 +87,9 @@ export default async function Home() {
   const animes = await fetchTopAnimes();
   const animeToAdventure = await fetchAnimes(GenresType.Adventure);
   const animeToIsekai = await fetchAnimes(GenresType.Isekai);
-  //  const animeToRomance = await fetchAnimes(GenresType.Romance);
-  //  const animeToAction = await fetchAnimes(GenresType.Action);
-  //const animeToSchool = await fetchAnimes(GenresType.School);
+  const animeToRomance = await fetchAnimes(GenresType.Romance);
+  const animeToAction = await fetchAnimes(GenresType.Action);
+  const animeToSchool = await fetchAnimes(GenresType.School);
   const animeToComedy = await fetchAnimes(GenresType.Comedy);
 
   return (
@@ -105,10 +105,13 @@ export default async function Home() {
         <CarouselPosters posters={animeToComedy} />
 
         <SubTitle>Romance</SubTitle>
-
+        <CarouselPosters posters={animeToRomance} />
         <SubTitle>Ação</SubTitle>
+        <CarouselPosters posters={animeToAction} />
         <SubTitle>Aventura</SubTitle>
         <CarouselPosters posters={animeToAdventure} />
+        <SubTitle>School</SubTitle>
+        <CarouselPosters posters={animeToSchool} />
         <SubTitle>School</SubTitle>
       </Content>
     </Container>
