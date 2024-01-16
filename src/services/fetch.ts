@@ -2,7 +2,6 @@ import { Poster } from "@/components/carousel-poster";
 import { ApiResponseAnime, ApiResponseAnimeTop } from "@/types/anime";
 import {
   ApiResponseCharacter,
-  Character,
   CharacterResponse,
   DataItem,
 } from "@/types/character";
@@ -19,7 +18,9 @@ export async function fetchCharacters(id: number) {
       throw new Error(`Error fetching characters for anime ${id}`);
     }
     const { data }: ApiResponseCharacter = await res.json();
-    let characters: DataItem[] = data.slice(0, 20);
+    let characters: DataItem[] = data
+      .sort((a, b) => b.favorites - a.favorites)
+      .slice(0, 20);
     const charactesPoster = characters.reduce((posters, character) => {
       let poster = {
         id: character.character.mal_id,
