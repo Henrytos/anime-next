@@ -14,6 +14,9 @@ export type AnimePicture = {
 
 export async function fetchCharacters(id: number) {
   const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/characters`);
+  if (!res.ok) {
+    throw new Error(`Error fetching characters for anime ${id}`);
+  }
   const { data }: ApiResponseCharacter = await res.json();
   let characters: DataItem[] = data.slice(0, 20);
   const charactesPoster = characters.reduce((posters, character) => {
@@ -48,6 +51,9 @@ export async function fetchCharacters(id: number) {
 
 export async function fetchOneCharacter(id: number) {
   const res = await fetch(`https://api.jikan.moe/v4/characters/${id}`);
+  if (!res.ok) {
+    throw new Error(`Error fetching characters for anime ${id}`);
+  }
   const { data }: CharacterResponse = await res.json();
   const character = {
     ...data,
@@ -57,6 +63,9 @@ export async function fetchOneCharacter(id: number) {
 
 export async function fetchAnime(id: number) {
   const res = await fetch(`https://api.jikan.moe/v4/anime/${id}`);
+  if (!res.ok) {
+    throw new Error(`Error fetching characters for anime ${id}`);
+  }
   const { data }: ApiResponseAnime = await res.json();
 
   return data;
@@ -64,6 +73,9 @@ export async function fetchAnime(id: number) {
 
 export async function fetchTopAnimes() {
   const res = await fetch("https://api.jikan.moe/v4/top/anime");
+  if (!res.ok) {
+    throw new Error(`Error fetching characters for anime `);
+  }
   const { data }: ApiResponseAnimeTop = await res.json();
   const animes = data.slice(0, 9).reduce((animesPosters, anime) => {
     let animePoster = {
@@ -82,6 +94,9 @@ export async function fetchAnimes(id: number) {
   const res = await fetch(
     `https://api.jikan.moe/v4/anime?genres=${id}&limit=10&order_by=score&sort=desc`
   );
+  if (!res.ok) {
+    throw new Error(`Error fetching characters for anime ${id}`);
+  }
   const { data }: ApiResponseAnimeTop = await res.json();
   const animes = data.reduce((animesPosters, anime) => {
     let animePoster = {
@@ -98,6 +113,9 @@ export async function fetchAnimes(id: number) {
 
 export async function fetchAnimePictures(id: number) {
   const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/pictures`);
+  if (!res.ok) {
+    throw new Error(`Error fetching characters for anime ${id}`);
+  }
   const { data }: ApiResponseAnimePicture = await res.json();
 
   const animePictures = data.reduce((pictures, picture) => {
@@ -112,8 +130,10 @@ export async function fetchAnimePictures(id: number) {
 }
 
 export async function fetchCharacterPictures(id: number) {
-  console.log(id);
   const res = await fetch(`https://api.jikan.moe/v4/characters/${id}/pictures`);
+  if (!res.ok) {
+    throw new Error(`Error fetching characters for anime ${id}`);
+  }
   const { data }: ApiResponseAnimePicture = await res.json();
   const animePictures = data.reduce((pictures, picture) => {
     let img = {
