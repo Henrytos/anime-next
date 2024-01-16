@@ -57,30 +57,33 @@ export default async function DetailsCharecter({
               <span className="text-sm font-medium">Nicknames: </span>
               {nicknames.map((nickname, i) => (
                 <span className="text-sm font-light" key={i}>
-                  {nickname},{" "}
+                  {nickname} {nicknames.length === i + 1 ? "" : ", "}
                 </span>
               ))}
             </Content>
           )}
         </Content>
-
-        <Content>
-          <Accordion type="single" collapsible>
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-left pt-0 antialiased font-normal">
-                <SubTitle>About {name}</SubTitle>
-              </AccordionTrigger>
-              <AccordionContent className="antialiased font-light">
-                {about}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </Content>
-        <Content>
-          <GaleryContent>
-            <Galery pictures={charcterPictures} />
-          </GaleryContent>
-        </Content>
+        {about && (
+          <Content>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-left pt-0 antialiased font-normal">
+                  <SubTitle>About {name}</SubTitle>
+                </AccordionTrigger>
+                <AccordionContent className="antialiased font-light">
+                  {about}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </Content>
+        )}
+        {charcterPictures.length > 0 && (
+          <Content>
+            <GaleryContent>
+              <Galery pictures={charcterPictures} />
+            </GaleryContent>
+          </Content>
+        )}
 
         <Content>
           <ButtonLink href={url}>ver mais</ButtonLink>

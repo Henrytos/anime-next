@@ -10,7 +10,9 @@ export function DetailsAnime({ anime }: { anime: Anime }) {
       <Title className="flex justify-between ">
         <span>
           {anime.title}{" "}
-          <span className="font-light text-sm ">({anime.year})</span>
+          {anime.year && (
+            <span className="font-light text-sm ">({anime.year})</span>
+          )}
         </span>
         <span className="text-base flex gap-1 items-end font-normal">
           {anime.score}
