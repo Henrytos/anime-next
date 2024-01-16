@@ -1,5 +1,5 @@
 import { Poster } from "@/components/carousel-poster";
-import { ApiResponseAnime } from "@/types/anime";
+import { ApiResponseAnime, ApiResponseAnimeTop } from "@/types/anime";
 import { ApiResponseCharacter, DataItem } from "@/types/character";
 
 export async function fetchCharacters(id: number) {
@@ -17,14 +17,22 @@ export async function fetchCharacters(id: number) {
   }, [] as Poster[]);
 
   const characterVoice = characters.reduce((posters, character) => {
-    let poster = {
-      id: character.voice_actors[0].person.mal_id,
-      name: character.voice_actors[0].person.name,
-      img: character.voice_actors[0].person.images.jpg.image_url,
-    };
-    posters.push(poster);
+    if (
+      character.voice_actors &&
+      character.voice_actors[0] &&
+      character.voice_actors[0].person
+    ) {
+      let poster = {
+        id: character.voice_actors[0].person.mal_id,
+        name: character.voice_actors[0].person.name,
+        img: character.voice_actors[0].person.images.jpg.image_url,
+      };
+      posters.push(poster);
+    }
     return posters;
   }, [] as Poster[]);
+
+  console.log(characterVoice);
   return { charactesPoster, characterVoice };
 }
 
@@ -33,4 +41,20 @@ export async function fetchAnime(id: number) {
   const { data }: ApiResponseAnime = await res.json();
 
   return data;
+}
+
+export async function fetchTopAnimes() {
+  const res = await fetch("https://api.jikan.moe/v4/top/anime");
+  const { data }: ApiResponseAnimeTop = await res.json();
+  const animes = data.reduce((animesPosters, anime) => {
+    let animePoster = {
+      id: anime.mal_id,
+      name: anime.title,
+      img: anime.images.jpg.large_image_url,
+    };
+    animesPosters.push(animePoster);
+    return animesPosters;
+  }, [] as Poster[]);
+
+  return animes;
 }

@@ -1,6 +1,4 @@
 {
   "/anime/[id]/page": "app/anime/[id]/page.js",
-  "/testes/page": "app/testes/page.js",
-  "/(home)/page": "app/(home)/page.js",
-  "/icon.jpeg/route": "app/icon.jpeg/route.js"
+  "/(home)/page": "app/(home)/page.js"
 }

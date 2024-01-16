@@ -14,7 +14,7 @@ export interface CarouselPostersProps {
 export function CarouselPosters({ posters }: CarouselPostersProps) {
   return (
     <Carousel className="w-full ">
-      <CarouselContent className="pl-2">
+      <CarouselContent className="-space-x-2 relative">
         {posters.map((item) => (
           <CarouselItem className=" basis-1/3 " key={item.id}>
             <Link href={`/anime/${item.id}`} className="w-full h-full relative">

@@ -11,25 +11,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/anime/[id]/page.js"
     ],
-    "/(home)/page": [
+    "/anime/[id]/error": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(home)/page.js"
+      "static/chunks/app/anime/[id]/error.js"
     ],
     "/anime/[id]/loading": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/anime/[id]/loading.js"
     ],
-    "/testes/page": [
+    "/(home)/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/testes/page.js"
-    ],
-    "/anime/[id]/error": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/anime/[id]/error.js"
+      "static/chunks/app/(home)/page.js"
     ]
   }
 }
