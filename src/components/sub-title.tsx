@@ -13,7 +13,7 @@ export function SubTitle({ children, isDifferent, className }: SubTitleProps) {
       className={clsx(
         baseStyleSubTitle,
         !isDifferent && "text-secondary-foreground",
-        isDifferent && "text-primary",
+        isDifferent && "text-primary/80",
         className
       )}
     >

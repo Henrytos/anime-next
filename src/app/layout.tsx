@@ -18,7 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt">
-      <body className={`min-h-screen bg-background font-sans antialiased `}>
+      <body
+        className={`min-h-screen bg-background font-sans antialiased relative`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -27,8 +29,9 @@ export default function RootLayout({
         >
           <Header />
           {children}
-          <SideBar />
           <Toaster />
+
+          <SideBar />
         </ThemeProvider>
       </body>
     </html>

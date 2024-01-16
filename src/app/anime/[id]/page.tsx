@@ -1,111 +1,79 @@
 import { Container } from "@/components/constainer";
-import { Title } from "@/components/title";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
-import { Heart, Star } from "lucide-react";
-import Image from "next/image";
-import { CarouselCharacter } from "./components/carousel-character";
+
+import {
+  PosterImage,
+  PosterImageLink,
+  PosterItem,
+  PosterName,
+  PostersRoot,
+} from "./components/carousel-character";
 import { SubTitle } from "@/components/sub-title";
-import { fetchAnime, fetchCharacters } from "@/services/fetch";
+import {
+  fetchAnime,
+  fetchAnimePictures,
+  fetchCharacters,
+} from "@/services/fetch";
 import { Separator } from "@/components/ui/separator";
-import { Text } from "@/components/text";
 import { Button } from "@/components/ui/button";
+import { ButtonAddAnime } from "./components/button-add-anime";
+import { Galery, GaleryContent } from "../../../components/galery";
+import { Bganime } from "./components/bg-anime";
+import { RankAnime } from "./components/rank-anime";
+import { Content } from "../../../components/content";
+import { MainContent } from "../../../components/main-content";
+import { DetailsAnime } from "./components/details-anime";
+import { ButtonLink } from "@/components/button-link";
 interface DetaislAnimeProps {
   params: {
     id: string;
   };
 }
 
-export default async function DetaislAnime({ params }: DetaislAnimeProps) {
-  const anime = await fetchAnime(+params.id);
+export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
+  const animeId = +params.id;
+  const anime = await fetchAnime(animeId);
   const { charactesPoster, characterVoice } = await fetchCharacters(
     anime.mal_id
   );
+  const pictures = await fetchAnimePictures(animeId);
 
   return (
     <Container>
-      <div className="absolute w-full h-2/3 top-0 left-0 ">
-        <Image
-          src={anime.images.jpg.large_image_url}
-          alt="Picture of the author"
-          width={500}
-          height={500}
-          className="absolute w-full h-full object-cover "
-        />
-        <div className="absolute w-full h-full top-0 left-0 bg-gradient-to-t from-neutral-900  to-neutral-transparent" />
-      </div>
-      <div className="absolute top-1/2  max-w-[90%] space-y-5">
-        <section className=" space-y-2">
-          <Title className="flex justify-between ">
-            <span>
-              {anime.title}{" "}
-              <span className="font-light text-sm ">({anime.year})</span>
-            </span>
-            <span className="text-base flex gap-1 items-end font-normal">
-              {anime.score}
-              <Star size={16} className="text-yellow-300 -translate-y-1" />
-            </span>
-          </Title>
-
-          <div className="flex gap-1 ">
-            {anime.genres.slice(0, 3).map((genre) => (
-              <Badge key={genre.url} className="rounded">
-                {genre.name}
-              </Badge>
-            ))}
-          </div>
-          <div className="flex gap-2">
-            <Text>{anime.episodes} episodes</Text>
-            <Text>{anime.duration}</Text>
-          </div>
-        </section>
-
-        <section className="space-y-2">
-          <Button
-            asChild
-            className=" w-full border border-primary bg-primary text-secondary-foreground rounded cursor-pointer "
-          >
-            <span className="flex gap-2">
-              {" "}
-              <Heart /> <span>Add Favorites</span>
-            </span>
-          </Button>
-
-          <Button
-            asChild
-            className=" w-full border border-primary bg-transparent text-primary rounded underline "
-            variant={"outline"}
-          >
-            <a href={anime.url} target="_blank">
-              Ver Mais
-            </a>
-          </Button>
-        </section>
-
+      <Bganime src={anime.images.jpg.large_image_url} />
+      <MainContent>
+        <Content>
+          <DetailsAnime anime={anime} />
+        </Content>
+        <Content>
+          <ButtonAddAnime animeId={animeId} name={anime.title} />
+          <ButtonLink href={anime.url}>Ver mais</ButtonLink>
+        </Content>
         {anime.synopsis && (
-          <section className="space-y-2">
-            <SubTitle>Sinopse</SubTitle>
-            <Separator />
+          <Content>
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger className="text-left pt-0 antialiased font-normal">
-                  {anime.synopsis.slice(0, 100) + "..."}
+                  <SubTitle>Sinopse</SubTitle>
                 </AccordionTrigger>
                 <AccordionContent className="antialiased font-light">
-                  {anime.synopsis.slice(100, +anime.synopsis.length)}
+                  {anime.synopsis}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
-          </section>
+          </Content>
         )}
+        <GaleryContent>
+          <Galery pictures={pictures} />
+        </GaleryContent>
 
         {anime.trailer.embed_url && (
-          <section className=" space-y-2 ">
+          <Content>
             <SubTitle>Trailler</SubTitle>
             <Separator />
 
@@ -116,26 +84,46 @@ export default async function DetaislAnime({ params }: DetaislAnimeProps) {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></iframe>
-          </section>
+          </Content>
         )}
-
-        <section className="space-y-2">
+        <Content>
           <SubTitle>Personagens:</SubTitle>
           <Separator />
 
-          <CarouselCharacter posters={charactesPoster} />
-        </section>
-
-        <section className="space-y-2">
-          <SubTitle>Dubladores Japoneses:</SubTitle>
+          <PostersRoot>
+            {charactesPoster.map((character, i) => {
+              return (
+                <PosterItem key={i}>
+                  {" "}
+                  <PosterImageLink
+                    img={character.img}
+                    name={character.name}
+                    href={character.id}
+                  />{" "}
+                  <PosterName i={i}>{character.name}</PosterName>{" "}
+                </PosterItem>
+              );
+            })}
+          </PostersRoot>
+        </Content>
+        <Content>
+          <SubTitle>Vozes:</SubTitle>
           <Separator />
 
-          <CarouselCharacter posters={characterVoice} />
-        </section>
-      </div>
-      <h2 className="absolute top-2 right-4 text-neutral-900 text-2xl font-bold">
-        # {anime.rank}{" "}
-      </h2>
+          <PostersRoot>
+            {characterVoice.map((character, i) => {
+              return (
+                <PosterItem key={i}>
+                  {" "}
+                  <PosterImage img={character.img} name={character.name} />{" "}
+                  <PosterName i={i}>{character.name}</PosterName>{" "}
+                </PosterItem>
+              );
+            })}
+          </PostersRoot>
+        </Content>
+      </MainContent>
+      <RankAnime># {anime.rank} </RankAnime>
     </Container>
   );
 }

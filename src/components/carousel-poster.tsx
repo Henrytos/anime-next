@@ -23,7 +23,7 @@ export function CarouselPosters({ posters }: CarouselPostersProps) {
                 alt={`capa de mangá de ${item.name}`}
                 width={500}
                 height={500}
-                className="w-full h-full object-cover rounded  shadow "
+                className="w-full h-full object-cover rounded-xl  "
               />
             </Link>
           </CarouselItem>

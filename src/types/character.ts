@@ -2,7 +2,7 @@ interface CharacterImage {
   image_url: string;
 }
 
-interface Character {
+export interface Character {
   mal_id: number;
   url: string;
   images: {
@@ -38,4 +38,15 @@ export interface DataItem {
 
 export interface ApiResponseCharacter {
   data: DataItem[];
+}
+
+interface CharacterOne extends Character {
+  name_kanji: string;
+  nicknames: [];
+  favorites: number;
+  about: string;
+}
+
+export interface CharacterResponse {
+  data: CharacterOne;
 }

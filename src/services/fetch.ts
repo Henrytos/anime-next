@@ -1,6 +1,16 @@
 import { Poster } from "@/components/carousel-poster";
 import { ApiResponseAnime, ApiResponseAnimeTop } from "@/types/anime";
-import { ApiResponseCharacter, DataItem } from "@/types/character";
+import {
+  ApiResponseCharacter,
+  Character,
+  CharacterResponse,
+  DataItem,
+} from "@/types/character";
+import { ApiResponseAnimePicture } from "@/types/picture";
+
+export type AnimePicture = {
+  img: string;
+};
 
 export async function fetchCharacters(id: number) {
   const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/characters`);
@@ -36,6 +46,15 @@ export async function fetchCharacters(id: number) {
   return { charactesPoster, characterVoice };
 }
 
+export async function fetchOneCharacter(id: number) {
+  const res = await fetch(`https://api.jikan.moe/v4/characters/${id}`);
+  const { data }: CharacterResponse = await res.json();
+  const character = {
+    ...data,
+  };
+  return character;
+}
+
 export async function fetchAnime(id: number) {
   const res = await fetch(`https://api.jikan.moe/v4/anime/${id}`);
   const { data }: ApiResponseAnime = await res.json();
@@ -57,4 +76,33 @@ export async function fetchTopAnimes() {
   }, [] as Poster[]);
 
   return animes;
+}
+
+export async function fetchAnimePictures(id: number) {
+  const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/pictures`);
+  const { data }: ApiResponseAnimePicture = await res.json();
+
+  const animePictures = data.reduce((pictures, picture) => {
+    let img = {
+      img: picture.jpg.large_image_url,
+    };
+    pictures.push(img);
+    return pictures;
+  }, [] as AnimePicture[]);
+
+  return animePictures;
+}
+
+export async function fetchCharacterPictures(id: number) {
+  console.log(id);
+  const res = await fetch(`https://api.jikan.moe/v4/characters/${id}/pictures`);
+  const { data }: ApiResponseAnimePicture = await res.json();
+  const animePictures = data.reduce((pictures, picture) => {
+    let img = {
+      img: picture.jpg.image_url,
+    };
+    pictures.push(img);
+    return pictures;
+  }, [] as AnimePicture[]);
+  return animePictures;
 }
