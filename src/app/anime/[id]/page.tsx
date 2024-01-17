@@ -21,7 +21,6 @@ import {
   fetchCharacters,
 } from "@/services/fetch";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
 import { ButtonAddAnime } from "./components/button-add-anime";
 import { Galery, GaleryContent } from "../../../components/galery";
 import { Bganime } from "./components/bg-anime";
@@ -30,8 +29,6 @@ import { Content } from "../../../components/content";
 import { MainContent } from "../../../components/main-content";
 import { DetailsAnime } from "./components/details-anime";
 import { ButtonLink } from "@/components/button-link";
-import { AnimesRecommendations } from "./components/animes-recommendations";
-import { Suspense } from "react";
 import { CarouselPosters } from "@/components/carousel-poster";
 interface DetaislAnimeProps {
   params: {
