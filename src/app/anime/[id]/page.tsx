@@ -51,7 +51,7 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
           <DetailsAnime anime={anime} />
         </Content>
         <Content>
-          <ButtonAddAnime animeId={animeId} name={anime.title} />
+          <ButtonAddAnime anime={anime} />
           <ButtonLink href={anime.url}>Ver mais</ButtonLink>
         </Content>
         {anime.synopsis && (

@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/contexts/theme/theme-provider";
 import { Header } from "@/components/header";
 import { SideBar } from "@/components/side-bar";
 import { Toaster } from "@/components/ui/toaster";
+import { FavoriteAnimeProvider } from "@/contexts/context-favorite-anime";
 
 export const metadata: Metadata = {
   title: "Tomato",
@@ -27,11 +28,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
-          <Toaster />
-
-          <SideBar />
+          <FavoriteAnimeProvider>
+            <Header />
+            {children}
+            <Toaster />
+            <SideBar />
+          </FavoriteAnimeProvider>
         </ThemeProvider>
       </body>
     </html>

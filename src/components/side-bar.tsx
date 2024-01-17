@@ -1,5 +1,7 @@
+"use client";
 import { AlignJustify, BookOpen, Heart, Home } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { ElementType, ReactNode } from "react";
 
@@ -10,10 +12,14 @@ interface SideLinkProps {
 }
 
 export function SideLink({ icon: Icon, children, href }: SideLinkProps) {
+  const path = usePathname();
+  const isActive = path === href;
   return (
     <Link
       href={href}
-      className={`flex flex-col gap-1 items-center text-white `}
+      className={`flex flex-col gap-1 items-center  ${
+        isActive ? "text-white" : "text-neutral-500"
+      } `}
     >
       <Icon />
       <span className="text-sm font-light">{children}</span>
