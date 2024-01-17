@@ -1,22 +1,18 @@
-import { ReactNode } from "react";
+import { ComponentProps, ReactNode } from "react";
 import { Button } from "./ui/button";
 
-export function ButtonLink({
-  children,
-  href,
-}: {
+interface ButtonLinkProps extends ComponentProps<"a"> {
   children: ReactNode;
-  href: string;
-}) {
+}
+
+export function ButtonLink({ children, ...props }: ButtonLinkProps) {
   return (
     <Button
       asChild
       className=" w-full border border-primary bg-transparent text-primary rounded underline "
       variant={"outline"}
     >
-      <a href={href} target="_blank">
-        {children}
-      </a>
+      <a {...props}>{children}</a>
     </Button>
   );
 }

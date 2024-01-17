@@ -14,6 +14,7 @@ import {
 import { AnimePicture } from "@/services/fetch";
 import Image from "next/image";
 import { ReactNode } from "react";
+import { ButtonLink } from "./button-link";
 
 export async function GaleryContent({ children }: { children: ReactNode }) {
   return (
@@ -54,6 +55,9 @@ export function Galery({ pictures }: { pictures: AnimePicture[] | undefined }) {
               className="w-full h-full object-cover rounded  shadow"
               alt={`${index}-`}
             />
+            <ButtonLink href={picture.img} download="picture.jpeg">
+              Dowload
+            </ButtonLink>
           </DialogContent>
         </Dialog>
       ))}
