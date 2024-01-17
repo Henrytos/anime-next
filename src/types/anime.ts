@@ -68,7 +68,6 @@ export interface Anime {
   duration: string;
   rating: string;
   score: number;
-  scored_by: number;
   rank: number;
   popularity: number;
   members: number;
@@ -94,4 +93,12 @@ export interface Anime {
 
 export interface ApiResponseAnimeTop {
   data: Anime[];
+}
+
+interface AnimeRecommendations {
+  entry: Anime;
+  url: string;
+}
+export interface ApiResponseAnimeRecommendations {
+  data: AnimeRecommendations[];
 }

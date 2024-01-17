@@ -1,5 +1,9 @@
 import { Poster } from "@/components/carousel-poster";
-import { ApiResponseAnime, ApiResponseAnimeTop } from "@/types/anime";
+import {
+  ApiResponseAnime,
+  ApiResponseAnimeRecommendations,
+  ApiResponseAnimeTop,
+} from "@/types/anime";
 import {
   ApiResponseCharacter,
   CharacterResponse,
@@ -82,7 +86,7 @@ export async function fetchTopAnimes() {
     throw new Error(`Error fetching characters for anime `);
   }
   const { data }: ApiResponseAnimeTop = await res.json();
-  const animes = data.slice(0, 9).reduce((animesPosters, anime) => {
+  const animes = data.slice(0, 10).reduce((animesPosters, anime) => {
     let animePoster = {
       id: anime.mal_id,
       name: anime.title,
@@ -163,5 +167,28 @@ export async function fetchCharacterPictures(id: number) {
   } catch (error) {
     console.log(error);
     return [] as AnimePicture[];
+  }
+}
+
+export async function fetchAnimeRecommendations(id: number) {
+  try {
+    const res = await fetch(
+      `https://api.jikan.moe/v4/anime/${id}/recommendations`
+    );
+    const { data }: ApiResponseAnimeRecommendations = await res.json();
+    const animes = data.reduce((animesPosters, anime) => {
+      let animePoster = {
+        id: anime.entry.mal_id,
+        name: anime.entry.title,
+        img: anime.entry.images.jpg.large_image_url,
+      };
+      animesPosters.push(animePoster);
+      return animesPosters;
+    }, [] as Poster[]);
+
+    return animes;
+  } catch (error) {
+    console.log(error);
+    return [] as Poster[];
   }
 }

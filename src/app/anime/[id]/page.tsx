@@ -29,6 +29,8 @@ import { Content } from "../../../components/content";
 import { MainContent } from "../../../components/main-content";
 import { DetailsAnime } from "./components/details-anime";
 import { ButtonLink } from "@/components/button-link";
+import { AnimesRecommendations } from "./components/animes-recommendations";
+import { Suspense } from "react";
 interface DetaislAnimeProps {
   params: {
     id: string;
@@ -71,7 +73,6 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
         <GaleryContent>
           <Galery pictures={pictures} />
         </GaleryContent>
-
         {anime.trailer.embed_url && (
           <Content>
             <SubTitle>Trailler</SubTitle>
@@ -122,6 +123,10 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
             })}
           </PostersRoot>
         </Content>
+
+        <Suspense fallback={<p>Carregando</p>}>
+          <AnimesRecommendations animeId={animeId} />
+        </Suspense>
       </MainContent>
       <RankAnime># {anime.rank} </RankAnime>
     </Container>

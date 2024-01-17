@@ -14,7 +14,6 @@ export function ButtonAddAnime({ anime }: { anime: Anime }) {
   function handleClick() {
     toast({
       title: `${anime.title} adicionado `,
-      description: `${new Date().toLocaleDateString()}`,
       color: "#232323",
       className: "bg-neutral-900 ",
     });
@@ -26,7 +25,6 @@ export function ButtonAddAnime({ anime }: { anime: Anime }) {
     (animeFavorite) => animeFavorite.mal_id === anime.mal_id
   );
 
-  console.log(isFavorite);
   return (
     <>
       {isFavorite ? (
