@@ -14,7 +14,7 @@ const formaterName = (name: string) => {
 
 export function PosterName({ children, i }: { children: string; i: number }) {
   return (
-    <div className=" w-full   absolute bottom-0 z-20 block text-white font-semibold bg-gradient-to-t  from-neutral-900 to-neutral-transparent ">
+    <div className=" w-full   absolute bottom-0 z-20 block text-white  text-sm font-semibold bg-gradient-to-t  from-neutral-900 to-neutral-transparent ">
       {i + 1} - {formaterName(children)}
     </div>
   );
@@ -23,7 +23,9 @@ export function PosterName({ children, i }: { children: string; i: number }) {
 export function PostersRoot({ children }: { children: ReactNode }) {
   return (
     <Carousel className="w-full ">
-      <CarouselContent className="pl-2">{children}</CarouselContent>
+      <CarouselContent className="-space-x-2 relative">
+        {children}
+      </CarouselContent>
     </Carousel>
   );
 }
@@ -40,7 +42,7 @@ export function PosterImage({ img, name }: { img: string; name: string }) {
         alt={`capa de mangá de ${name}`}
         width={150}
         height={160}
-        className=" w-full h-full object-cover rounded  shadow "
+        className="w-full h-full object-cover rounded  "
       />
     </div>
   );
