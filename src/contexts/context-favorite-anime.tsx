@@ -14,8 +14,11 @@ export const ContextFavoriteAnime = createContext(
 
 export function FavoriteAnimeProvider({ children }: { children: ReactNode }) {
   const [animes, setAnimes] = useState<Anime[]>(() => {
-    const storedAnimes = localStorage.getItem("animes");
-    return storedAnimes ? JSON.parse(storedAnimes) : [];
+    if (typeof window !== "undefined") {
+      const storedAnimes = localStorage.getItem("animes");
+      return storedAnimes ? JSON.parse(storedAnimes) : [];
+    }
+    return [];
   });
 
   function addAnime(anime: Anime) {
@@ -27,10 +30,7 @@ export function FavoriteAnimeProvider({ children }: { children: ReactNode }) {
   }
 
   useEffect(() => {
-    if (typeof localStorage !== "undefined") {
-      if (localStorage.getItem("animes") === null) {
-        localStorage.setItem("animes", JSON.stringify(animes));
-      }
+    if (typeof window !== "undefined") {
       localStorage.setItem("animes", JSON.stringify(animes));
     }
   }, [animes]);
