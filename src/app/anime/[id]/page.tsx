@@ -17,6 +17,7 @@ import { SubTitle } from "@/components/sub-title";
 import {
   fetchAnime,
   fetchAnimePictures,
+  fetchAnimeRecommendations,
   fetchCharacters,
 } from "@/services/fetch";
 import { Separator } from "@/components/ui/separator";
@@ -31,6 +32,7 @@ import { DetailsAnime } from "./components/details-anime";
 import { ButtonLink } from "@/components/button-link";
 import { AnimesRecommendations } from "./components/animes-recommendations";
 import { Suspense } from "react";
+import { CarouselPosters } from "@/components/carousel-poster";
 interface DetaislAnimeProps {
   params: {
     id: string;
@@ -44,6 +46,8 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
     anime.mal_id
   );
   const pictures = await fetchAnimePictures(animeId);
+
+  const data = await fetchAnimeRecommendations(animeId);
 
   return (
     <Container>
@@ -124,9 +128,10 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
           </PostersRoot>
         </Content>
 
-        <Suspense fallback={<p>Carregando</p>}>
-          <AnimesRecommendations animeId={animeId} />
-        </Suspense>
+        <Content>
+          <SubTitle>Recommendations:</SubTitle>
+          <CarouselPosters posters={data} />
+        </Content>
       </MainContent>
       <RankAnime># {anime.rank} </RankAnime>
     </Container>
