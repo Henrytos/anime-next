@@ -49,8 +49,8 @@ export function Galery({ pictures }: { pictures: AnimePicture[] | undefined }) {
             <Image
               src={picture.img}
               key={index}
-              width={1000}
-              height={1000}
+              width={400}
+              height={600}
               className="w-full h-full object-cover rounded  shadow"
               alt={`${index}-`}
             />

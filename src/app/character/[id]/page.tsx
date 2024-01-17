@@ -43,8 +43,8 @@ export default async function DetailsCharecter({
 
           <Image
             src={images.jpg.image_url}
-            width={500}
-            height={500}
+            width={200}
+            height={200}
             className="max-w-40  m-auto object-cover rounded"
             alt={name}
           />
