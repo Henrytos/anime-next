@@ -40,9 +40,9 @@ export interface ApiResponseCharacter {
   data: DataItem[];
 }
 
-interface CharacterOne extends Character {
+export interface CharacterOne extends Character {
   name_kanji: string;
-  nicknames: [];
+  nicknames: string[];
   favorites: number;
   about: string;
 }

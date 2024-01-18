@@ -42,7 +42,7 @@ interface Producer {
 }
 
 export interface ApiResponseAnime {
-  data: Anime;
+  data: Anime[];
 }
 
 export interface Anime {
