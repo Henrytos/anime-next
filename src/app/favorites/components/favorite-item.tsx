@@ -28,9 +28,6 @@ export function FavoiteItem({ anime }: { anime: Anime }) {
         <div className="flex flex-col w-2/3 gap-2 ">
           <h2 className="text-lg font-semibold">
             {formaterTitle(anime.title)}
-            {anime.year && (
-              <span className="ml-2 text-xs font-light">({anime.year})</span>
-            )}
           </h2>
           <span
             className=" w-14 text-center text-xs font-light px-2 py-1 
@@ -44,7 +41,7 @@ export function FavoiteItem({ anime }: { anime: Anime }) {
         </div>
       </Link>
 
-      <div className="absolute -top-2 right-0 flex items-center gap-2">
+      <div className="absolute top-0 right-0 flex items-center gap-2">
         <span className=" text-sm font-normal text-white/75 flex gap-1 items-center">
           {anime.score} <Star size={16} className="text-yellow-300" />
         </span>
