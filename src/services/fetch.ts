@@ -39,7 +39,7 @@ export async function fetchTopAnimes() {
 }
 
 export async function fetchAnimes(id: number) {
-  await wait(350);
+  await wait(500);
   const { data }: ApiResponseAnime = await Api(
     `anime?genres=${id}&limit=20&order_by=score&sort=desc`
   );
@@ -62,7 +62,7 @@ export async function fetchCharacterPictures(id: number) {
 }
 
 export async function fetchAnimeRecommendations(id: number) {
-  await wait(200);
+  await wait(500);
   const { data }: ApiResponseAnimeRecommendations = await Api(
     `anime/${id}/recommendations`
   );
