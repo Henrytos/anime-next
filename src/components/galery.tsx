@@ -5,12 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { AnimePicture } from "@/services/fetch";
 
 import { ReactNode } from "react";
