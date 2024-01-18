@@ -38,7 +38,7 @@ export function PosterImage({ img, name }: { img: string; name: string }) {
   return (
     <div className="w-full h-full relative">
       <Image
-        src={`${img}`}
+        src={img}
         alt={`capa de mangá de ${name}`}
         width={150}
         height={160}
