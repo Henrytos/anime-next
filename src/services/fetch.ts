@@ -4,11 +4,7 @@ import {
   ApiResponseAnimeRecommendations,
   ApiResponseAnimeTop,
 } from "@/types/anime";
-import {
-  ApiResponseCharacter,
-  Character,
-  CharacterOne,
-} from "@/types/character";
+import { ApiResponseCharacter, CharacterOne } from "@/types/character";
 import { ApiResponseAnimePicture } from "@/types/picture";
 import { Api } from "./api";
 import { sortCharacters, sortPictures, sortPoster } from "./sorts";
@@ -43,6 +39,7 @@ export async function fetchTopAnimes() {
 }
 
 export async function fetchAnimes(id: number) {
+  await wait(200);
   const { data }: ApiResponseAnime = await Api(
     `anime?genres=${id}&limit=20&order_by=score&sort=desc`
   );
@@ -65,6 +62,7 @@ export async function fetchCharacterPictures(id: number) {
 }
 
 export async function fetchAnimeRecommendations(id: number) {
+  await wait(200);
   const { data }: ApiResponseAnimeRecommendations = await Api(
     `anime/${id}/recommendations`
   );
