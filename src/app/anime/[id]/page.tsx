@@ -6,30 +6,20 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-import {
-  Posterimg,
-  PosterimgLink,
-  PosterItem,
-  PosterName,
-  PostersRoot,
-} from "./components/carousel-character";
 import { SubTitle } from "@/components/sub-title";
-import {
-  fetchAnime,
-  fetchAnimePictures,
-  fetchAnimeRecommendations,
-  fetchCharacters,
-} from "@/services/fetch";
+import { fetchAnime } from "@/services/fetch";
 import { Separator } from "@/components/ui/separator";
 import { ButtonAddAnime } from "./components/button-add-anime";
-import { Galery, GaleryContent } from "../../../components/galery";
 import { Bganime } from "./components/bg-anime";
 import { RankAnime } from "./components/rank-anime";
 import { Content } from "../../../components/content";
 import { MainContent } from "../../../components/main-content";
 import { DetailsAnime } from "./components/details-anime";
 import { ButtonLink } from "@/components/button-link";
-import { CarouselPosters } from "@/components/carousel-poster";
+import { RecommendationsAnimes } from "./components/recommendations-anime";
+import { Suspense } from "react";
+import { CharacterCarousel } from "./components/character-carousel";
+import { GaleryAnime } from "./components/galery-anime";
 interface DetaislAnimeProps {
   params: {
     id: string;
@@ -39,11 +29,6 @@ interface DetaislAnimeProps {
 export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
   const animeId = +params.id;
   const anime = await fetchAnime(animeId);
-  const { charactesPoster, characterVoice } = await fetchCharacters(
-    anime.mal_id
-  );
-  const pictures = await fetchAnimePictures(animeId);
-  const animesRecommendations = await fetchAnimeRecommendations(animeId);
 
   return (
     <Container>
@@ -72,9 +57,10 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
             </Accordion>
           </Content>
         )}
-        <GaleryContent>
-          <Galery pictures={pictures} />
-        </GaleryContent>
+        <Suspense fallback={<p>carregando...</p>}>
+          <GaleryAnime animeId={animeId} />
+        </Suspense>
+
         {anime.trailer.embed_url && (
           <Content>
             <SubTitle>Trailler</SubTitle>
@@ -89,49 +75,14 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
             ></iframe>
           </Content>
         )}
-        <Content>
-          <SubTitle>Personagens:</SubTitle>
-          <Separator />
 
-          <PostersRoot>
-            {charactesPoster.map((character, i) => {
-              return (
-                <PosterItem key={i}>
-                  {" "}
-                  <PosterimgLink
-                    img={character.img}
-                    name={character.name}
-                    href={character.id}
-                  />{" "}
-                  <PosterName i={i}>{character.name}</PosterName>{" "}
-                </PosterItem>
-              );
-            })}
-          </PostersRoot>
-        </Content>
-        <Content>
-          <SubTitle>Vozes:</SubTitle>
-          <Separator />
+        <Suspense fallback={<p>carregando...</p>}>
+          <CharacterCarousel animeId={animeId} />
+        </Suspense>
 
-          <PostersRoot>
-            {characterVoice.map((character, i) => {
-              return (
-                <PosterItem key={i}>
-                  {" "}
-                  <Posterimg img={character.img} name={character.name} />{" "}
-                  <PosterName i={i}>{character.name}</PosterName>{" "}
-                </PosterItem>
-              );
-            })}
-          </PostersRoot>
-        </Content>
-
-        <Content>
-          <SubTitle>Recommendations</SubTitle>
-          <Separator />
-
-          <CarouselPosters posters={animesRecommendations} />
-        </Content>
+        <Suspense fallback={<p>carregando...</p>}>
+          <RecommendationsAnimes animeId={animeId} />
+        </Suspense>
       </MainContent>
       <RankAnime># {anime.rank} </RankAnime>
     </Container>
