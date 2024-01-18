@@ -37,6 +37,7 @@ export default function FavoritesPage() {
 
               <div className="w-2/3 space-y-1">
                 <h2 className="text-sm font-semibold">{anime.title}</h2>
+                <span className="text-xs font-light ">{anime.year}</span>
                 <p className="text-xs font-light ">
                   {anime.synopsis.slice(0, 100)}...
                 </p>

@@ -55,9 +55,7 @@ export function Galery({ pictures }: { pictures: AnimePicture[] | undefined }) {
               className="w-full h-full object-cover rounded  shadow"
               alt={`${index}-`}
             />
-            <ButtonLink href={picture.img} download="picture.jpeg">
-              Dowload
-            </ButtonLink>
+            <ButtonLink href={picture.img}>Ver</ButtonLink>
           </DialogContent>
         </Dialog>
       ))}

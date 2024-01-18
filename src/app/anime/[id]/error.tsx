@@ -1,9 +1,7 @@
 "use client";
 import { Container } from "@/components/constainer";
 import { SubTitle } from "@/components/sub-title";
-import { Title } from "@/components/title";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Error() {
@@ -13,7 +11,7 @@ export default function Error() {
         <SubTitle className="text-center">
           ops! houve um erro ao carregar o anime
         </SubTitle>
-        <Image
+        <img
           src="/imgs/404.webp"
           alt="imagem de error"
           width={500}
