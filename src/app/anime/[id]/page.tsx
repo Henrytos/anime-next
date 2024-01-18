@@ -43,6 +43,7 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
     anime.mal_id
   );
   const pictures = await fetchAnimePictures(animeId);
+  const animesRecommendations = await fetchAnimeRecommendations(animeId);
 
   return (
     <Container>
@@ -123,6 +124,13 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
               );
             })}
           </PostersRoot>
+        </Content>
+
+        <Content>
+          <SubTitle>Recommendations</SubTitle>
+          <Separator />
+
+          <CarouselPosters posters={animesRecommendations} />
         </Content>
       </MainContent>
       <RankAnime># {anime.rank} </RankAnime>

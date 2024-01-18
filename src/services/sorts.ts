@@ -7,7 +7,7 @@ import { AnimePicture } from "./fetch";
 export function sortCharacters(data: DataItem[]) {
   const characters = data
     .sort((a, b) => b.favorites - a.favorites)
-    .slice(0, 20);
+    .slice(0, 10);
   const charactesPoster = characters.reduce((posters, character) => {
     let poster = {
       id: character.character.mal_id,
