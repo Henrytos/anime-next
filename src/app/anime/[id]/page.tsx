@@ -20,6 +20,7 @@ import { RecommendationsAnimes } from "./components/recommendations-anime";
 import { Suspense } from "react";
 import { CharacterCarousel } from "./components/character-carousel";
 import { GaleryAnime } from "./components/galery-anime";
+import { SkeletonCarousel } from "@/components/skeleton-carousel";
 interface DetaislAnimeProps {
   params: {
     id: string;
@@ -57,10 +58,9 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
             </Accordion>
           </Content>
         )}
-        <Suspense fallback={<p>carregando...</p>}>
+        <Suspense fallback={<SkeletonCarousel title="GaleryAnime" />}>
           <GaleryAnime animeId={animeId} />
         </Suspense>
-
         {anime.trailer.embed_url && (
           <Content>
             <SubTitle>Trailler</SubTitle>
@@ -72,15 +72,13 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
-            ></iframe>
+            />
           </Content>
         )}
-
-        <Suspense fallback={<p>carregando...</p>}>
+        <Suspense fallback={<SkeletonCarousel title="Characters" />}>
           <CharacterCarousel animeId={animeId} />
         </Suspense>
-
-        <Suspense fallback={<p>carregando...</p>}>
+        <Suspense fallback={<SkeletonCarousel title="Recommendations" />}>
           <RecommendationsAnimes animeId={animeId} />
         </Suspense>
       </MainContent>

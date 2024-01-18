@@ -3,7 +3,6 @@ import { Container } from "@/components/constainer";
 import { Content } from "@/components/content";
 import { Galery, GaleryContent } from "@/components/galery";
 import { SubTitle } from "@/components/sub-title";
-import { Text } from "@/components/text";
 import {
   Accordion,
   AccordionContent,

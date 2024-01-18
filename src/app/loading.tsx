@@ -1,3 +1,4 @@
+"use client";
 import { Container } from "@/components/constainer";
 
 export default function Loading() {
@@ -10,7 +11,6 @@ export default function Loading() {
           width={500}
           height={500}
           className=" max-w-60 object-cover max-h-60"
-          property=""
         />
       </div>
     </Container>

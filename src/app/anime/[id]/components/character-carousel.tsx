@@ -15,7 +15,7 @@ export async function CharacterCarousel({ animeId }: { animeId: number }) {
   return (
     <>
       <Content>
-        <SubTitle>Personagens:</SubTitle>
+        <SubTitle>Characters:</SubTitle>
         <Separator />
 
         <PostersRoot>

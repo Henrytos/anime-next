@@ -8,7 +8,7 @@ export async function RecommendationsAnimes({ animeId }: { animeId: number }) {
   const animesRecommendations = await fetchAnimeRecommendations(animeId);
   return (
     <Content>
-      <SubTitle>Recommendations</SubTitle>
+      <SubTitle>Recommendations:</SubTitle>
       <Separator />
 
       <CarouselPosters posters={animesRecommendations} />
