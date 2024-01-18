@@ -4,6 +4,7 @@ import { Content } from "@/components/content";
 import { SubTitle } from "@/components/sub-title";
 import { fetchTopMangas } from "@/services/fetch";
 export default async function MangasPage() {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   const mangas = await fetchTopMangas();
   return (
     <Container>
