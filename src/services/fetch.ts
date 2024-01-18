@@ -62,7 +62,6 @@ export async function fetchCharacterPictures(id: number) {
 }
 
 export async function fetchAnimeRecommendations(id: number) {
-  await wait(500);
   const { data }: ApiResponseAnimeRecommendations = await Api(
     `anime/${id}/recommendations`
   );

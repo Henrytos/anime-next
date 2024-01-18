@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import Link from "next/link";
 export interface Poster {
@@ -17,7 +18,7 @@ export function CarouselPosters({ posters }: CarouselPostersProps) {
         {posters.map((item) => (
           <CarouselItem className=" basis-1/3 " key={item.id}>
             <Link href={`/anime/${item.id}`} className="w-full h-full relative">
-              <img
+              <Image
                 src={`${item.img}`}
                 alt={`capa de mangá de ${item.name}`}
                 width={500}
