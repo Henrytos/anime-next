@@ -44,8 +44,6 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
   );
   const pictures = await fetchAnimePictures(animeId);
 
-  const data = await fetchAnimeRecommendations(animeId);
-
   return (
     <Container>
       <Bganime src={anime.images.jpg.large_image_url} />
@@ -125,11 +123,6 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
               );
             })}
           </PostersRoot>
-        </Content>
-
-        <Content>
-          <SubTitle>Recommendations:</SubTitle>
-          <CarouselPosters posters={data} />
         </Content>
       </MainContent>
       <RankAnime># {anime.rank} </RankAnime>
