@@ -6,7 +6,7 @@ import { Anime } from "@/types/anime";
 import { Check, Heart } from "lucide-react";
 import { useContext } from "react";
 
-export function ButtonAddAnime({ anime }: { anime: Anime }) {
+export function ButtonAddManga({ anime }: { anime: Anime }) {
   const { toast } = useToast();
 
   const { addFavorites, favorites } = useContext(ContextFavorite);
@@ -18,7 +18,7 @@ export function ButtonAddAnime({ anime }: { anime: Anime }) {
       className: "bg-neutral-900 ",
     });
 
-    const newAnime = { ...anime, isAnime: true };
+    const newAnime = { ...anime, isAnime: false };
     addFavorites(newAnime);
   }
 

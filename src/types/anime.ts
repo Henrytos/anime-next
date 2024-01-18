@@ -46,6 +46,7 @@ export interface ApiResponseAnime {
 }
 
 export interface Anime {
+  isAnime?: boolean;
   mal_id: number;
   url: string;
   images: {

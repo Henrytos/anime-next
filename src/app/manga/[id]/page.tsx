@@ -1,5 +1,3 @@
-import { ButtonAddAnime } from "@/app/anime/[id]/components/button-add-anime";
-import { RecommendationsAnimes } from "@/app/anime/[id]/components/recommendations-anime";
 import { ButtonLink } from "@/components/button-link";
 import { Container } from "@/components/constainer";
 import { DetailsAnime } from "@/components/details-anime";
@@ -20,6 +18,7 @@ import { fetchManga } from "@/services/fetch";
 import { Suspense } from "react";
 import { CharacterCarousel } from "./components/character-carousel";
 import { RecommendationsManga } from "./components/recommendations-manga";
+import { ButtonAddManga } from "./components/button-add-manga";
 
 interface DetaislMangaProps {
   params: {
@@ -40,7 +39,7 @@ export default async function DetaislMangaPage({ params }: DetaislMangaProps) {
           <DetailsAnime anime={manga} />
         </Content>
         <Content>
-          <ButtonAddAnime anime={manga} />
+          <ButtonAddManga anime={manga} />
           <ButtonLink href={manga.url} target="_blank">
             Ver mais
           </ButtonLink>

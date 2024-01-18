@@ -2,41 +2,43 @@
 import { Anime } from "@/types/anime";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
-interface ContextFavoriteAnimeType {
-  animes: Anime[];
-  addAnime: (anime: Anime) => void;
-  removeAnime: (anime: Anime) => void;
+interface ContextFavoriteType {
+  favorites: Anime[];
+  addFavorites: (anime: Anime) => void;
+  removeFavorites: (anime: Anime) => void;
 }
 
-export const ContextFavoriteAnime = createContext(
-  {} as ContextFavoriteAnimeType
-);
+export const ContextFavorite = createContext({} as ContextFavoriteType);
 
-export function FavoriteAnimeProvider({ children }: { children: ReactNode }) {
-  const [animes, setAnimes] = useState<Anime[]>(() => {
+export function FavoriteProvider({ children }: { children: ReactNode }) {
+  const [favorites, setFavorites] = useState<Anime[]>(() => {
     if (typeof window !== "undefined") {
-      const storedAnimes = localStorage.getItem("animes");
-      return storedAnimes ? JSON.parse(storedAnimes) : [];
+      const favorites = localStorage.getItem("favorites");
+      return favorites ? JSON.parse(favorites) : [];
     }
     return [];
   });
 
-  function addAnime(anime: Anime) {
-    setAnimes((state) => [anime, ...state]);
+  function addFavorites(anime: Anime) {
+    setFavorites((state) => [anime, ...state]);
   }
 
-  function removeAnime(anime: Anime) {
-    setAnimes((state) => state.filter((animeState) => animeState !== anime));
+  function removeFavorites(anime: Anime) {
+    setFavorites((state) =>
+      state.filter((favoritestate) => favoritestate !== anime)
+    );
   }
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("animes", JSON.stringify(animes));
+      localStorage.setItem("favorites", JSON.stringify(favorites));
     }
-  }, [animes]);
+  }, [favorites]);
   return (
-    <ContextFavoriteAnime.Provider value={{ animes, addAnime, removeAnime }}>
+    <ContextFavorite.Provider
+      value={{ favorites, addFavorites, removeFavorites }}
+    >
       {children}
-    </ContextFavoriteAnime.Provider>
+    </ContextFavorite.Provider>
   );
 }
