@@ -12,21 +12,21 @@ export function FavoiteItem({ anime }: { anime: Anime }) {
   };
   const isAnime = anime.isAnime == true ? "anime" : "manga";
   return (
-    <div className="relative w-full " key={anime.mal_id}>
+    <div className="relative w-full h-48 " key={anime.mal_id}>
       <Link
         href={`/${isAnime}/${anime.mal_id}`}
-        className="flex gap-2 items-center "
+        className="flex h-full gap-2 items-center "
       >
         <img
           src={anime.images.jpg.large_image_url}
           alt={anime.title}
           width={200}
           height={200}
-          className="w-1/3 h-36 rounded object-cover"
+          className="w-1/3 h-full rounded object-cover"
         />
 
         <div className="flex flex-col w-2/3 gap-2 ">
-          <h2 className="text-sm font-semibold">
+          <h2 className="text-lg font-semibold">
             {formaterTitle(anime.title)}
             {anime.year && (
               <span className="ml-2 text-xs font-light">({anime.year})</span>
@@ -38,20 +38,20 @@ export function FavoiteItem({ anime }: { anime: Anime }) {
           >
             {anime.isAnime == true ? "anime" : "mangá"}
           </span>
-          <p className="text-xs font-light ">
-            {anime.synopsis.slice(0, 100)}...
+          <p className="text-sm font-light ">
+            {anime.synopsis.slice(0, 70)}...
           </p>
         </div>
       </Link>
 
-      <div className="absolute -top-2 right-0 flex gap-2">
-        <span className=" text-xs font-light text-white/75 flex gap-1 items-center">
-          {anime.score} <Star size={10} className="text-yellow-300" />
+      <div className="absolute -top-2 right-0 flex items-center gap-2">
+        <span className=" text-sm font-normal text-white/75 flex gap-1 items-center">
+          {anime.score} <Star size={16} className="text-yellow-300" />
         </span>
         <span>
           <X
             className="text-primary/75 cursor-pointer"
-            size={18}
+            size={20}
             onClick={() => removeFavorites(anime)}
           />
         </span>
