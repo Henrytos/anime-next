@@ -10,7 +10,6 @@ export async function RecommendationsAnimes({ animeId }: { animeId: number }) {
     <Content>
       <SubTitle>Recommendations:</SubTitle>
       <Separator />
-
       <CarouselPosters posters={animesRecommendations} />
     </Content>
   );

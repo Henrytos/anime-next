@@ -4,10 +4,9 @@ import { Separator } from "@/components/ui/separator";
 import {
   PosterItem,
   PosterName,
-  Posterimg,
   PosterimgLink,
   PostersRoot,
-} from "./carousel-character";
+} from "@/components/carousel-character";
 import { fetchCharacters } from "@/services/fetch";
 
 export async function CharacterCarousel({ animeId }: { animeId: number }) {
@@ -26,7 +25,7 @@ export async function CharacterCarousel({ animeId }: { animeId: number }) {
                 <PosterimgLink
                   img={character.img}
                   name={character.name}
-                  href={character.id}
+                  href={`/character/${character.id}`}
                 />{" "}
                 <PosterName i={i}>{character.name}</PosterName>{" "}
               </PosterItem>
@@ -43,7 +42,11 @@ export async function CharacterCarousel({ animeId }: { animeId: number }) {
             return (
               <PosterItem key={i}>
                 {" "}
-                <Posterimg img={character.img} name={character.name} />{" "}
+                <PosterimgLink
+                  img={character.img}
+                  name={character.name}
+                  href={`/people/${character.id}`}
+                />{" "}
                 <PosterName i={i}>{character.name}</PosterName>{" "}
               </PosterItem>
             );

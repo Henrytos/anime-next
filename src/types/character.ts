@@ -50,3 +50,27 @@ export interface CharacterOne extends Character {
 export interface CharacterResponse {
   data: CharacterOne;
 }
+
+export interface People extends Character {
+  alternate_names: string[];
+  favorites: number;
+  about: string;
+  voices: Voice[];
+}
+
+export interface Voice {
+  role: string;
+  character: Character;
+  anime: {
+    mal_id: number;
+    url: string;
+    images: {
+      jpg: {
+        image_url: string;
+        small_image_url: string;
+        large_image_url: string;
+      };
+    };
+    title: string;
+  };
+}

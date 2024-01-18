@@ -4,10 +4,15 @@ import {
   ApiResponseAnimeRecommendations,
   ApiResponseAnimeTop,
 } from "@/types/anime";
-import { ApiResponseCharacter, CharacterOne } from "@/types/character";
+import { ApiResponseCharacter, CharacterOne, People } from "@/types/character";
 import { ApiResponseAnimePicture } from "@/types/picture";
 import { Api } from "./api";
-import { sortCharacters, sortPictures, sortPoster } from "./sorts";
+import {
+  peopleCharacterPoster,
+  sortCharacters,
+  sortPictures,
+  sortPoster,
+} from "./sorts";
 import { wait } from "./wait";
 
 export type AnimePicture = {
@@ -69,4 +74,17 @@ export async function fetchAnimeRecommendations(id: number) {
   const animes = data.map((anime) => anime.entry).slice(0, 10);
   const recommendations = sortPoster(animes);
   return recommendations;
+}
+
+export async function fetchOnePeople(id: number) {
+  const { data } = await Api(`people/${id}/full`);
+  const people: People = data;
+  const charactersPoster = peopleCharacterPoster(people.voices);
+  return { ...people, charactersPoster };
+}
+
+export async function fetchPeoplePictures(id: number) {
+  const { data }: ApiResponseAnimePicture = await Api(`people/${id}/pictures`);
+  const pictures = sortPictures(data);
+  return pictures;
 }
