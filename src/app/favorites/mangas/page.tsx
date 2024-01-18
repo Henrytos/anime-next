@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { FavoiteItem } from "../components/favorite-item";
 import { MainContent } from "../components/main-content";
 import { NavLinks } from "../components/nav-links";
+import { NotFavorites } from "../components/not-favorites";
 
 export default function FavoritesMangaPage() {
   const { favorites } = useContext(ContextFavorite);
@@ -18,18 +19,22 @@ export default function FavoritesMangaPage() {
     <Container>
       <MainContent>
         <SubTitle className="flex justify-between items-center -mb-2">
-          <span> Favorite animes </span>
+          <span> Favorite Mangás </span>
           <span className="flex items-center gap-1">
             <span className="font-light text-lg">{mangas.length}</span>
             <Heart className="w-5 h-5 text-primary translate-y-px" />{" "}
           </span>
         </SubTitle>
         <NavLinks />
-        <Content className="space-y-3">
-          {mangas.map((manga) => (
-            <FavoiteItem anime={manga} />
-          ))}
-        </Content>
+        {mangas.length > 0 ? (
+          <Content className="space-y-3">
+            {mangas.map((manga) => (
+              <FavoiteItem anime={manga} />
+            ))}
+          </Content>
+        ) : (
+          <NotFavorites />
+        )}
       </MainContent>
     </Container>
   );

@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { FavoiteItem } from "../components/favorite-item";
 import { NavLinks } from "../components/nav-links";
 import { MainContent } from "../components/main-content";
+import { NotFavorites } from "../components/not-favorites";
 
 export default function FavoritesAnimePage() {
   const { favorites } = useContext(ContextFavorite);
@@ -25,11 +26,15 @@ export default function FavoritesAnimePage() {
           </span>
         </SubTitle>
         <NavLinks />
-        <Content className="space-y-3">
-          {animes.map((anime) => (
-            <FavoiteItem anime={anime} key={anime.url} />
-          ))}
-        </Content>
+        {animes.length > 0 ? (
+          <Content className="space-y-3">
+            {animes.map((anime) => (
+              <FavoiteItem anime={anime} key={anime.url} />
+            ))}
+          </Content>
+        ) : (
+          <NotFavorites />
+        )}
       </MainContent>
     </Container>
   );

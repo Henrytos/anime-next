@@ -3,7 +3,6 @@ export async function Api(url: string) {
     const baseUrl = "https://api.jikan.moe/v4/";
     const path = `${baseUrl}${url}`;
     const response = await fetch(path);
-    console.log(path);
     const data = await response.json();
     return data;
   } catch (e) {

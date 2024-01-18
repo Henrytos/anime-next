@@ -12,7 +12,7 @@ export interface CarouselPostersProps {
 }
 
 function formaterTitle(name: string) {
-  return name.length > 10 ? name.slice(0, 10) + "..." : name;
+  return name.length > 11 ? name.slice(0, 11) + "..." : name;
 }
 
 export function CarouselPosters({ posters, type }: CarouselPostersProps) {
@@ -31,7 +31,7 @@ export function CarouselPosters({ posters, type }: CarouselPostersProps) {
               />
 
               <div className="absolute top-0 h-4 bg-neutral-900/50  w-[calc(100%_-_8px)] flex items-center  rounded-t px-1">
-                <h3 className="text-xs font-bold block">
+                <h3 className="text-xs font-bold block ">
                   {formaterTitle(item.name)}
                 </h3>
               </div>
