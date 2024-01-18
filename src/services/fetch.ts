@@ -39,7 +39,7 @@ export async function fetchTopAnimes() {
 }
 
 export async function fetchAnimes(id: number) {
-  await wait(200);
+  await wait(300);
   const { data }: ApiResponseAnime = await Api(
     `anime?genres=${id}&limit=20&order_by=score&sort=desc`
   );
