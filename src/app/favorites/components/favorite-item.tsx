@@ -15,14 +15,14 @@ export function FavoiteItem({ anime }: { anime: Anime }) {
     <div className="relative w-full h-48 " key={anime.mal_id}>
       <Link
         href={`/${isAnime}/${anime.mal_id}`}
-        className="flex h-full gap-2 items-center "
+        className="flex h-full gap-3 items-center "
       >
         <img
           src={anime.images.jpg.large_image_url}
           alt={anime.title}
           width={200}
           height={200}
-          className="w-1/3 h-full rounded object-cover"
+          className="w-2/5 h-full rounded object-cover"
         />
 
         <div className="flex flex-col w-2/3 gap-2 ">
