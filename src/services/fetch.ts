@@ -192,7 +192,7 @@ export async function fetchAnimeRecommendations(id: number) {
 }
 
 export async function fetchTopMangas() {
-  const res = await fetch("${baseUrl}/top/manga");
+  const res = await fetch(`${baseUrl}/top/manga`);
   if (!res.ok) {
     throw new Error(`Error fetching characters for anime `);
   }
