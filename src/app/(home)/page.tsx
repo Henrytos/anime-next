@@ -1,6 +1,6 @@
 import { CarouselPosters } from "@/components/carousel-poster";
 import { Container } from "@/components/constainer";
-import { Content } from "@/components/content";
+import { Content } from "@/components/details/content";
 import { SubTitle } from "@/components/sub-title";
 import { fetchAnimes, fetchTopAnimes } from "@/services/fetch";
 import { GenresType } from "@/types/geners-anime";
@@ -18,19 +18,19 @@ export default async function Home() {
     <Container>
       <Content>
         <SubTitle>Em alta</SubTitle>
-        <CarouselPosters posters={animes} />
+        <CarouselPosters type="anime" posters={animes} />
         <SubTitle>Isekai</SubTitle>
-        <CarouselPosters posters={animeToIsekai} />
+        <CarouselPosters type="anime" posters={animeToIsekai} />
         <SubTitle>Comedia</SubTitle>
-        <CarouselPosters posters={animeToComedy} />
+        <CarouselPosters type="anime" posters={animeToComedy} />
         <SubTitle>Romance</SubTitle>
-        <CarouselPosters posters={animeToRomance} />
+        <CarouselPosters type="anime" posters={animeToRomance} />
         <SubTitle>Ação</SubTitle>
-        <CarouselPosters posters={animeToAction} />
+        <CarouselPosters type="anime" posters={animeToAction} />
         <SubTitle>Aventura</SubTitle>
-        <CarouselPosters posters={animeToAdventure} />
+        <CarouselPosters type="anime" posters={animeToAdventure} />
         <SubTitle>Schol</SubTitle>
-        <CarouselPosters posters={animeToSchool} />
+        <CarouselPosters type="anime" posters={animeToSchool} />
       </Content>
     </Container>
   );

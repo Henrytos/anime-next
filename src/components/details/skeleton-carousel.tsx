@@ -1,6 +1,6 @@
-import { Separator } from "./ui/separator";
+import { Separator } from "../ui/separator";
 import { Content } from "./content";
-import { SubTitle } from "./sub-title";
+import { SubTitle } from "../sub-title";
 
 export function SkeletonCarousel({ title }: { title: string }) {
   return (

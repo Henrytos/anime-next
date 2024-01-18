@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { AnimePicture } from "@/services/fetch";
 
 import { ReactNode } from "react";
-import { ButtonLink } from "./button-link";
+import { ButtonLink } from "../button-link";
 
 export async function GaleryContent({ children }: { children: ReactNode }) {
   return (

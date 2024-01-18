@@ -7,10 +7,10 @@ import {
 import { Content } from "@/components/details/content";
 import { SubTitle } from "@/components/sub-title";
 import { Separator } from "@/components/ui/separator";
-import { fetchCharacters } from "@/services/fetch";
+import { fetchCharactersManga } from "@/services/fetch";
 
-export async function CharacterCarousel({ animeId }: { animeId: number }) {
-  const { charactesPoster, characterVoice } = await fetchCharacters(animeId);
+export async function CharacterCarousel({ mangaId }: { mangaId: number }) {
+  const { charactesPoster } = await fetchCharactersManga(mangaId);
   return (
     <>
       <Content>
@@ -26,26 +26,6 @@ export async function CharacterCarousel({ animeId }: { animeId: number }) {
                   img={character.img}
                   name={character.name}
                   href={`/character/${character.id}`}
-                />{" "}
-                <PosterName i={i}>{character.name}</PosterName>{" "}
-              </PosterItem>
-            );
-          })}
-        </PostersRoot>
-      </Content>
-      <Content>
-        <SubTitle>Vozes:</SubTitle>
-        <Separator />
-
-        <PostersRoot>
-          {characterVoice.map((character, i) => {
-            return (
-              <PosterItem key={i}>
-                {" "}
-                <PosterimgLink
-                  img={character.img}
-                  name={character.name}
-                  href={`/people/${character.id}`}
                 />{" "}
                 <PosterName i={i}>{character.name}</PosterName>{" "}
               </PosterItem>

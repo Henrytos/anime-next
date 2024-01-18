@@ -1,9 +1,9 @@
 "use client";
 
 import { Container } from "@/components/constainer";
-import { Content } from "@/components/content";
+import { Content } from "@/components/details/content";
 import { SubTitle } from "@/components/sub-title";
-import { ContextFavoriteAnime } from "@/contexts/context-favorite-anime";
+import { ContextFavoriteAnime } from "@/contexts/context-favorites";
 import { Heart, Star, X } from "lucide-react";
 
 import Link from "next/link";

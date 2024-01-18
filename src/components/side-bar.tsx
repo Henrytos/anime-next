@@ -33,7 +33,7 @@ export function SideBar() {
       <SideLink icon={Home} href="/">
         Home
       </SideLink>
-      <SideLink icon={BookOpen} href="/mangas">
+      <SideLink icon={BookOpen} href="/manga">
         Mangás
       </SideLink>
       <SideLink icon={Heart} href="/favorites">

@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/contexts/theme/theme-provider";
 import { Header } from "@/components/header";
 import { SideBar } from "@/components/side-bar";
 import { Toaster } from "@/components/ui/toaster";
-import { FavoriteAnimeProvider } from "@/contexts/context-favorite-anime";
+import { FavoriteAnimeProvider } from "@/contexts/context-favorites";
 
 export const metadata: Metadata = {
   title: "Tomato",

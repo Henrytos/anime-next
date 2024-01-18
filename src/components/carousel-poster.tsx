@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import Link from "next/link";
 export interface Poster {
@@ -9,15 +8,20 @@ export interface Poster {
 
 export interface CarouselPostersProps {
   posters: Poster[];
+  type: "anime" | "manga";
 }
 
-export function CarouselPosters({ posters }: CarouselPostersProps) {
+function formaterTitle(name: string) {
+  return name.length > 10 ? name.slice(0, 10) + "..." : name;
+}
+
+export function CarouselPosters({ posters, type }: CarouselPostersProps) {
   return (
     <Carousel className="w-full ">
       <CarouselContent className="-space-x-2 relative">
         {posters.map((item) => (
-          <CarouselItem className=" basis-1/3 " key={item.id}>
-            <Link href={`/anime/${item.id}`} className="w-full h-full relative">
+          <CarouselItem className=" basis-1/3 relative " key={item.id}>
+            <Link href={`/${type}/${item.id}`} className="w-full h-full ">
               <img
                 src={`${item.img}`}
                 alt={`capa de mangá de ${item.name}`}
@@ -25,6 +29,12 @@ export function CarouselPosters({ posters }: CarouselPostersProps) {
                 height={500}
                 className="w-full h-full object-cover rounded  "
               />
+
+              <div className="absolute top-0 h-4 bg-neutral-900/50  w-[calc(100%_-_8px)] flex items-center  rounded-t px-1">
+                <h3 className="text-xs font-bold block">
+                  {formaterTitle(item.name)}
+                </h3>
+              </div>
             </Link>
           </CarouselItem>
         ))}

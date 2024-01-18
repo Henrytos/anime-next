@@ -10,17 +10,17 @@ import { SubTitle } from "@/components/sub-title";
 import { fetchAnime } from "@/services/fetch";
 import { Separator } from "@/components/ui/separator";
 import { ButtonAddAnime } from "./components/button-add-anime";
-import { Bganime } from "./components/bg-anime";
-import { RankAnime } from "./components/rank-anime";
-import { Content } from "../../../components/content";
-import { MainContent } from "../../../components/main-content";
-import { DetailsAnime } from "./components/details-anime";
+import { Bganime } from "@/components/details/bg-details";
+import { RankAnime } from "@/components/details/rank";
+import { Content } from "@/components/details/content";
+import { MainContent } from "@/components/details/main-content";
+import { DetailsAnime } from "@/components/details-anime";
 import { ButtonLink } from "@/components/button-link";
 import { RecommendationsAnimes } from "./components/recommendations-anime";
 import { Suspense } from "react";
 import { CharacterCarousel } from "./components/character-carousel";
-import { GaleryAnime } from "./components/galery-anime";
-import { SkeletonCarousel } from "@/components/skeleton-carousel";
+import { GaleryAnime } from "@/components/details/galery";
+import { SkeletonCarousel } from "@/components/details/skeleton-carousel";
 interface DetaislAnimeProps {
   params: {
     id: string;

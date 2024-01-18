@@ -4,11 +4,10 @@ import {
   PosterName,
   PosterimgLink,
   PostersRoot,
-} from "@/components/carousel-character";
-import { Poster } from "@/components/carousel-poster";
+} from "@/components/details/carousel-character";
 import { Container } from "@/components/constainer";
-import { Content } from "@/components/content";
-import { Galery, GaleryContent } from "@/components/galery";
+import { Content } from "@/components/details/content";
+import { Galery, GaleryContent } from "@/components/details/galery-list";
 import { SubTitle } from "@/components/sub-title";
 import {
   Accordion,

@@ -95,6 +95,8 @@ export interface ApiResponseAnimeTop {
   data: Anime[];
 }
 
+export interface ApiResponseMangaTop extends ApiResponseAnimeTop {}
+
 interface AnimeRecommendations {
   entry: Anime;
   url: string;
@@ -102,3 +104,5 @@ interface AnimeRecommendations {
 export interface ApiResponseAnimeRecommendations {
   data: AnimeRecommendations[];
 }
+
+export interface Manga extends Anime {}

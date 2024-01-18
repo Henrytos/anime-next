@@ -1,7 +1,7 @@
 import { ButtonLink } from "@/components/button-link";
 import { Container } from "@/components/constainer";
-import { Content } from "@/components/content";
-import { Galery, GaleryContent } from "@/components/galery";
+import { Content } from "@/components/details/content";
+import { Galery, GaleryContent } from "@/components/details/galery-list";
 import { SubTitle } from "@/components/sub-title";
 import {
   Accordion,

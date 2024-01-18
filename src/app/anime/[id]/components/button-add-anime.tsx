@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { ContextFavoriteAnime } from "@/contexts/context-favorite-anime";
+import { ContextFavoriteAnime } from "@/contexts/context-favorites";
 import { Anime } from "@/types/anime";
 import { Check, Heart } from "lucide-react";
 import { useContext } from "react";

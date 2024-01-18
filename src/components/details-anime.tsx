@@ -27,10 +27,12 @@ export function DetailsAnime({ anime }: { anime: Anime }) {
           </Badge>
         ))}
       </div>
-      <div className="flex gap-2">
-        <Text>{anime.episodes} episodes</Text>
-        <Text>{anime.duration}</Text>
-      </div>
+      {anime.episodes && (
+        <div className="flex gap-2">
+          <Text>{anime.episodes} episodes</Text>
+          <Text>{anime.duration}</Text>
+        </div>
+      )}
     </>
   );
 }
