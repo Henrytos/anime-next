@@ -15,11 +15,9 @@ export type AnimePicture = {
   img: string;
 };
 
-const baseUrl = "https://api.jikan.moe/v4";
-
 export async function fetchCharacters(id: number) {
   try {
-    const res = await fetch(`${baseUrl}/anime/${id}/characters`);
+    const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/characters`);
     if (!res.ok) {
       throw new Error(`Error fetching characters for anime ${id}`);
     }
@@ -61,7 +59,7 @@ export async function fetchCharacters(id: number) {
 }
 
 export async function fetchOneCharacter(id: number) {
-  const res = await fetch(`${baseUrl}/characters/${id}`);
+  const res = await fetch(`https://api.jikan.moe/v4/characters/${id}`);
   if (!res.ok) {
     throw new Error(`Error fetching characters for anime ${id}`);
   }
@@ -73,7 +71,7 @@ export async function fetchOneCharacter(id: number) {
 }
 
 export async function fetchAnime(id: number) {
-  const res = await fetch(`${baseUrl}/anime/${id}`);
+  const res = await fetch(`https://api.jikan.moe/v4/anime/${id}`);
   if (!res.ok) {
     throw new Error(`Error fetching characters for anime ${id}`);
   }
@@ -83,7 +81,7 @@ export async function fetchAnime(id: number) {
 }
 
 export async function fetchTopAnimes() {
-  const res = await fetch(`${baseUrl}/top/anime`);
+  const res = await fetch(`https://api.jikan.moe/v4/top/anime`);
   if (!res.ok) {
     throw new Error(`Error fetching characters for anime `);
   }
@@ -105,7 +103,7 @@ export async function fetchAnimes(id: number) {
   await new Promise((resolve) => setTimeout(resolve, 500));
   try {
     const res = await fetch(
-      `${baseUrl}/anime?genres=${id}&limit=20&order_by=score&sort=desc`
+      `https://api.jikan.moe/v4/anime?genres=${id}&limit=20&order_by=score&sort=desc`
     );
     if (!res.ok) {
       console.log(res);
@@ -131,7 +129,7 @@ export async function fetchAnimes(id: number) {
 
 export async function fetchAnimePictures(id: number) {
   try {
-    const res = await fetch(`${baseUrl}/anime/${id}/pictures`);
+    const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/pictures`);
     if (!res.ok) {
       throw new Error(`Error fetching characters for anime ${id}`);
     }
@@ -153,7 +151,9 @@ export async function fetchAnimePictures(id: number) {
 
 export async function fetchCharacterPictures(id: number) {
   try {
-    const res = await fetch(`${baseUrl}/characters/${id}/pictures`);
+    const res = await fetch(
+      `https://api.jikan.moe/v4/characters/${id}/pictures`
+    );
 
     const { data }: ApiResponseAnimePicture = await res.json();
     const animePictures = data.reduce((pictures, picture) => {
@@ -172,7 +172,9 @@ export async function fetchCharacterPictures(id: number) {
 
 export async function fetchAnimeRecommendations(id: number) {
   try {
-    const res = await fetch(`${baseUrl}/anime/${id}/recommendations`);
+    const res = await fetch(
+      `https://api.jikan.moe/v4/anime/${id}/recommendations`
+    );
     const { data }: ApiResponseAnimeRecommendations = await res.json();
     const animes = data.reduce((animesPosters, anime) => {
       let animePoster = {
@@ -190,21 +192,3 @@ export async function fetchAnimeRecommendations(id: number) {
     return [] as Poster[];
   }
 }
-//export async function fetchTopMangas() {
-//  const res = await fetch(`${baseUrl}/top/manga`);
-//  if (!res.ok) {
-//    throw new Error(`Error fetching characters for anime `);
-//  }
-//  const { data }: ApiResponseAnimeTop = await res.json();
-//  const mangas = data.slice(0, 10).reduce((mangaPosters, manga) => {
-//    let mangaPoster = {
-//      id: manga.mal_id,
-//      name: manga.title,
-//      img: manga.images.jpg.large_image_url,
-//    };
-//    mangaPosters.push(mangaPoster);
-//    return mangaPosters;
-//  }, [] as Poster[]);
-//
-//  return mangas;
-//}
