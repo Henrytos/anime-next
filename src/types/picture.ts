@@ -1,16 +1,16 @@
 // Arquivo types.ts
 
-interface ImageUrls {
+interface imgUrls {
   image_url: string;
   small_image_url: string;
   large_image_url: string;
 }
 
-export interface AnimeImage {
-  jpg: ImageUrls;
-  webp: ImageUrls;
+export interface Animeimg {
+  jpg: imgUrls;
+  webp: imgUrls;
 }
 
 export interface ApiResponseAnimePicture {
-  data: AnimeImage[];
+  data: Animeimg[];
 }

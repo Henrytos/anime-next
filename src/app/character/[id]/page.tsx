@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/accordion";
 import { fetchCharacterPictures, fetchOneCharacter } from "@/services/fetch";
 import { Heart } from "lucide-react";
-import Image from "next/image";
 
 interface DetailsCharecterProps {
   params: {
@@ -41,7 +40,7 @@ export default async function DetailsCharecter({
             </span>
           </div>
 
-          <Image
+          <img
             src={images.jpg.image_url}
             width={200}
             height={200}

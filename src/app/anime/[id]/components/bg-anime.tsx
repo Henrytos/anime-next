@@ -1,9 +1,7 @@
-import Image from "next/image";
-
 export function Bganime({ src }: { src: string }) {
   return (
     <div className="absolute w-full h-2/3 top-0 left-0 ">
-      <Image
+      <img
         src={src}
         alt="Picture of the author"
         width={1000}

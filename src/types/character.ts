@@ -1,4 +1,4 @@
-interface CharacterImage {
+interface Characterimg {
   image_url: string;
 }
 
@@ -6,7 +6,7 @@ export interface Character {
   mal_id: number;
   url: string;
   images: {
-    jpg: CharacterImage;
+    jpg: Characterimg;
     webp: {
       image_url: string;
       small_image_url: string;

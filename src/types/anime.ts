@@ -1,10 +1,10 @@
-interface ImageUrls {
+interface imgUrls {
   image_url: string;
   small_image_url: string;
   large_image_url: string;
 }
 
-interface TrailerImages {
+interface Trailerimgs {
   image_url: string;
   small_image_url: string;
   medium_image_url: string;
@@ -16,7 +16,7 @@ interface Trailer {
   youtube_id: string;
   url: string;
   embed_url: string;
-  images: TrailerImages;
+  images: Trailerimgs;
 }
 
 interface Title {
@@ -49,8 +49,8 @@ export interface Anime {
   mal_id: number;
   url: string;
   images: {
-    jpg: ImageUrls;
-    webp: ImageUrls;
+    jpg: imgUrls;
+    webp: imgUrls;
   };
   trailer: Trailer;
   approved: boolean;

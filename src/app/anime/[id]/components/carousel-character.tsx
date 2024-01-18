@@ -3,7 +3,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import Image from "next/image";
+
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -34,10 +34,10 @@ export function PosterItem({ children }: { children: ReactNode }) {
   return <CarouselItem className=" basis-1/3 ">{children}</CarouselItem>;
 }
 
-export function PosterImage({ img, name }: { img: string; name: string }) {
+export function Posterimg({ img, name }: { img: string; name: string }) {
   return (
     <div className="w-full h-full relative">
-      <Image
+      <img
         src={img}
         alt={`capa de mangá de ${name}`}
         width={150}
@@ -48,7 +48,7 @@ export function PosterImage({ img, name }: { img: string; name: string }) {
   );
 }
 
-export function PosterImageLink({
+export function PosterimgLink({
   img,
   name,
   href,
@@ -60,7 +60,7 @@ export function PosterImageLink({
   return (
     <div className="w-full h-full relative">
       <Link className="w-full " href={`/character/${href}`}>
-        <Image
+        <img
           src={`${img}`}
           alt={`capa de mangá de ${name}`}
           width={150}

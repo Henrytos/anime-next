@@ -7,8 +7,8 @@ import {
 } from "@/components/ui/accordion";
 
 import {
-  PosterImage,
-  PosterImageLink,
+  Posterimg,
+  PosterimgLink,
   PosterItem,
   PosterName,
   PostersRoot,
@@ -97,7 +97,7 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
               return (
                 <PosterItem key={i}>
                   {" "}
-                  <PosterImageLink
+                  <PosterimgLink
                     img={character.img}
                     name={character.name}
                     href={character.id}
@@ -117,7 +117,7 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
               return (
                 <PosterItem key={i}>
                   {" "}
-                  <PosterImage img={character.img} name={character.name} />{" "}
+                  <Posterimg img={character.img} name={character.name} />{" "}
                   <PosterName i={i}>{character.name}</PosterName>{" "}
                 </PosterItem>
               );

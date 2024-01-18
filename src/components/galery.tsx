@@ -12,7 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { AnimePicture } from "@/services/fetch";
-import Image from "next/image";
+
 import { ReactNode } from "react";
 import { ButtonLink } from "./button-link";
 
@@ -37,7 +37,7 @@ export function Galery({ pictures }: { pictures: AnimePicture[] | undefined }) {
       {pictures?.map((picture, index) => (
         <Dialog key={index}>
           <DialogTrigger>
-            <Image
+            <img
               src={picture.img}
               key={index}
               width={200}
@@ -47,7 +47,7 @@ export function Galery({ pictures }: { pictures: AnimePicture[] | undefined }) {
             />
           </DialogTrigger>
           <DialogContent className="bg-neutral-900 p-2">
-            <Image
+            <img
               src={picture.img}
               key={index}
               width={400}

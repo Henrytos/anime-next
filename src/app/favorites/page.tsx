@@ -5,7 +5,7 @@ import { Content } from "@/components/content";
 import { SubTitle } from "@/components/sub-title";
 import { ContextFavoriteAnime } from "@/contexts/context-favorite-anime";
 import { Heart, Star, X } from "lucide-react";
-import Image from "next/image";
+
 import Link from "next/link";
 import { useContext } from "react";
 
@@ -27,7 +27,7 @@ export default function FavoritesPage() {
               href={`/anime/${anime.mal_id}`}
               className="flex gap-2 items-center "
             >
-              <Image
+              <img
                 src={anime.images.jpg.large_image_url}
                 alt={anime.title}
                 width={200}
