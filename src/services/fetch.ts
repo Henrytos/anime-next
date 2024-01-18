@@ -190,22 +190,21 @@ export async function fetchAnimeRecommendations(id: number) {
     return [] as Poster[];
   }
 }
-
-export async function fetchTopMangas() {
-  const res = await fetch(`${baseUrl}/top/manga`);
-  if (!res.ok) {
-    throw new Error(`Error fetching characters for anime `);
-  }
-  const { data }: ApiResponseAnimeTop = await res.json();
-  const mangas = data.slice(0, 10).reduce((mangaPosters, manga) => {
-    let mangaPoster = {
-      id: manga.mal_id,
-      name: manga.title,
-      img: manga.images.jpg.large_image_url,
-    };
-    mangaPosters.push(mangaPoster);
-    return mangaPosters;
-  }, [] as Poster[]);
-
-  return mangas;
-}
+//export async function fetchTopMangas() {
+//  const res = await fetch(`${baseUrl}/top/manga`);
+//  if (!res.ok) {
+//    throw new Error(`Error fetching characters for anime `);
+//  }
+//  const { data }: ApiResponseAnimeTop = await res.json();
+//  const mangas = data.slice(0, 10).reduce((mangaPosters, manga) => {
+//    let mangaPoster = {
+//      id: manga.mal_id,
+//      name: manga.title,
+//      img: manga.images.jpg.large_image_url,
+//    };
+//    mangaPosters.push(mangaPoster);
+//    return mangaPosters;
+//  }, [] as Poster[]);
+//
+//  return mangas;
+//}
