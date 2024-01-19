@@ -14,7 +14,7 @@ export function LinkItem({
   return (
     <Link
       href={`/${type}/${anime.id}`}
-      className="relative w-full rounde h-40"
+      className="relative w-full rounde h-48"
       key={anime.id}
     >
       <img src={anime.img} alt={anime.name} className="w-full h-full rounded" />

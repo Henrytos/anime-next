@@ -2,7 +2,7 @@ import { Container } from "@/components/constainer";
 import { Content } from "@/components/details/content";
 import { SkeletonCarousel } from "@/components/details/skeleton-carousel";
 
-export default function LoadingMangas() {
+export default function LoadingAnimes() {
   return (
     <>
       <Container>

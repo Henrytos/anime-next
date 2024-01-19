@@ -25,36 +25,17 @@ export default async function QueryAnime({ params }: QueryAnimeProps) {
     <Container>
       <main className="space-y-4">
         <SubTitle>Pesquisas sobre: {name}</SubTitle>
+        <Content>
+          {animes.map((anime) => (
+            <LinkItem type="anime" anime={anime} key={anime.id} />
+          ))}
+        </Content>
 
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>
-              <SubTitle>Animes about {name}</SubTitle>
-            </AccordionTrigger>
-            <AccordionContent>
-              <Content>
-                {animes.map((anime) => (
-                  <LinkItem type="anime" anime={anime} key={anime.id} />
-                ))}
-              </Content>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>
-              <SubTitle>Mangás about {name}</SubTitle>
-            </AccordionTrigger>
-            <AccordionContent>
-              <Content>
-                {mangas.map((manga) => (
-                  <LinkItem type="manga" anime={manga} key={manga.id} />
-                ))}
-              </Content>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+        <Content>
+          {mangas.map((manga) => (
+            <LinkItem type="manga" anime={manga} key={manga.id} />
+          ))}
+        </Content>
       </main>
     </Container>
   );

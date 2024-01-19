@@ -17,9 +17,9 @@ import { MainContent } from "@/components/details/main-content";
 import { DetailsAnime } from "@/components/details-anime";
 import { ButtonLink } from "@/components/button-link";
 import { RecommendationsAnimes } from "./components/recommendations-anime";
-import { Suspense } from "react";
 import { CharacterCarousel } from "./components/character-carousel";
 import { GaleryAnime } from "@/components/details/galery";
+import { Suspense } from "react";
 import { SkeletonCarousel } from "@/components/details/skeleton-carousel";
 interface DetaislAnimeProps {
   params: {
@@ -58,9 +58,7 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
             </Accordion>
           </Content>
         )}
-        <Suspense fallback={<SkeletonCarousel title="GaleryAnime" />}>
-          <GaleryAnime animeId={animeId} />
-        </Suspense>
+        <GaleryAnime animeId={animeId} />
         {anime.trailer.embed_url && (
           <Content>
             <SubTitle>Trailler</SubTitle>
@@ -75,9 +73,7 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
             />
           </Content>
         )}
-        <Suspense fallback={<SkeletonCarousel title="Characters" />}>
-          <CharacterCarousel animeId={animeId} />
-        </Suspense>
+        <CharacterCarousel animeId={animeId} />
         <Suspense fallback={<SkeletonCarousel title="Recommendations" />}>
           <RecommendationsAnimes animeId={animeId} />
         </Suspense>
