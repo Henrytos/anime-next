@@ -133,3 +133,15 @@ export async function fetchMangaRecommendations(id: number) {
   const recommendations = sortPoster(animes);
   return recommendations;
 }
+
+export async function queryAnime(query: string) {
+  const { data }: ApiResponseAnime = await Api(`anime?q=${query}`);
+  const animes = sortPoster(data);
+  return animes;
+}
+
+export async function queryManga(query: string) {
+  const { data }: ApiResponseAnime = await Api(`manga?q=${query}`);
+  const animes = sortPoster(data);
+  return animes;
+}

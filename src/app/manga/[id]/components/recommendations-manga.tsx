@@ -8,9 +8,13 @@ export async function RecommendationsManga({ mangaId }: { mangaId: number }) {
   const animesRecommendations = await fetchMangaRecommendations(mangaId);
   return (
     <Content>
-      <SubTitle>Recommendations:</SubTitle>
-      <Separator />
-      <CarouselPosters type="manga" posters={animesRecommendations} />
+      {animesRecommendations.length > 0 && (
+        <>
+          <SubTitle>Recommendations:</SubTitle>
+          <Separator />
+          <CarouselPosters type="manga" posters={animesRecommendations} />
+        </>
+      )}
     </Content>
   );
 }

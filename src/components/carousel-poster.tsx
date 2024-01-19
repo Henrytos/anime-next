@@ -12,7 +12,7 @@ export interface CarouselPostersProps {
 }
 
 function formaterTitle(name: string) {
-  return name.length > 11 ? name.slice(0, 11) + "..." : name;
+  return name.length > 17 ? name.slice(0, 17) + "..." : name;
 }
 
 export function CarouselPosters({ posters, type }: CarouselPostersProps) {

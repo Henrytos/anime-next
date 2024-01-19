@@ -1,6 +1,5 @@
-import { Search } from "lucide-react";
-
 import Link from "next/link";
+import { SearchAnime } from "./search-anime";
 
 export function Header() {
   return (
@@ -14,16 +13,14 @@ export function Header() {
           className="h-full w-10  "
         />
       </Link>
-      <div className="flex gap-4 items-center">
-        <Search className="font-bold " size={28} />
-        <img
-          src="/imgs/eu.jpg"
-          alt="logotiopo"
-          width={100}
-          height={100}
-          className="h-full w-10  rounded-full"
-        />
-      </div>
+      <SearchAnime />
+      <img
+        src="/imgs/eu.jpg"
+        alt="logotiopo"
+        width={100}
+        height={100}
+        className="h-full w-10  rounded-full"
+      />
     </header>
   );
 }
