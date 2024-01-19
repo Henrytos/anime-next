@@ -39,8 +39,8 @@ export function SideBar() {
       <SideLink icon={Heart} href="/favorites">
         Favoritos
       </SideLink>
-      <SideLink icon={AlignJustify} href="/plus">
-        Mais
+      <SideLink icon={AlignJustify} href="/random">
+        Random
       </SideLink>
     </aside>
   );
