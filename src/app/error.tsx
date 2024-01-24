@@ -25,7 +25,7 @@ export default function Error() {
         >
           <Link href="/" className="underline">
             {" "}
-            Voltar ao inicio
+            Voltar ao início
           </Link>
         </Button>
       </div>
