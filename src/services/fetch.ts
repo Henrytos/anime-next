@@ -81,8 +81,7 @@ export async function fetchAnimeRecommendations(id: number) {
 export async function fetchOnePeople(id: number) {
   const { data } = await Api(`people/${id}/full`);
   const people: People = data;
-  const charactersPoster = peopleCharacterPoster(people.voices);
-  return { ...people, charactersPoster };
+  return people;
 }
 
 export async function fetchPeoplePictures(id: number) {

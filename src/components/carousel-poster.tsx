@@ -21,7 +21,10 @@ export function CarouselPosters({ posters, type }: CarouselPostersProps) {
       <CarouselContent className="-space-x-2 relative">
         {posters.map((item) => (
           <CarouselItem className=" basis-1/3 relative " key={item.id}>
-            <Link href={`/${type}/${item.id}`} className="w-full h-full ">
+            <Link
+              href={`/${type}/${item.id}?type=mangá`}
+              className="w-full h-full "
+            >
               <img
                 src={`${item.img}`}
                 alt={`capa de mangá de ${item.name}`}

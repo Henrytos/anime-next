@@ -18,6 +18,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { fetchOnePeople, fetchPeoplePictures } from "@/services/fetch";
 import { Heart } from "lucide-react";
+import { peopleCharacterPoster } from "@/services/sorts";
 
 interface DetailsCharecterProps {
   params: {
@@ -27,18 +28,26 @@ interface DetailsCharecterProps {
 export default async function PageVoiceActors({
   params,
 }: DetailsCharecterProps) {
-  const characterId = +params.id;
-  const charcterPictures = await fetchPeoplePictures(characterId);
-  const {
-    name,
-    about,
-    url,
-    favorites,
-    alternate_names,
-    images,
-    charactersPoster,
-  } = await fetchOnePeople(characterId);
+  const peopleId = +params.id;
+  //  const charcterPictures = await fetchPeoplePictures(peopleId);
+  //  const {
+  //    name,
+  //    about,
+  //    url,
+  //    favorites,
+  //    alternate_names,
+  //    images,
+  //    charactersPoster,
+  //  } = await fetchOnePeople(characterId);
 
+  const [people, pictures] = await Promise.all([
+    fetchOnePeople(peopleId),
+    fetchPeoplePictures(peopleId),
+  ]).then((res) => res);
+  const { name, about, url, favorites, alternate_names, images } = people;
+  const charactersPoster = peopleCharacterPoster(people.voices);
+
+  const charcterPictures = pictures;
   return (
     <Container>
       <main className="space-y-4 ">

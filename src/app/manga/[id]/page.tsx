@@ -21,14 +21,17 @@ import { RecommendationsManga } from "./components/recommendations-manga";
 import { ButtonAddManga } from "./components/button-add-manga";
 
 interface DetaislMangaProps {
-  params: {
-    id: number;
-  };
+  params: { id: number };
+  searchParams: { type: "mangá" | "anime" };
 }
 
-export default async function DetaislMangaPage({ params }: DetaislMangaProps) {
-  const mangaId = +params.id;
+export default async function DetaislMangaPage({
+  params,
+  searchParams,
+}: DetaislMangaProps) {
+  const mangaId = params.id;
   const manga = await fetchManga(mangaId);
+  console.log(searchParams.type);
 
   return (
     <Container>

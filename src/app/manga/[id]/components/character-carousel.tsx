@@ -14,28 +14,24 @@ export async function CharacterCarousel({ mangaId }: { mangaId: number }) {
   return (
     <>
       <Content>
-        {charactesPoster.length > 0 && (
-          <>
-            <SubTitle>Characters:</SubTitle>
-            <Separator />
+        <SubTitle>Characters:</SubTitle>
+        <Separator />
 
-            <PostersRoot>
-              {charactesPoster.map((character, i) => {
-                return (
-                  <PosterItem key={i}>
-                    {" "}
-                    <PosterimgLink
-                      img={character.img}
-                      name={character.name}
-                      href={`/character/${character.id}`}
-                    />{" "}
-                    <PosterName i={i}>{character.name}</PosterName>{" "}
-                  </PosterItem>
-                );
-              })}
-            </PostersRoot>
-          </>
-        )}
+        <PostersRoot>
+          {charactesPoster.map((character, i) => {
+            return (
+              <PosterItem key={i}>
+                {" "}
+                <PosterimgLink
+                  img={character.img}
+                  name={character.name}
+                  href={`/character/${character.id}`}
+                />{" "}
+                <PosterName i={i}>{character.name}</PosterName>{" "}
+              </PosterItem>
+            );
+          })}
+        </PostersRoot>
       </Content>
     </>
   );
