@@ -4,9 +4,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cdn.myanimelist.net/images",
+        hostname: "anime-next-ruby.vercel.app",
         port: "",
-        pathname: "/**//**/**",
+        pathname: "/_next/**",
       },
     ],
   },
