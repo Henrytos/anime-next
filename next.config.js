@@ -4,9 +4,6 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "api.jikan.moe",
-        port: "",
-        pathname: "/**/**/pictures",
       },
     ],
   },
