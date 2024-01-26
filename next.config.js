@@ -3,7 +3,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "cdn.myanimelist.net",
+        protocol: "https",
+        hostname: "api.jikan.moe",
+        port: "",
+        pathname: "/**/**/pictures",
       },
     ],
   },
