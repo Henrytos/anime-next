@@ -5,9 +5,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
 import { SubTitle } from "@/components/sub-title";
-import { fetchAnime } from "@/services/fetch";
+import { fetchAnime, fetchPictures } from "@/services/fetch";
 import { Separator } from "@/components/ui/separator";
 import { ButtonAddAnime } from "./components/button-add-anime";
 import { Bganime } from "@/components/details/bg-details";
@@ -18,9 +17,9 @@ import { DetailsAnime } from "@/components/details-anime";
 import { ButtonLink } from "@/components/button-link";
 import { RecommendationsAnimes } from "./components/recommendations-anime";
 import { CharacterCarousel } from "./components/character-carousel";
-import { GaleryAnime } from "@/components/details/galery";
 import { Suspense } from "react";
 import { SkeletonCarousel } from "@/components/details/skeleton-carousel";
+import { Galery } from "@/components/details/galery";
 interface DetaislAnimeProps {
   params: {
     id: string;
@@ -30,6 +29,7 @@ interface DetaislAnimeProps {
 export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
   const animeId = +params.id;
   const anime = await fetchAnime(animeId);
+  const pictures = await fetchPictures(animeId, "anime");
 
   return (
     <Container>
@@ -58,7 +58,7 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
             </Accordion>
           </Content>
         )}
-        <GaleryAnime animeId={animeId} />
+        <Galery pictures={pictures} />
         {anime.trailer.embed_url && (
           <Content>
             <SubTitle>Trailler</SubTitle>

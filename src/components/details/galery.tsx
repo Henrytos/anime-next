@@ -1,22 +1,38 @@
-import { fetchAnimePictures, fetchMangaPictures } from "@/services/fetch";
-import { Galery, GaleryContent } from "./galery-list";
+import { AnimePicture } from "@/services/fetch";
+import { GaleryContent } from "./galey-content";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import { ButtonLink } from "../button-link";
 
-export async function GaleryAnime({ animeId }: { animeId: number }) {
-  const pictures = await fetchAnimePictures(animeId);
-
+export async function Galery({ pictures }: { pictures: AnimePicture[] }) {
   return (
     <GaleryContent>
-      <Galery pictures={pictures} />
-    </GaleryContent>
-  );
-}
-
-export async function GaleryManga({ mangaId }: { mangaId: number }) {
-  const pictures = await fetchMangaPictures(mangaId);
-
-  return (
-    <GaleryContent>
-      <Galery pictures={pictures} />
+      <div className="w-full grid grid-cols-2 gap-2">
+        {pictures?.map((picture, index) => (
+          <Dialog key={index}>
+            <DialogTrigger>
+              <img
+                src={picture.img}
+                key={index}
+                width={200}
+                height={200}
+                className="w-full h-56 object-cover rounded  shadow"
+                alt={`${index}-`}
+              />
+            </DialogTrigger>
+            <DialogContent className="bg-neutral-900 p-2">
+              <img
+                src={picture.img}
+                key={index}
+                width={400}
+                height={600}
+                className="w-full h-full object-cover rounded  shadow"
+                alt={`${index}-`}
+              />
+              <ButtonLink href={picture.img}>Ver</ButtonLink>
+            </DialogContent>
+          </Dialog>
+        ))}
+      </div>
     </GaleryContent>
   );
 }

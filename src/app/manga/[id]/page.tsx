@@ -3,7 +3,7 @@ import { Container } from "@/components/constainer";
 import { DetailsAnime } from "@/components/details-anime";
 import { Bganime } from "@/components/details/bg-details";
 import { Content } from "@/components/details/content";
-import { GaleryManga } from "@/components/details/galery";
+import { Galery } from "@/components/details/galery";
 import { MainContent } from "@/components/details/main-content";
 import { RankAnime } from "@/components/details/rank";
 import { SkeletonCarousel } from "@/components/details/skeleton-carousel";
@@ -14,7 +14,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { fetchManga } from "@/services/fetch";
+import { fetchManga, fetchPictures } from "@/services/fetch";
 import { Suspense } from "react";
 import { CharacterCarousel } from "./components/character-carousel";
 import { RecommendationsManga } from "./components/recommendations-manga";
@@ -22,7 +22,7 @@ import { ButtonAddManga } from "./components/button-add-manga";
 
 interface DetaislMangaProps {
   params: { id: number };
-  searchParams: { type: "mangá" | "anime" };
+  searchParams: { type: "anime" | "manga" };
 }
 
 export default async function DetaislMangaPage({
@@ -31,7 +31,7 @@ export default async function DetaislMangaPage({
 }: DetaislMangaProps) {
   const mangaId = params.id;
   const manga = await fetchManga(mangaId);
-  console.log(searchParams.type);
+  const pictures = await fetchPictures(mangaId, searchParams.type);
 
   return (
     <Container>
@@ -62,7 +62,7 @@ export default async function DetaislMangaPage({
           </Content>
         )}
         <Suspense fallback={<SkeletonCarousel title="GaleryAnime" />}>
-          <GaleryManga mangaId={mangaId} />
+          <Galery pictures={pictures} />
         </Suspense>
         <Suspense fallback={<SkeletonCarousel title="Characters" />}>
           <CharacterCarousel mangaId={mangaId} />

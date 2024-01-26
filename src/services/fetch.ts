@@ -111,8 +111,8 @@ export async function fetchManga(id: number) {
   return anime;
 }
 
-export async function fetchMangaPictures(id: number) {
-  const { data }: ApiResponseAnimePicture = await Api(`manga/${id}/pictures`);
+export async function fetchPictures(id: number, type: "anime" | "manga") {
+  const { data }: ApiResponseAnimePicture = await Api(`${type}/${id}/pictures`);
   const pictures = sortPictures(data);
   return pictures;
 }

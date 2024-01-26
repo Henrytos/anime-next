@@ -7,7 +7,6 @@ import {
 } from "@/components/details/carousel-character";
 import { Container } from "@/components/constainer";
 import { Content } from "@/components/details/content";
-import { Galery, GaleryContent } from "@/components/details/galery-list";
 import { SubTitle } from "@/components/sub-title";
 import {
   Accordion,
@@ -19,6 +18,7 @@ import { Separator } from "@/components/ui/separator";
 import { fetchOnePeople, fetchPeoplePictures } from "@/services/fetch";
 import { Heart } from "lucide-react";
 import { peopleCharacterPoster } from "@/services/sorts";
+import { Galery } from "@/components/details/galery";
 
 interface DetailsCharecterProps {
   params: {
@@ -29,16 +29,6 @@ export default async function PageVoiceActors({
   params,
 }: DetailsCharecterProps) {
   const peopleId = +params.id;
-  //  const charcterPictures = await fetchPeoplePictures(peopleId);
-  //  const {
-  //    name,
-  //    about,
-  //    url,
-  //    favorites,
-  //    alternate_names,
-  //    images,
-  //    charactersPoster,
-  //  } = await fetchOnePeople(characterId);
 
   const [people, pictures] = await Promise.all([
     fetchOnePeople(peopleId),
@@ -95,13 +85,7 @@ export default async function PageVoiceActors({
             </Accordion>
           </Content>
         )}
-        {charcterPictures.length > 0 && (
-          <Content>
-            <GaleryContent>
-              <Galery pictures={charcterPictures} />
-            </GaleryContent>
-          </Content>
-        )}
+        {charcterPictures.length > 0 && <Galery pictures={charcterPictures} />}
 
         <Content>
           <SubTitle>Characters:</SubTitle>
@@ -110,7 +94,7 @@ export default async function PageVoiceActors({
           <PostersRoot>
             {charactersPoster.map((character, i) => {
               return (
-                <PosterItem key={i}>
+                <PosterItem key={character.id}>
                   {" "}
                   <PosterimgLink
                     img={character.img}
