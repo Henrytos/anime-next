@@ -6,7 +6,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { SubTitle } from "@/components/sub-title";
-import { fetchAnime, fetchPictures } from "@/services/fetch";
+import {
+  fetchAnime,
+  fetchAnimes,
+  fetchPictures,
+  fetchTopAnimes,
+} from "@/services/fetch";
 import { Separator } from "@/components/ui/separator";
 import { ButtonAddAnime } from "./components/button-add-anime";
 import { Bganime } from "@/components/details/bg-details";
@@ -20,6 +25,7 @@ import { CharacterCarousel } from "./components/character-carousel";
 import { Suspense } from "react";
 import { SkeletonCarousel } from "@/components/details/skeleton-carousel";
 import { Galery } from "@/components/details/galery";
+import { GenresType } from "@/types/geners-anime";
 interface DetaislAnimeProps {
   params: {
     id: string;
