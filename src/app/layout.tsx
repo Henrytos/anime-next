@@ -8,7 +8,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { FavoriteProvider } from "@/contexts/context-favorites";
 
 export const metadata: Metadata = {
-  title: "Tomato",
+  title: {
+    template: "%s | NextAnime",
+    default: "NextAnime",
+  },
   description: "SIte para ver animes e mangás ",
 };
 
