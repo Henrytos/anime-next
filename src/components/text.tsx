@@ -7,7 +7,8 @@ interface TextProps {
   children: ReactNode;
 }
 export function Text({ children, isDifferent, clasName }: TextProps) {
-  const baseStyle = "text-secundary text-base/5 sm:text-base/7 font-normal";
+  const baseStyle =
+    "text-secundary text-base/5 sm:text-base/7 font-normal lg:text-xl";
   return (
     <p
       className={clsx(

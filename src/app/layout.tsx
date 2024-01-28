@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="pt">
       <body
-        className={`min-h-screen bg-background font-sans antialiased relative`}
+        className={`min-h-screen bg-background font-sans antialiased relative bg-neutral-900`}
       >
         <ThemeProvider
           attribute="class"

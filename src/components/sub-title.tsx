@@ -7,7 +7,7 @@ interface SubTitleProps {
   className?: string;
 }
 export function SubTitle({ children, isDifferent, className }: SubTitleProps) {
-  const baseStyleSubTitle = "text-xl font-bold  antialiased";
+  const baseStyleSubTitle = "text-xl font-bold  antialiased lg:text-2xl";
   return (
     <h2
       className={clsx(

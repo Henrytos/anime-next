@@ -6,12 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { SubTitle } from "@/components/sub-title";
-import {
-  fetchAnime,
-  fetchAnimes,
-  fetchPictures,
-  fetchTopAnimes,
-} from "@/services/fetch";
+import { fetchAnime, fetchPictures } from "@/services/fetch";
 import { Separator } from "@/components/ui/separator";
 import { ButtonAddAnime } from "./components/button-add-anime";
 import { Bganime } from "@/components/details/bg-details";
@@ -25,7 +20,7 @@ import { CharacterCarousel } from "./components/character-carousel";
 import { Suspense } from "react";
 import { SkeletonCarousel } from "@/components/details/skeleton-carousel";
 import { Galery } from "@/components/details/galery";
-import { GenresType } from "@/types/geners-anime";
+import { Text } from "@/components/text";
 interface DetaislAnimeProps {
   params: {
     id: string;
@@ -44,7 +39,7 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
         <Content>
           <DetailsAnime anime={anime} />
         </Content>
-        <Content>
+        <Content className="grid grid-cols-1 lg:grid-cols-2 lg:gap-10 lg:space-y-0">
           <ButtonAddAnime anime={anime} />
           <ButtonLink href={anime.url} target="_blank">
             Ver mais
@@ -57,8 +52,8 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
                 <AccordionTrigger className="text-left pt-0 antialiased font-normal">
                   <SubTitle>Sinopse</SubTitle>
                 </AccordionTrigger>
-                <AccordionContent className="antialiased font-light">
-                  {anime.synopsis}
+                <AccordionContent className="antialiased font-light ">
+                  <Text isDifferent>{anime.synopsis}</Text>
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -71,7 +66,7 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
             <Separator />
 
             <iframe
-              className="w-full h-48  "
+              className="w-full max-w-2xl lg:m-auto h-48  lg:h-96"
               src={anime.trailer.embed_url}
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

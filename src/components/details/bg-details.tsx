@@ -1,6 +1,6 @@
 export function Bganime({ src }: { src: string }) {
   return (
-    <div className="absolute w-full h-2/3 top-0 left-0 ">
+    <div className="absolute w-full max-w-3xl md:left-1/2  md:-translate-x-1/2  h-2/3 lg:h-full top-0 left-0 ">
       <img
         src={src}
         alt="Picture of the author"

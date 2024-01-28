@@ -5,8 +5,6 @@ import {
   PosterimgLink,
   PostersRoot,
 } from "./details/carousel-character";
-import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
-import Link from "next/link";
 export interface Poster {
   id: number;
   name: string;
@@ -25,7 +23,7 @@ function formaterTitle(name: string) {
 export function CarouselPosters({ posters, type }: CarouselPostersProps) {
   return (
     <PostersRoot>
-      {posters.map((item, i) => (
+      {posters.map((item) => (
         <PosterItem key={item.id}>
           <PosterimgLink {...item} href={`/${type}/${item.id}?type=${type}`} />
           <PosterTitle>{formaterTitle(item.name)}</PosterTitle>{" "}

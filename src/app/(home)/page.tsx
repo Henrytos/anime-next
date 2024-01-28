@@ -14,6 +14,7 @@ export default async function Home() {
   const animeToSchool = await fetchAnimes(GenresType.School);
   const animeToComedy = await fetchAnimes(GenresType.Comedy);
 
+  console.log(animes);
   return (
     <Container>
       <Content>

@@ -57,3 +57,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+#main::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+
+#main::-webkit-scrollbar-track {
+  background: rgb(23, 23, 23); /* color of the tracking area */
+}
+
+#main::-webkit-scrollbar-thumb {
+  background-color: rgb(63, 63, 63); /* color of the scroll thumb */
+}

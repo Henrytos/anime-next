@@ -8,13 +8,13 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 const formaterName = (name: string) => {
-  if (name.length > 7) return name.slice(0, 7) + "...";
+  if (name.length > 10) return name.slice(0, 10) + "...";
   return name;
 };
 
 export function PosterName({ children, i }: { children: string; i: number }) {
   return (
-    <div className=" w-full   absolute bottom-0 pl-1 pb-1 z-20 block text-white  text-sm font-semibold bg-gradient-to-t  from-neutral-900 to-neutral-transparent ">
+    <div className=" w-full   absolute bottom-0 pl-1 pb-1 z-20 block text-white  text-sm font-semibold bg-gradient-to-t  from-neutral-900 to-neutral-transparent lg:text-xl ">
       {i + 1} - {formaterName(children)}
     </div>
   );
@@ -22,8 +22,8 @@ export function PosterName({ children, i }: { children: string; i: number }) {
 
 export function PosterTitle({ children }: { children: ReactNode }) {
   return (
-    <div className="absolute top-0 h-4 bg-neutral-900/50  w-[calc(100%_-_8px)] flex items-center  rounded-t px-1">
-      <h3 className="text-xs font-bold block ">{children}</h3>
+    <div className="absolute top-0 h-4 lg:h-8 bg-neutral-900/50  w-[calc(100%_-_8px)] flex items-center  rounded-t px-1">
+      <h3 className="text-xs font-bold block lg:text-xl ">{children}</h3>
     </div>
   );
 }
@@ -31,7 +31,7 @@ export function PosterTitle({ children }: { children: ReactNode }) {
 export function PostersRoot({ children }: { children: ReactNode }) {
   return (
     <Carousel className="w-full ">
-      <CarouselContent className="-space-x-2 relative">
+      <CarouselContent className="-space-x-2 lg:space-x-0 relative">
         {children}
       </CarouselContent>
     </Carousel>
@@ -39,7 +39,11 @@ export function PostersRoot({ children }: { children: ReactNode }) {
 }
 
 export function PosterItem({ children }: { children: ReactNode }) {
-  return <CarouselItem className=" basis-1/3  h-44">{children}</CarouselItem>;
+  return (
+    <CarouselItem className=" basis-1/3  h-44 lg:h-80 lg:basis-1/5">
+      {children}
+    </CarouselItem>
+  );
 }
 
 export function PosterimgLink({

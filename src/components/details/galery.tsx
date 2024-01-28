@@ -6,7 +6,7 @@ import { ButtonLink } from "../button-link";
 export async function Galery({ pictures }: { pictures: AnimePicture[] }) {
   return (
     <GaleryContent>
-      <div className="w-full grid grid-cols-2 gap-2">
+      <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-2">
         {pictures?.map((picture, index) => (
           <Dialog key={index}>
             <DialogTrigger>
@@ -15,7 +15,7 @@ export async function Galery({ pictures }: { pictures: AnimePicture[] }) {
                 key={index}
                 width={200}
                 height={200}
-                className="w-full h-56 object-cover rounded  shadow"
+                className="w-full h-56 lg:h-80 object-cover rounded  shadow"
                 alt={`${index}-`}
               />
             </DialogTrigger>

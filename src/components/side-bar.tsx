@@ -29,7 +29,7 @@ export function SideLink({ icon: Icon, children, href }: SideLinkProps) {
 
 export function SideBar() {
   return (
-    <aside className="flex px-6 py-2 h-16 justify-between bg-neutral-900">
+    <aside className="flex px-6 py-2 h-16 justify-between bg-neutral-900 lg:hidden">
       <SideLink icon={Home} href="/">
         Home
       </SideLink>
