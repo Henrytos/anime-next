@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/theme/theme-provider";
 import { Header } from "@/components/header/header";
-import { SideBar } from "@/components/side-bar";
+import { SideBar } from "@/components/side-bar/side-bar";
 import { Toaster } from "@/components/ui/toaster";
 import { FavoriteProvider } from "@/contexts/context-favorites";
 

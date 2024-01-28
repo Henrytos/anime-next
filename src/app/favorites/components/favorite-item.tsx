@@ -10,11 +10,11 @@ export function FavoiteItem({ anime }: { anime: Anime }) {
     if (title.length > 20) return title.slice(0, 20) + "...";
     return title;
   };
-  const isAnime = anime.isAnime == true ? "anime" : "manga";
+  const type = anime.isAnime == true ? "anime" : "manga";
   return (
     <div className="relative w-full h-48 " key={anime.mal_id}>
       <Link
-        href={`/${isAnime}/${anime.mal_id}`}
+        href={`/${type}/${anime.mal_id}?type=${type}`}
         className="flex h-full gap-3 items-center "
       >
         <img

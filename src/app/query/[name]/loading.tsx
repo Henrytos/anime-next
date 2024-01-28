@@ -8,21 +8,21 @@ export default function LoadingQuery() {
     <Container>
       <SubTitle>Animes...</SubTitle>
       <Content>
-        <Skeleton className="h-44 w-full rounded" />
-        <Skeleton className="h-44 w-full rounded" />
-        <Skeleton className="h-44 w-full rounded" />
-        <Skeleton className="h-44 w-full rounded" />
-        <Skeleton className="h-44 w-full rounded" />
-        <Skeleton className="h-44 w-full rounded" />
+        <Skeleton className="h-44 lg:h-80 w-full rounded" />
+        <Skeleton className="h-44 lg:h-80 w-full rounded" />
+        <Skeleton className="h-44 lg:h-80 w-full rounded" />
+        <Skeleton className="h-44 lg:h-80 w-full rounded" />
+        <Skeleton className="h-44 lg:h-80 w-full rounded" />
+        <Skeleton className="h-44 lg:h-80 w-full rounded" />
       </Content>
       <SubTitle>Mangás...</SubTitle>
       <Content>
-        <Skeleton className="h-44 w-full rounded" />
-        <Skeleton className="h-44 w-full rounded" />
-        <Skeleton className="h-44 w-full rounded" />
-        <Skeleton className="h-44 w-full rounded" />
-        <Skeleton className="h-44 w-full rounded" />
-        <Skeleton className="h-44 w-full rounded" />
+        <Skeleton className="h-44 lg:h-80 w-full rounded" />
+        <Skeleton className="h-44 lg:h-80 w-full rounded" />
+        <Skeleton className="h-44 lg:h-80 w-full rounded" />
+        <Skeleton className="h-44 lg:h-80 w-full rounded" />
+        <Skeleton className="h-44 lg:h-80 w-full rounded" />
+        <Skeleton className="h-44 lg:h-80 w-full rounded" />
       </Content>
     </Container>
   );

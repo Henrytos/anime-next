@@ -22,7 +22,7 @@ export function PosterName({ children, i }: { children: string; i: number }) {
 
 export function PosterTitle({ children }: { children: ReactNode }) {
   return (
-    <div className="absolute top-0 h-4 lg:h-8 bg-neutral-900/50  w-[calc(100%_-_8px)] flex items-center  rounded-t px-1">
+    <div className="absolute top-0 h-4 lg:h-8 bg-neutral-900/50  w-full flex items-center  rounded-t px-1">
       <h3 className="text-xs font-bold block lg:text-xl ">{children}</h3>
     </div>
   );
@@ -40,7 +40,7 @@ export function PostersRoot({ children }: { children: ReactNode }) {
 
 export function PosterItem({ children }: { children: ReactNode }) {
   return (
-    <CarouselItem className=" basis-1/3  h-44 lg:h-80 lg:basis-1/5">
+    <CarouselItem className=" basis-1/3  h-44 min-[400px]:h-52  sm:h-72 md:h-80 md:basis-1/4 lg:basis-1/5">
       {children}
     </CarouselItem>
   );

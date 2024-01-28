@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
 export function Content({
   children,
@@ -8,7 +9,7 @@ export function Content({
   className?: string;
 }) {
   return (
-    <section className={`space-y-2 ${className} lg:space-y-4`}>
+    <section className={twMerge(`w-full space-y-2  lg:space-y-4`, className)}>
       {children}
     </section>
   );

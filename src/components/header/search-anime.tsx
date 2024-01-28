@@ -13,7 +13,7 @@ export function SearchAnime() {
 
   return (
     <form
-      className="flex gap-1 items-center flex-1 max-w-md"
+      className="flex gap-2 lg:gap-4 items-center flex-1 max-w-md"
       onSubmit={hadleQuery}
     >
       <input
