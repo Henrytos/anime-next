@@ -1,7 +1,6 @@
 export async function Api(url: string) {
   try {
-    const baseUrl = "https://api.jikan.moe/v4/";
-    const path = `${baseUrl}${url}`;
+    const path = new URL(url, process.env.NEXT_PUBLIC_API);
     const response = await fetch(path);
     const data = await response.json();
     return data;

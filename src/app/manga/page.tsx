@@ -14,7 +14,7 @@ export default async function MangasPage() {
   const mangaToAction = await fetchMangas(GenresType.Action);
   const mangaToAdventure = await fetchMangas(GenresType.Adventure);
   const mangaToSchool = await fetchMangas(GenresType.School);
-  console.log(mangas);
+
   return (
     <Container>
       <Content>

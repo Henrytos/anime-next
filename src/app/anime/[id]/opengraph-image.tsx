@@ -22,8 +22,7 @@ interface DetaislAnimeProps {
 export default async function Image({ params }: DetaislAnimeProps) {
   const anime = await fetchAnime(+params.id);
 
-  const animeImageURL = new URL(anime.images.jpg.large_image_url).toString();
-
+  const animeImageURL = anime.images.jpg.large_image_url;
   return new ImageResponse(
     (
       <div
