@@ -1,15 +1,17 @@
 import { fetchAnime } from "@/services/fetch";
 import { ImageResponse } from "next/og";
+import colors from "tailwindcss/colors";
 
 export const runtime = "edge";
 
 export const alt = "";
+
 export const size = {
-  width: 400,
-  height: 630,
+  width: 300,
+  height: 435,
 };
 
-export const contentType = "image/jpg";
+export const contentType = "image/png";
 
 interface DetaislAnimeProps {
   params: {
@@ -18,30 +20,22 @@ interface DetaislAnimeProps {
 }
 
 export default async function Image({ params }: DetaislAnimeProps) {
-  const animeId = +params.id;
-  const anime = await fetchAnime(animeId);
+  const anime = await fetchAnime(+params.id);
+
+  const animeImageURL = new URL(anime.images.jpg.large_image_url).toString();
+
   return new ImageResponse(
     (
       <div
         style={{
-          fontSize: 128,
-          background: `#232323`,
+          background: colors.zinc[950],
           width: "100%",
           height: "100%",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          flexDirection: "column",
         }}
       >
-        <img
-          src={anime.images.jpg.large_image_url}
-          alt={anime.title}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
+        <img src={animeImageURL} alt="" style={{ width: "100%" }} />
       </div>
     ),
     {
