@@ -15,7 +15,7 @@ export async function Galery({ pictures }: { pictures: AnimePicture[] }) {
                 key={index}
                 width={200}
                 height={200}
-                className="w-full h-56 lg:h-80 object-cover rounded  shadow"
+                className="w-full h-56 sm:h-72 lg:h-80 object-cover rounded  shadow"
                 alt={`${index}-`}
               />
             </DialogTrigger>

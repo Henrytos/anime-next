@@ -27,7 +27,7 @@ export default function FavoritesMangaPage() {
         </SubTitle>
         <NavLinks />
         {mangas.length > 0 ? (
-          <Content className="space-y-3 grid lg:grid-cols-2 lg:gap-x-6">
+          <Content className="space-y-3 grid sm:grid-cols-2 lg:gap-x-6">
             {mangas.map((manga) => (
               <FavoiteItem anime={manga} />
             ))}

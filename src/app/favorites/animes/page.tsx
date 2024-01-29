@@ -27,7 +27,7 @@ export default function FavoritesAnimePage() {
         </SubTitle>
         <NavLinks />
         {animes.length > 0 ? (
-          <Content className="space-y-3 grid lg:grid-cols-2 lg:gap-x-6">
+          <Content className="space-y-3 grid sm:grid-cols-2 lg:gap-x-6">
             {animes.map((anime) => (
               <FavoiteItem anime={anime} key={anime.url} />
             ))}
