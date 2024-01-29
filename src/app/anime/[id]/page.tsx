@@ -21,9 +21,20 @@ import { Suspense } from "react";
 import { SkeletonCarousel } from "@/components/details/skeleton-carousel";
 import { Galery } from "@/components/details/galery";
 import { Text } from "@/components/text";
+import { Metadata } from "next";
 interface DetaislAnimeProps {
   params: {
     id: string;
+  };
+}
+
+export async function generateMetadata({
+  params,
+}: DetaislAnimeProps): Promise<Metadata> {
+  const anime = await fetchAnime(+params.id);
+
+  return {
+    title: anime.title,
   };
 }
 

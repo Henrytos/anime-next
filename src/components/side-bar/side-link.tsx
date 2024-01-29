@@ -16,7 +16,7 @@ export function SideLink({ icon: Icon, children, href }: SideLinkProps) {
       href={href}
       className={`flex flex-col gap-1 items-center  ${
         isActive ? "text-white" : "text-neutral-500"
-      } sm:flex-row-reverse sm:justify-between`}
+      } sm:flex-row-reverse sm:justify-between sm:items-center`}
     >
       <Icon />
       <span className="text-sm font-light sm:text-xl">{children}</span>
