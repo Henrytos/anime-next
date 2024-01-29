@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     default: "NextAnime",
   },
   description: "SIte para ver animes e mangás ",
+  metadataBase: new URL("https://anime-next-ruby.vercel.app"),
 };
 
 export default function RootLayout({
