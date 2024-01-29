@@ -3,6 +3,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import Image from "next/image";
 
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -58,7 +59,7 @@ export function PosterimgLink({
   return (
     <div className="w-full h-full relative">
       <Link className="w-full " href={href}>
-        <img
+        <Image
           src={`${img}`}
           alt={`capa de mangá de ${name}`}
           width={150}
