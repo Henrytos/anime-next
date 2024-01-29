@@ -33,6 +33,7 @@ export function ButtonAddManga({ anime }: { anime: Anime }) {
           asChild
           className=" w-full  bg-primary/50 text-secondary-foreground rounded cursor-not-allowed hover:bg-primary/50"
           disabled={true}
+          id="btn-add-favorite"
         >
           <span className="flex gap-2">
             {" "}
@@ -44,6 +45,7 @@ export function ButtonAddManga({ anime }: { anime: Anime }) {
           asChild
           className=" w-full border border-primary bg-primary text-secondary-foreground rounded cursor-pointer  "
           onClick={() => handleClick()}
+          id="btn-add-favorite"
         >
           <span className="flex gap-2">
             {" "}

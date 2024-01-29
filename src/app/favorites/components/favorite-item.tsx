@@ -50,6 +50,7 @@ export function FavoiteItem({ anime }: { anime: Anime }) {
             className="text-primary/75 cursor-pointer"
             size={20}
             onClick={() => removeFavorites(anime)}
+            id="btn-remove-favorite"
           />
         </span>
       </div>

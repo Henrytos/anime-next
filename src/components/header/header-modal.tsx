@@ -15,7 +15,7 @@ import { SideLink } from "../side-bar/side-link";
 export function HeaderModal() {
   return (
     <Sheet>
-      <SheetTrigger className="hidden sm:block">
+      <SheetTrigger className="hidden sm:block" id="btn-menu">
         {" "}
         <AlignJustify />{" "}
       </SheetTrigger>

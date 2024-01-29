@@ -13,6 +13,7 @@ export function SideLink({ icon: Icon, children, href }: SideLinkProps) {
   const isActive = path === href;
   return (
     <Link
+      id={`side-link-${href}`}
       href={href}
       className={`flex flex-col gap-1 items-center  ${
         isActive ? "text-white" : "text-neutral-500"

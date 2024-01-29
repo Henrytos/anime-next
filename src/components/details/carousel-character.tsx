@@ -57,7 +57,7 @@ export function PosterimgLink({
 }) {
   return (
     <div className="w-full h-full relative">
-      <Link className="w-full " href={href}>
+      <Link className="w-full " href={href} id="poster-link">
         <img
           src={`${img}`}
           alt={`capa de mangá de ${name}`}

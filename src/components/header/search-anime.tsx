@@ -18,8 +18,8 @@ export function SearchAnime() {
     >
       <input
         type="text"
-        name=""
-        id=""
+        name="input-query"
+        id="input-query"
         onChange={(ev) => setQuery(ev.target.value)}
         value={query}
         placeholder="..."
@@ -28,7 +28,7 @@ export function SearchAnime() {
       />
       <button type="submit" disabled={true}>
         {query.length > 0 ? (
-          <Link href={`/query/${query}`}>
+          <Link href={`/query/${query}`} id="btn-search">
             <Search
               className="font-bold  cursor-pointer disabled:cursor-not-allowed"
               size={28}
