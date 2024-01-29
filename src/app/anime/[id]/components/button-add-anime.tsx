@@ -30,25 +30,20 @@ export function ButtonAddAnime({ anime }: { anime: Anime }) {
     <>
       {isFavorite ? (
         <Button
-          asChild
           className=" w-full  bg-primary/50 text-secondary-foreground rounded cursor-not-allowed hover:bg-primary/50"
           disabled={true}
         >
-          <span className="flex gap-2">
-            {" "}
-            <Check /> <span>favorited</span>
-          </span>
+          {" "}
+          <Check /> favorited
         </Button>
       ) : (
         <Button
-          asChild
           className=" w-full border border-primary bg-primary text-secondary-foreground rounded cursor-pointer  "
           onClick={() => handleClick()}
+          id="btn-add-favorite"
         >
-          <span className="flex gap-2">
-            {" "}
-            <Heart /> <span>Add Favorites</span>
-          </span>
+          {" "}
+          <Heart /> Add Favorites
         </Button>
       )}
     </>
