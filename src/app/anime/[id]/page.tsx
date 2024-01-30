@@ -77,7 +77,7 @@ export default async function DetaislAnimePage({ params }: DetaislAnimeProps) {
             <Separator />
 
             <iframe
-              className="w-full max-w-xl m-auto h-48 sm:h-80  lg:h-96"
+              className="w-full max-w-2xl m-auto  max-[400px]:h-40 h-64 sm:h-80  md:h-96"
               src={anime.trailer.embed_url}
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

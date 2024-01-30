@@ -41,7 +41,7 @@ export default async function DetaislMangaPage({
         <Content>
           <DetailsAnime anime={manga} />
         </Content>
-        <Content>
+        <Content className="grid grid-cols-1 lg:grid-cols-2 lg:gap-10 lg:space-y-0">
           <ButtonAddManga anime={manga} />
           <ButtonLink href={manga.url} target="_blank">
             Ver mais

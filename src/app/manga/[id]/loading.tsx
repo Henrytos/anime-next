@@ -17,14 +17,14 @@ export default function LoadingANimeDetails() {
     <Container>
       <Skeleton className="w-full h-1/2 mb-4" />
 
-      <main className="space-y-2 mb-4">
+      <Content className="grid grid-cols-1 lg:grid-cols-2 lg:gap-10 lg:space-y-0">
         <Button className="w-full rounded flex gap-2">
           <Heart /> <span>Add Favorites</span>
         </Button>
         <ButtonLink href={""} target="_blank">
           Ver mais
         </ButtonLink>
-      </main>
+      </Content>
       <main className="space-y-2">
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
