@@ -1,45 +1,39 @@
 "use client";
-
 import { Search } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 
 export function SearchAnime() {
-  const [query, setQuery] = useState<string>("");
+  interface SchemaSearch {
+    q: string;
+  }
 
-  function hadleQuery(ev: React.FormEvent<HTMLFormElement>) {
-    ev.preventDefault();
+  const { handleSubmit, register, reset } = useForm<SchemaSearch>({
+    defaultValues: { q: "" },
+  });
+  const router = useRouter();
+
+  function handleSearch(data: SchemaSearch) {
+    router.push(`/query?q=${data.q}`);
+    reset();
   }
 
   return (
     <form
       className="flex gap-2 lg:gap-4 items-center flex-1 max-w-md"
-      onSubmit={hadleQuery}
+      onSubmit={handleSubmit(handleSearch)}
     >
       <input
         type="text"
-        name="input-query"
         id="input-query"
-        onChange={(ev) => setQuery(ev.target.value)}
-        value={query}
+        {...register("q")}
         placeholder="..."
         className="px-2 py-1 rounded border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent w-full"
+        min={2}
         required
       />
-      <button type="submit" disabled={true}>
-        {query.length > 0 ? (
-          <Link href={`/query/${query}`} id="btn-search">
-            <Search
-              className="font-bold  cursor-pointer disabled:cursor-not-allowed"
-              size={28}
-            />
-          </Link>
-        ) : (
-          <Search
-            className="font-bold  cursor-pointer disabled:cursor-not-allowed text-zinc-700"
-            size={28}
-          />
-        )}
+      <button type="submit" id="btn-search">
+        <Search className="font-bold  cursor-pointer " size={28} />
       </button>
     </form>
   );

@@ -22,8 +22,10 @@ export function PosterName({ children, i }: { children: string; i: number }) {
 
 export function PosterTitle({ children }: { children: ReactNode }) {
   return (
-    <div className="absolute top-0 h-4 lg:h-8 bg-neutral-900/50  w-full flex items-center  rounded-t px-1">
-      <h3 className="text-xs font-bold block lg:text-xl ">{children}</h3>
+    <div className="absolute top-0 h-4 sm:h-6 md:h-7 lg:h-8 bg-neutral-900/50  w-full flex items-center  rounded-t px-1">
+      <h3 className="text-xs font-bold block sm:text-base md:text-lg lg:text-xl ">
+        {children}
+      </h3>
     </div>
   );
 }
