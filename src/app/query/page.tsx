@@ -53,23 +53,26 @@ export default async function Page(props: QueryAnimeProps) {
 
   return (
     <Container>
-      <main className="space-y-4">
+      <main className="space-y-6">
         <SubTitle>Pesquisas sobre: {query}</SubTitle>
-        <SubTitle>Animes</SubTitle>
-        <Separator />
-        <Content>
-          {animes.map((anime) => (
-            <LinkItem type="anime" anime={anime} key={anime.id} />
-          ))}
-        </Content>
-
-        <SubTitle>Mangás</SubTitle>
-        <Separator />
-        <Content>
-          {mangas.map((manga) => (
-            <LinkItem type="manga" anime={manga} key={manga.id} />
-          ))}
-        </Content>
+        <div className="space-y-2">
+          <SubTitle>Animes</SubTitle>
+          <Separator />
+          <Content>
+            {animes.map((anime) => (
+              <LinkItem type="anime" anime={anime} key={anime.id} />
+            ))}
+          </Content>
+        </div>
+        <div className="space-y-2">
+          <SubTitle>Mangás</SubTitle>
+          <Separator />
+          <Content>
+            {mangas.map((manga) => (
+              <LinkItem type="manga" anime={manga} key={manga.id} />
+            ))}
+          </Content>
+        </div>
       </main>
     </Container>
   );

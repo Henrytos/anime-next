@@ -14,7 +14,7 @@ export function LinkItem({
     return name.length > 13 ? name.slice(0, 13) + "..." : name;
   }
   return (
-    <div className="relative w-full">
+    <div className="h-44 min-[400px]:h-52 sm:h-72 md:h-80 relative w-full">
       <PosterimgLink
         href={`/${type}/${anime.id}?type=${type}`}
         img={anime.img}
