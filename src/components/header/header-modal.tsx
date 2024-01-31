@@ -11,8 +11,11 @@ import { AlignJustify, BookOpen, Heart, Home } from "lucide-react";
 import { SubTitle } from "../sub-title";
 import { Content } from "../details/content";
 import { SideLink } from "../side-bar/side-link";
+import { useSession } from "next-auth/react";
 
 export function HeaderModal() {
+  const { data, status } = useSession();
+  console.log(data);
   return (
     <Sheet>
       <SheetTrigger className="hidden sm:block" id="btn-menu">
