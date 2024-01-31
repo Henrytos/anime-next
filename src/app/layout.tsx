@@ -6,6 +6,7 @@ import { Header } from "@/components/header/header";
 import { SideBar } from "@/components/side-bar/side-bar";
 import { Toaster } from "@/components/ui/toaster";
 import { FavoriteProvider } from "@/contexts/context-favorites";
+import AuthProvider from "@/providers/auth";
 
 export const metadata: Metadata = {
   title: {
@@ -25,19 +26,21 @@ export default function RootLayout({
       <body
         className={`min-h-screen bg-background font-sans antialiased relative bg-neutral-900`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <FavoriteProvider>
-            <Header />
-            {children}
-            <Toaster />
-            <SideBar />
-          </FavoriteProvider>
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <FavoriteProvider>
+              <Header />
+              {children}
+              <Toaster />
+              <SideBar />
+            </FavoriteProvider>
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
