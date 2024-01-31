@@ -15,12 +15,24 @@ export function SideLink({ icon: Icon, children, href }: SideLinkProps) {
     <Link
       id={`side-link-${href}`}
       href={href}
-      className={`flex flex-col gap-1 items-center  ${
-        isActive ? "text-white" : "text-neutral-500"
+      className={`group flex flex-col gap-1 items-center hover:underline hover:underline-offset-4 transition-all  ${
+        isActive
+          ? "text-white  underline underline-offset-4"
+          : "text-neutral-500"
       } sm:flex-row-reverse sm:justify-between sm:items-center`}
     >
-      <Icon />
-      <span className="text-sm font-light sm:text-xl">{children}</span>
+      <Icon
+        className={` group-hover:w-7 group-hover:h-7 transition-all ${
+          isActive && "w-7 h-7"
+        } `}
+      />
+      <span
+        className={`text-sm font-light sm:text-xl group-hover:font-semibold transition-all  ${
+          isActive && "font-semibold"
+        }`}
+      >
+        {children}
+      </span>
     </Link>
   );
 }
