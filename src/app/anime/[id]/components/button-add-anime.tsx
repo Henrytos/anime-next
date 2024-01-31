@@ -6,10 +6,11 @@ import { Anime } from "@/types/anime";
 import { Check, Heart, LogIn } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 import { useContext } from "react";
+import { addToFavoriteAction } from "../acition";
 
 export function ButtonAddAnime({ anime }: { anime: Anime }) {
   const { toast } = useToast();
-  const { addFavorites, favorites } = useContext(ContextFavorite);
+  const { favorites, addFavorites } = useContext(ContextFavorite);
   const { data } = useSession();
 
   const handleClickSingIn = () => signIn("google");
@@ -21,15 +22,21 @@ export function ButtonAddAnime({ anime }: { anime: Anime }) {
       className: "bg-neutral-900 ",
     });
 
-    const newAnime = { ...anime, isAnime: true };
-    addFavorites(newAnime);
+    const favorite = {
+      id: anime.mal_id.toString(),
+      imageUrl: anime.images.jpg.large_image_url,
+      name: anime.title,
+      synopsis: anime.synopsis,
+      type: "anime",
+    };
+    addToFavoriteAction(favorite, data?.user?.email as string);
+    addFavorites(favorite);
   }
 
   const isFavorite = favorites.some(
-    (animeFavorite) => animeFavorite.mal_id === anime.mal_id
+    (favoriteCurrent) =>
+      favoriteCurrent.id.toString() == anime.mal_id.toString()
   );
-
-  console.log(data?.user);
 
   return (
     <>

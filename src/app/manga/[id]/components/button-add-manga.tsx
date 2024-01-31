@@ -1,4 +1,5 @@
 "use client";
+import { addToFavoriteAction } from "@/app/anime/[id]/acition";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { ContextFavorite } from "@/contexts/context-favorites";
@@ -21,12 +22,19 @@ export function ButtonAddManga({ anime }: { anime: Anime }) {
       className: "bg-neutral-900 ",
     });
 
-    const newAnime = { ...anime, isAnime: false };
-    addFavorites(newAnime);
+    const favorite = {
+      id: anime.mal_id.toString(),
+      imageUrl: anime.images.jpg.large_image_url,
+      name: anime.title,
+      synopsis: anime.synopsis,
+      type: "manga",
+    };
+    addToFavoriteAction(favorite, data?.user?.email as string);
+    addFavorites(favorite);
   }
 
   const isFavorite = favorites.some(
-    (animeFavorite) => animeFavorite.mal_id === anime.mal_id
+    (animeFavorite) => animeFavorite.id.toString() === anime.mal_id.toString()
   );
 
   const handleClickSingIn = () => signIn("google");

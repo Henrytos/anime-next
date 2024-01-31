@@ -1,33 +1,45 @@
 "use client";
 import { Anime } from "@/types/anime";
+import { useSession } from "next-auth/react";
 import { ReactNode, createContext, useEffect, useState } from "react";
+import { fetchFavoritesUser } from "./action";
 
+export interface Favorite {
+  id: string;
+  userId?: string;
+  name: string;
+  synopsis: string;
+  type: string;
+  imageUrl: string;
+}
 interface ContextFavoriteType {
-  favorites: Anime[];
-  addFavorites: (anime: Anime) => void;
-  removeFavorites: (anime: Anime) => void;
+  favorites: Favorite[];
+  addFavorites: (anime: Favorite) => void;
+  removeFavorites: (anime: Favorite) => void;
 }
 
 export const ContextFavorite = createContext({} as ContextFavoriteType);
 
 export function FavoriteProvider({ children }: { children: ReactNode }) {
-  const [favorites, setFavorites] = useState<Anime[]>(() => {
-    if (typeof window !== "undefined") {
-      const favorites = localStorage.getItem("favorites");
-      return favorites ? JSON.parse(favorites) : [];
-    }
-    return [];
-  });
+  const [favorites, setFavorites] = useState<Favorite[]>([]);
 
-  function addFavorites(anime: Anime) {
-    setFavorites((state) => [anime, ...state]);
+  function addFavorites(favorite: Favorite) {
+    setFavorites((state) => [favorite, ...state]);
   }
 
-  function removeFavorites(anime: Anime) {
+  function removeFavorites(favorite: Favorite) {
     setFavorites((state) =>
-      state.filter((favoritestate) => favoritestate !== anime)
+      state.filter((favoritestate) => favoritestate !== favorite)
     );
   }
+  const { data } = useSession();
+  useEffect(() => {
+    if (data != undefined) {
+      fetchFavoritesUser(data?.user?.email!).then((res) => {
+        setFavorites(res);
+      });
+    }
+  }, [data]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {

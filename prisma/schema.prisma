@@ -65,7 +65,7 @@ model Favorite {
   synopsis String
   type String
   imageUrl String
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id])
 }
 
 model Historic{
@@ -73,6 +73,6 @@ model Historic{
   query String
   createdAt DateTime
   userId String
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id])
 
 }

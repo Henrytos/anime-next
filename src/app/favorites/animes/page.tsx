@@ -14,22 +14,26 @@ import { NotFavorites } from "../components/not-favorites";
 
 export default function FavoritesAnimePage() {
   const { favorites } = useContext(ContextFavorite);
-  const animes = favorites.filter((favorite) => favorite.isAnime === true);
+  const favoritesCurrent = favorites.filter(
+    (favorite) => favorite.type === "anime"
+  );
   return (
     <Container>
       <MainContent>
         <SubTitle className="flex justify-between items-center -mb-2">
           <span> Favorite animes </span>
           <span className="flex items-center gap-1">
-            <span className="font-light text-lg">{animes.length}</span>
+            <span className="font-light text-lg">
+              {favoritesCurrent.length}
+            </span>
             <Heart className="w-5 h-5 text-primary translate-y-px" />{" "}
           </span>
         </SubTitle>
         <NavLinks />
-        {animes.length > 0 ? (
+        {favorites.length > 0 ? (
           <Content className="space-y-3 grid sm:grid-cols-2 lg:gap-x-6">
-            {animes.map((anime) => (
-              <FavoiteItem anime={anime} key={anime.url} />
+            {favoritesCurrent.map((favorite) => (
+              <FavoiteItem favorite={favorite} key={favorite.id} />
             ))}
           </Content>
         ) : (

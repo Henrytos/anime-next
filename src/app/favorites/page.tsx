@@ -26,8 +26,8 @@ export default function FavoritesPage() {
         <NavLinks />
         {favorites.length > 0 ? (
           <Content className="space-y-3 grid sm:grid-cols-2 lg:gap-x-6">
-            {favorites.map((anime) => (
-              <FavoiteItem anime={anime} key={anime.url} />
+            {favorites.map((favorite) => (
+              <FavoiteItem favorite={favorite} key={favorite.imageUrl} />
             ))}
           </Content>
         ) : (
