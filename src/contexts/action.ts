@@ -1,7 +1,6 @@
 "use server";
 
 import { db } from "@/lib/prisma";
-import { User } from "@prisma/client";
 
 export async function fetchFavoritesUser(emailUser: string) {
   const user = await db.user.findUnique({

@@ -6,7 +6,6 @@ import { Anime } from "@/types/anime";
 import { Check, Heart, LogIn } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 import { useContext } from "react";
-import { addToFavoriteAction } from "../acition";
 
 export function ButtonAddAnime({ anime }: { anime: Anime }) {
   const { toast } = useToast();
@@ -28,8 +27,9 @@ export function ButtonAddAnime({ anime }: { anime: Anime }) {
       name: anime.title,
       synopsis: anime.synopsis,
       type: "anime",
+      score: anime.score,
     };
-    addToFavoriteAction(favorite, data?.user?.email as string);
+
     addFavorites(favorite);
   }
 

@@ -64,6 +64,7 @@ model Favorite {
   name String
   synopsis String
   type String
+  score Float
   imageUrl String
   user User @relation(fields: [userId], references: [id])
 }

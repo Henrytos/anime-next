@@ -3,7 +3,6 @@ import { Container } from "@/components/constainer";
 import { Content } from "@/components/details/content";
 import { SubTitle } from "@/components/sub-title";
 import { Separator } from "@/components/ui/separator";
-import { db } from "@/lib/prisma";
 import { fetchAnimes, fetchTopAnimes } from "@/services/fetch";
 import { GenresType } from "@/types/geners-anime";
 
@@ -16,8 +15,6 @@ export default async function Home() {
   const animeToSchool = await fetchAnimes(GenresType.School);
   const animeToComedy = await fetchAnimes(GenresType.Comedy);
 
-  const data = await db.favorite.findMany();
-  console.log(data);
   return (
     <Container>
       <Content>

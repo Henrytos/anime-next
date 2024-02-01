@@ -10,6 +10,9 @@ export function FavoiteItem({ favorite }: { favorite: Favorite }) {
     return title;
   };
   const type = favorite.type;
+  const handleClickRemove = () => {
+    removeFavorites(favorite);
+  };
   return (
     <div className="relative w-full h-48 ">
       <Link
@@ -42,6 +45,7 @@ export function FavoiteItem({ favorite }: { favorite: Favorite }) {
 
       <div className="absolute top-0 right-0 flex items-center gap-2">
         <span className=" text-sm font-normal text-white/75 flex gap-1 items-center">
+          <span>{favorite.score}</span>
           <Star size={16} className="text-yellow-300" />
         </span>
         <span>
@@ -49,6 +53,7 @@ export function FavoiteItem({ favorite }: { favorite: Favorite }) {
             className="text-primary/75 cursor-pointer"
             size={20}
             id="btn-remove-favorite"
+            onClick={handleClickRemove}
           />
         </span>
       </div>

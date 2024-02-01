@@ -1,5 +1,4 @@
 "use client";
-import { addToFavoriteAction } from "@/app/anime/[id]/acition";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { ContextFavorite } from "@/contexts/context-favorites";
@@ -28,8 +27,9 @@ export function ButtonAddManga({ anime }: { anime: Anime }) {
       name: anime.title,
       synopsis: anime.synopsis,
       type: "manga",
+      score: anime.score,
     };
-    addToFavoriteAction(favorite, data?.user?.email as string);
+
     addFavorites(favorite);
   }
 

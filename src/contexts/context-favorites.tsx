@@ -1,8 +1,11 @@
 "use client";
-import { Anime } from "@/types/anime";
 import { useSession } from "next-auth/react";
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { fetchFavoritesUser } from "./action";
+import {
+  addToFavoriteAction,
+  removeFromFavoriteAction,
+} from "@/lib/action-favorite";
 
 export interface Favorite {
   id: string;
@@ -11,6 +14,7 @@ export interface Favorite {
   synopsis: string;
   type: string;
   imageUrl: string;
+  score: number;
 }
 interface ContextFavoriteType {
   favorites: Favorite[];
@@ -25,12 +29,15 @@ export function FavoriteProvider({ children }: { children: ReactNode }) {
 
   function addFavorites(favorite: Favorite) {
     setFavorites((state) => [favorite, ...state]);
+    addToFavoriteAction(favorite, data?.user?.email as string);
   }
 
   function removeFavorites(favorite: Favorite) {
     setFavorites((state) =>
       state.filter((favoritestate) => favoritestate !== favorite)
     );
+
+    removeFromFavoriteAction(favorite.id);
   }
   const { data } = useSession();
   useEffect(() => {
