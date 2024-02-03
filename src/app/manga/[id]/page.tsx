@@ -16,9 +16,9 @@ import {
 } from "@/_components/ui/accordion";
 import { fetchManga, fetchPictures } from "@/_services/fetch";
 import { Suspense } from "react";
-import { CharacterCarousel } from "./components/character-carousel";
-import { RecommendationsManga } from "./components/recommendations-manga";
-import { ButtonAddManga } from "./components/button-add-manga";
+import { CharacterCarousel } from "./_components/character-carousel";
+import { RecommendationsManga } from "./_components/recommendations-manga";
+import { ButtonAddManga } from "./_components/button-add-manga";
 
 interface DetaislMangaProps {
   params: { id: number };

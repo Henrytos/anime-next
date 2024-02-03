@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/_components/ui/button";
 import { useToast } from "@/_components/ui/use-toast";
-import { ContextFavorite, Favorite } from "@/_contexts/context-favorites";
+import { FavoriteContext, Favorite } from "@/_contexts/context-favorites";
 import { Anime } from "@/_types/anime";
 import { Check, Heart, LogIn } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
@@ -10,7 +10,7 @@ import { useContext } from "react";
 export function ButtonAddManga({ anime }: { anime: Anime }) {
   const { toast } = useToast();
 
-  const { addFavorites, mangasFavorites } = useContext(ContextFavorite);
+  const { addFavorites, mangasFavorites } = useContext(FavoriteContext);
 
   const { data } = useSession();
 

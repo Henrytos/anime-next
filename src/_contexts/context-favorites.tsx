@@ -16,15 +16,15 @@ export interface Favorite {
   imageUrl: string;
   score: number;
 }
-interface ContextFavoriteType {
-  listFavorites: Favorite[];
+interface FavoriteContextType {
+  favorites: Favorite[];
   mangasFavorites: Favorite[];
   animesFavorites: Favorite[];
   addFavorites: (anime: Favorite) => void;
   removeFavorites: (anime: Favorite) => void;
 }
 
-export const ContextFavorite = createContext({} as ContextFavoriteType);
+export const FavoriteContext = createContext({} as FavoriteContextType);
 
 export function FavoriteProvider({ children }: { children: ReactNode }) {
   const [favorites, setFavorites] = useState<Favorite[]>([]);
@@ -49,20 +49,19 @@ export function FavoriteProvider({ children }: { children: ReactNode }) {
       });
     }
   }, [data]);
-  const listFavorites = favorites.toReversed();
 
   const mangasFavorites = useMemo(
-    () => listFavorites.filter((favorite) => favorite.type == "manga"),
+    () => favorites.filter((favorite) => favorite.type == "manga"),
     [favorites]
   );
   const animesFavorites = useMemo(
-    () => listFavorites.filter((favorite) => favorite.type == "anime"),
+    () => favorites.filter((favorite) => favorite.type == "anime"),
     [favorites]
   );
   return (
-    <ContextFavorite.Provider
+    <FavoriteContext.Provider
       value={{
-        listFavorites,
+        favorites,
         animesFavorites,
         mangasFavorites,
         addFavorites,
@@ -70,6 +69,6 @@ export function FavoriteProvider({ children }: { children: ReactNode }) {
       }}
     >
       {children}
-    </ContextFavorite.Provider>
+    </FavoriteContext.Provider>
   );
 }

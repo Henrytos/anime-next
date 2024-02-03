@@ -3,7 +3,7 @@
 import { Container } from "@/_components/constainer";
 import { Content } from "@/_components/details/content";
 import { SubTitle } from "@/_components/sub-title";
-import { ContextFavorite } from "@/_contexts/context-favorites";
+import { FavoriteContext } from "@/_contexts/context-favorites";
 import { Heart } from "lucide-react";
 
 import { useContext } from "react";
@@ -13,7 +13,7 @@ import { NavLinks } from "../_components/nav-links";
 import { NotFavorites } from "../_components/not-favorites";
 
 export default function FavoritesMangaPage() {
-  const { mangasFavorites } = useContext(ContextFavorite);
+  const { mangasFavorites } = useContext(FavoriteContext);
 
   return (
     <Container>
@@ -26,10 +26,10 @@ export default function FavoritesMangaPage() {
           </span>
         </SubTitle>
         <NavLinks />
-        {mangasFavorites.length > 0 ? (
+        {mangasFavorites.toReversed().length > 0 ? (
           <Content className="space-y-3 grid sm:grid-cols-2 lg:gap-x-6">
             {mangasFavorites.map((favorite) => (
-              <FavoiteItem favorite={favorite} />
+              <FavoiteItem favorite={favorite} key={favorite.id} />
             ))}
           </Content>
         ) : (

@@ -1,11 +1,11 @@
-import { ContextFavorite, Favorite } from "@/_contexts/context-favorites";
+import { FavoriteContext, Favorite } from "@/_contexts/context-favorites";
 import { formaterTitle } from "@/_lib/formater";
 import { Star, X } from "lucide-react";
 import Link from "next/link";
 import { useContext } from "react";
 
 export function FavoiteItem({ favorite }: { favorite: Favorite }) {
-  const { removeFavorites } = useContext(ContextFavorite);
+  const { removeFavorites } = useContext(FavoriteContext);
 
   const type = favorite.type;
   const handleClickRemove = () => {
