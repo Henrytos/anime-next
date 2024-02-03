@@ -1,23 +1,35 @@
+import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ComponentProps, ElementType } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface SideLinkProps extends ComponentProps<"a"> {
   icon: ElementType;
+  isInModalLink?: boolean;
 }
 
-export function SideLink({ icon: Icon, children, href }: SideLinkProps) {
+export function SideLink({
+  icon: Icon,
+  children,
+  href,
+  isInModalLink,
+}: SideLinkProps) {
   const path = usePathname();
   const isActive = path === href;
   return (
     <Link
       id={`side-link-${href}`}
       href={href ?? "/"}
-      className={`group flex flex-col gap-1 items-center hover:underline hover:underline-offset-4 transition-all  ${
-        isActive
-          ? "text-white  underline underline-offset-4"
-          : "text-neutral-500"
-      } sm:flex-row-reverse sm:justify-between sm:items-center`}
+      className={twMerge(
+        "group flex flex-col gap-1 items-center hover:underline hover:underline-offset-4 transition-all ",
+        clsx({
+          "text-white  underline underline-offset-4": isActive,
+          "text-neutral-500": isActive != true,
+          "flex-row-reverse justify-between items-center":
+            isInModalLink == true,
+        })
+      )}
     >
       <Icon
         className={` group-hover:w-7 group-hover:h-7 transition-all ${

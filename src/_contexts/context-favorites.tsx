@@ -1,6 +1,6 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useEffect, useMemo, useState } from "react";
 import { fetchFavoritesUser } from "./action";
 import {
   addToFavoriteAction,
@@ -17,7 +17,9 @@ export interface Favorite {
   score: number;
 }
 interface ContextFavoriteType {
-  favorites: Favorite[];
+  listFavorites: Favorite[];
+  mangasFavorites: Favorite[];
+  animesFavorites: Favorite[];
   addFavorites: (anime: Favorite) => void;
   removeFavorites: (anime: Favorite) => void;
 }
@@ -47,10 +49,25 @@ export function FavoriteProvider({ children }: { children: ReactNode }) {
       });
     }
   }, [data]);
+  const listFavorites = favorites.toReversed();
 
+  const mangasFavorites = useMemo(
+    () => listFavorites.filter((favorite) => favorite.type == "manga"),
+    [favorites]
+  );
+  const animesFavorites = useMemo(
+    () => listFavorites.filter((favorite) => favorite.type == "anime"),
+    [favorites]
+  );
   return (
     <ContextFavorite.Provider
-      value={{ favorites, addFavorites, removeFavorites }}
+      value={{
+        listFavorites,
+        animesFavorites,
+        mangasFavorites,
+        addFavorites,
+        removeFavorites,
+      }}
     >
       {children}
     </ContextFavorite.Provider>

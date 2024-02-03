@@ -33,7 +33,7 @@ export function HeaderModal() {
 
   return (
     <Sheet>
-      <SheetTrigger className="hidden sm:block" id="btn-menu">
+      <SheetTrigger id="btn-menu">
         {" "}
         <AlignJustify />{" "}
       </SheetTrigger>
@@ -101,21 +101,29 @@ export function HeaderModal() {
           <Content>
             <SheetDescription>
               <ul className="flex flex-col gap-4">
-                <SideLink icon={Home} href="/">
+                <SideLink isInModalLink={true} icon={Home} href="/">
                   Home
                 </SideLink>
 
-                <SideLink icon={BookOpen} href="/manga">
+                <SideLink isInModalLink={true} icon={BookOpen} href="/manga">
                   Mangás
                 </SideLink>
-                <SideLink icon={Heart} href="/favorites">
+                <SideLink isInModalLink={true} icon={Heart} href="/favorites">
                   Favoritos
                 </SideLink>
-                <SideLink icon={AlignJustify} href="/random">
+                <SideLink
+                  isInModalLink={true}
+                  icon={AlignJustify}
+                  href="/random"
+                >
                   Random
                 </SideLink>
                 {data?.user && (
-                  <SideLink icon={History} href={`/historic?pagination=0`}>
+                  <SideLink
+                    isInModalLink
+                    icon={History}
+                    href={`/historic?pagination=0`}
+                  >
                     Historic
                   </SideLink>
                 )}
