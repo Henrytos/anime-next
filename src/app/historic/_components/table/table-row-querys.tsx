@@ -14,12 +14,16 @@ export function TableRowQuerys({ search }: TableRowQuerysProps) {
   const handleClickDelete = () => deleteOneQuery(search?.id ?? "");
   return (
     <TableRow key={search.id}>
-      <TableCell className="font-medium">
+      <TableCell className=" text-muted-foreground font-light">
         {formaterDate.format(search.createdAt)}
       </TableCell>
-      <TableCell>{formaterTime.format(search.createdAt)}</TableCell>
-      <TableCell>{formaterTitle(search.query, 30)}</TableCell>
-      <TableCell className="text-right w-20">
+      <TableCell className="p-0 hidden sm:block sm:pt-[27px] text-muted-foreground">
+        {formaterTime.format(search.createdAt)}
+      </TableCell>
+      <TableCell className="w-full font-medium">
+        {formaterTitle(search.query, 30)}
+      </TableCell>
+      <TableCell className="text-right  ">
         <Button
           size={"icon"}
           variant={"ghost"}
@@ -31,7 +35,7 @@ export function TableRowQuerys({ search }: TableRowQuerysProps) {
           </Link>
         </Button>
       </TableCell>
-      <TableCell className="text-right w-20">
+      <TableCell className="text-right ">
         <Button
           size={"icon"}
           variant={"ghost"}

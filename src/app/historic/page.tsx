@@ -49,9 +49,13 @@ export default function PageHistoriQuerys(props: PageHistoriQuerysProps) {
             <SubTitle>Please Sing in to Gogle</SubTitle>
           )}
           {name && (
-            <Button variant={"destructive"} onClick={handleClickDeleteAll}>
+            <Button
+              variant={"destructive"}
+              className="space-x-2"
+              onClick={handleClickDeleteAll}
+            >
               <Trash size={20} />
-              <span>Delete all</span>
+              <span className="hidden sm:inline">Delete all</span>
             </Button>
           )}
         </div>
@@ -60,10 +64,12 @@ export default function PageHistoriQuerys(props: PageHistoriQuerysProps) {
           <TableHeader>
             <TableRow>
               <TableHead className="w-24">Date</TableHead>
-              <TableHead>Time</TableHead>
+              <TableHead className="hidden sm:block sm:pt-3.5  sm:-translate-x-1/4">
+                Time
+              </TableHead>
               <TableHead>Query</TableHead>
-              <TableHead className="text-right">Search</TableHead>
-              <TableHead className="text-right">Delete</TableHead>
+              <TableHead className="text-right ">Search</TableHead>
+              <TableHead className="text-right ">Delete</TableHead>
             </TableRow>
           </TableHeader>
 
