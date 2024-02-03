@@ -9,7 +9,7 @@ import { useContext } from "react";
 
 export function ButtonAddAnime({ anime }: { anime: Anime }) {
   const { toast } = useToast();
-  const { favorites, addFavorites } = useContext(ContextFavorite);
+  const { animesFavorites, addFavorites } = useContext(ContextFavorite);
   const { data } = useSession();
 
   const handleClickSingIn = () => signIn("google");
@@ -34,7 +34,7 @@ export function ButtonAddAnime({ anime }: { anime: Anime }) {
     addFavorites(favorite);
   }
 
-  const isFavorite = favorites.some(
+  const isFavorite = animesFavorites.some(
     (favoriteCurrent) =>
       favoriteCurrent.id.toString() == anime.mal_id.toString()
   );
