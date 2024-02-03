@@ -2,6 +2,7 @@ declare namespace Cypress {
   interface Chainable {
     searchByQuery(query: string): Chainable<void>;
     addAnimeToFavorite(): Chainable<void>;
+    singIn(): Chainable<void>;
   }
 }
 Cypress.Commands.add("searchByQuery", (query: string) => {

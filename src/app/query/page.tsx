@@ -1,11 +1,12 @@
-import { Container } from "@/components/constainer";
-import { SubTitle } from "@/components/sub-title";
-import { queryAnime, queryManga } from "@/services/fetch";
-import { Content } from "./components/content";
-import { LinkItem } from "./components/link-item";
-import { Separator } from "@/components/ui/separator";
+import { Container } from "@/_components/constainer";
+import { SubTitle } from "@/_components/sub-title";
+import { queryAnime, queryManga } from "@/_services/fetch";
+import { Content } from "./_components/content";
+import { LinkItem } from "./_components/link-item";
+import { Separator } from "@/_components/ui/separator";
 import { redirect } from "next/navigation";
 import { prototype } from "stream";
+import { formaterTitle } from "@/_lib/formater";
 
 //export default async function QueryAnime({ params }: QueryAnimeProps) {
 //  if (params.name === "") redirect("/");
@@ -54,7 +55,7 @@ export default async function Page(props: QueryAnimeProps) {
   return (
     <Container>
       <main className="space-y-6">
-        <SubTitle>Pesquisas sobre: {query}</SubTitle>
+        <SubTitle>Pesquisas sobre: {formaterTitle(query, 30)}</SubTitle>
         <div className="space-y-2">
           <SubTitle>Animes</SubTitle>
           <Separator />

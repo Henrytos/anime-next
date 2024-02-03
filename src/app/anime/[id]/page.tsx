@@ -1,26 +1,26 @@
-import { Container } from "@/components/constainer";
+import { Container } from "@/_components/constainer";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { SubTitle } from "@/components/sub-title";
-import { fetchAnime, fetchPictures } from "@/services/fetch";
-import { Separator } from "@/components/ui/separator";
-import { ButtonAddAnime } from "./components/button-add-anime";
-import { Bganime } from "@/components/details/bg-details";
-import { RankAnime } from "@/components/details/rank";
-import { Content } from "@/components/details/content";
-import { MainContent } from "@/components/details/main-content";
-import { DetailsAnime } from "@/components/details-anime";
-import { ButtonLink } from "@/components/button-link";
-import { RecommendationsAnimes } from "./components/recommendations-anime";
-import { CharacterCarousel } from "./components/character-carousel";
+} from "@/_components/ui/accordion";
+import { SubTitle } from "@/_components/sub-title";
+import { fetchAnime, fetchPictures } from "@/_services/fetch";
+import { Separator } from "@/_components/ui/separator";
+import { ButtonAddAnime } from "./_components/button-add-anime";
+import { Bganime } from "@/_components/details/bg-details";
+import { RankAnime } from "@/_components/details/rank";
+import { Content } from "@/_components/details/content";
+import { MainContent } from "@/_components/details/main-content";
+import { DetailsAnime } from "@/_components/details-anime";
+import { ButtonLink } from "@/_components/button-link";
+import { RecommendationsAnimes } from "./_components/recommendations-anime";
+import { CharacterCarousel } from "./_components/character-carousel";
 import { Suspense } from "react";
-import { SkeletonCarousel } from "@/components/details/skeleton-carousel";
-import { Galery } from "@/components/details/galery";
-import { Text } from "@/components/text";
+import { SkeletonCarousel } from "@/_components/details/skeleton-carousel";
+import { Galery } from "@/_components/details/galery";
+import { Text } from "@/_components/text";
 import { Metadata } from "next";
 interface DetaislAnimeProps {
   params: {

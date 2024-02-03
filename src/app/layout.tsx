@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
-import { ThemeProvider } from "@/contexts/theme/theme-provider";
-import { Header } from "@/components/header/header";
-import { SideBar } from "@/components/side-bar/side-bar";
-import { Toaster } from "@/components/ui/toaster";
-import { FavoriteProvider } from "@/contexts/context-favorites";
-import AuthProvider from "@/providers/auth";
+import { ThemeProvider } from "@/_contexts/theme/theme-provider";
+import { Header } from "@/_components/header/header";
+import { SideBar } from "@/_components/side-bar/side-bar";
+import { Toaster } from "@/_components/ui/toaster";
+import { FavoriteProvider } from "@/_contexts/context-favorites";
+import AuthProvider from "@/_providers/auth";
+import { QuerysProvider } from "@/_contexts/context-querys";
 
 export const metadata: Metadata = {
   title: {
@@ -34,8 +35,10 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <FavoriteProvider>
-              <Header />
-              {children}
+              <QuerysProvider>
+                <Header />
+                {children}
+              </QuerysProvider>
               <Toaster />
               <SideBar />
             </FavoriteProvider>

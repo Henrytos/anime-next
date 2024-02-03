@@ -1,6 +1,6 @@
-import { Container } from "@/components/constainer";
-import { Content } from "@/components/details/content";
-import { SkeletonCarousel } from "@/components/details/skeleton-carousel";
+import { Container } from "@/_components/constainer";
+import { Content } from "@/_components/details/content";
+import { SkeletonCarousel } from "@/_components/details/skeleton-carousel";
 
 export default function LoadingMangas() {
   return (

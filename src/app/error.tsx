@@ -1,7 +1,7 @@
 "use client";
-import { Container } from "@/components/constainer";
-import { SubTitle } from "@/components/sub-title";
-import { Button } from "@/components/ui/button";
+import { Container } from "@/_components/constainer";
+import { SubTitle } from "@/_components/sub-title";
+import { Button } from "@/_components/ui/button";
 import Link from "next/link";
 
 export default function Error() {

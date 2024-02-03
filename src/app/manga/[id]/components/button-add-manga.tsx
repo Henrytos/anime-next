@@ -1,8 +1,8 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
-import { ContextFavorite } from "@/contexts/context-favorites";
-import { Anime } from "@/types/anime";
+import { Button } from "@/_components/ui/button";
+import { useToast } from "@/_components/ui/use-toast";
+import { ContextFavorite, Favorite } from "@/_contexts/context-favorites";
+import { Anime } from "@/_types/anime";
 import { Check, Heart, LogIn } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 import { useContext } from "react";
@@ -14,6 +14,10 @@ export function ButtonAddManga({ anime }: { anime: Anime }) {
 
   const { data } = useSession();
 
+  const isFavorite = favorites.some(
+    (animeFavorite) => animeFavorite.id.toString() === anime.mal_id.toString()
+  );
+
   function handleClick() {
     toast({
       title: `${anime.title} adicionado `,
@@ -21,23 +25,21 @@ export function ButtonAddManga({ anime }: { anime: Anime }) {
       className: "bg-neutral-900 ",
     });
 
-    const favorite = {
+    const favorite: Favorite = {
       id: anime.mal_id.toString(),
       imageUrl: anime.images.jpg.large_image_url,
       name: anime.title,
       synopsis: anime.synopsis,
       type: "manga",
       score: anime.score,
+      userId: (data?.user as any).id,
     };
 
     addFavorites(favorite);
   }
 
-  const isFavorite = favorites.some(
-    (animeFavorite) => animeFavorite.id.toString() === anime.mal_id.toString()
-  );
-
   const handleClickSingIn = () => signIn("google");
+
   return (
     <>
       {data?.user && (

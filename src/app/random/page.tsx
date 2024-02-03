@@ -1,10 +1,11 @@
 "use client";
-import { Container } from "@/components/constainer";
-import { Content } from "@/components/details/content";
-import { SubTitle } from "@/components/sub-title";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Recomendation, recomendations } from "@/services/data";
+import { Container } from "@/_components/constainer";
+import { Content } from "@/_components/details/content";
+import { SubTitle } from "@/_components/sub-title";
+import { Badge } from "@/_components/ui/badge";
+import { Button } from "@/_components/ui/button";
+import { formaterTitle } from "@/_lib/formater";
+import { Recomendation, recomendations } from "@/_services/data";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -19,11 +20,6 @@ export default function PageRandomRecommendation() {
     setTimeout(() => clearInterval(time), 2000);
   };
 
-  const formaterName = (name: string) => {
-    if (name.length > 20) return name.slice(0, 20) + "...";
-    return name;
-  };
-
   return (
     <Container>
       <Content>
@@ -34,7 +30,7 @@ export default function PageRandomRecommendation() {
             className="space-y-2 block transition-all"
           >
             <h2 className="text-xl font-semibold underline flex justify-between items-center">
-              <span>{formaterName(target.name)}</span>
+              <span>{formaterTitle(target.name, 13)}</span>
               <Badge variant={"secondary"} className="rounded">
                 {target.type}
               </Badge>

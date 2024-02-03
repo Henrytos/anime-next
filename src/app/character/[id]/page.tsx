@@ -1,15 +1,15 @@
-import { ButtonLink } from "@/components/button-link";
-import { Container } from "@/components/constainer";
-import { Content } from "@/components/details/content";
-import { Galery } from "@/components/details/galery";
-import { SubTitle } from "@/components/sub-title";
+import { ButtonLink } from "@/_components/button-link";
+import { Container } from "@/_components/constainer";
+import { Content } from "@/_components/details/content";
+import { Galery } from "@/_components/details/galery";
+import { SubTitle } from "@/_components/sub-title";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { fetchCharacterPictures, fetchOneCharacter } from "@/services/fetch";
+} from "@/_components/ui/accordion";
+import { fetchCharacterPictures, fetchOneCharacter } from "@/_services/fetch";
 import { Heart } from "lucide-react";
 
 interface DetailsCharecterProps {

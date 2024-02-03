@@ -1,10 +1,10 @@
-import { CarouselPosters } from "@/components/carousel-poster";
-import { Container } from "@/components/constainer";
-import { Content } from "@/components/details/content";
-import { SubTitle } from "@/components/sub-title";
-import { Separator } from "@/components/ui/separator";
-import { fetchAnimes, fetchTopAnimes } from "@/services/fetch";
-import { GenresType } from "@/types/geners-anime";
+import { CarouselPosters } from "@/_components/carousel-poster";
+import { Container } from "@/_components/constainer";
+import { Content } from "@/_components/details/content";
+import { SubTitle } from "@/_components/sub-title";
+import { Separator } from "@/_components/ui/separator";
+import { fetchAnimes, fetchTopAnimes } from "@/_services/fetch";
+import { GenresType } from "@/_types/geners-anime";
 
 export default async function Home() {
   const animes = await fetchTopAnimes();

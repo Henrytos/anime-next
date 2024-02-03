@@ -1,16 +1,16 @@
 "use client";
 
-import { Container } from "@/components/constainer";
-import { Content } from "@/components/details/content";
-import { SubTitle } from "@/components/sub-title";
-import { ContextFavorite } from "@/contexts/context-favorites";
+import { Container } from "@/_components/constainer";
+import { Content } from "@/_components/details/content";
+import { SubTitle } from "@/_components/sub-title";
+import { ContextFavorite } from "@/_contexts/context-favorites";
 import { Heart } from "lucide-react";
 
 import { useContext } from "react";
-import { FavoiteItem } from "../components/favorite-item";
-import { MainContent } from "../components/main-content";
-import { NavLinks } from "../components/nav-links";
-import { NotFavorites } from "../components/not-favorites";
+import { FavoiteItem } from "../_components/favorite-item";
+import { MainContent } from "../_components/main-content";
+import { NavLinks } from "../_components/nav-links";
+import { NotFavorites } from "../_components/not-favorites";
 
 export default function FavoritesMangaPage() {
   const { favorites } = useContext(ContextFavorite);

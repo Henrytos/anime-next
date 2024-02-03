@@ -3,11 +3,11 @@ import {
   PosterName,
   PosterimgLink,
   PostersRoot,
-} from "@/components/details/carousel-character";
-import { Content } from "@/components/details/content";
-import { SubTitle } from "@/components/sub-title";
-import { Separator } from "@/components/ui/separator";
-import { fetchCharactersManga } from "@/services/fetch";
+} from "@/_components/details/carousel-character";
+import { Content } from "@/_components/details/content";
+import { SubTitle } from "@/_components/sub-title";
+import { Separator } from "@/_components/ui/separator";
+import { fetchCharactersManga } from "@/_services/fetch";
 
 export async function CharacterCarousel({ mangaId }: { mangaId: number }) {
   const { charactesPoster } = await fetchCharactersManga(mangaId);

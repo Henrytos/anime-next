@@ -1,8 +1,8 @@
-import { CarouselPosters } from "@/components/carousel-poster";
-import { Content } from "@/components/details/content";
-import { SubTitle } from "@/components/sub-title";
-import { Separator } from "@/components/ui/separator";
-import { fetchMangaRecommendations } from "@/services/fetch";
+import { CarouselPosters } from "@/_components/carousel-poster";
+import { Content } from "@/_components/details/content";
+import { SubTitle } from "@/_components/sub-title";
+import { Separator } from "@/_components/ui/separator";
+import { fetchMangaRecommendations } from "@/_services/fetch";
 
 export async function RecommendationsManga({ mangaId }: { mangaId: number }) {
   const animesRecommendations = await fetchMangaRecommendations(mangaId);

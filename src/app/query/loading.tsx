@@ -1,7 +1,7 @@
-import { Container } from "@/components/constainer";
-import { Content } from "./components/content";
-import { SubTitle } from "@/components/sub-title";
-import { Skeleton } from "@/components/skeleton";
+import { Container } from "@/_components/constainer";
+import { Content } from "./_components/content";
+import { SubTitle } from "@/_components/sub-title";
+import { Skeleton } from "@/_components/skeleton";
 
 export default function LoadingQuery() {
   return (

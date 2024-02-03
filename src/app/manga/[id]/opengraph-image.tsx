@@ -1,4 +1,4 @@
-import { fetchAnime, fetchManga } from "@/services/fetch";
+import { fetchAnime, fetchManga } from "@/_services/fetch";
 import { ImageResponse } from "next/og";
 import colors from "tailwindcss/colors";
 

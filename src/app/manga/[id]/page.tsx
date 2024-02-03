@@ -1,20 +1,20 @@
-import { ButtonLink } from "@/components/button-link";
-import { Container } from "@/components/constainer";
-import { DetailsAnime } from "@/components/details-anime";
-import { Bganime } from "@/components/details/bg-details";
-import { Content } from "@/components/details/content";
-import { Galery } from "@/components/details/galery";
-import { MainContent } from "@/components/details/main-content";
-import { RankAnime } from "@/components/details/rank";
-import { SkeletonCarousel } from "@/components/details/skeleton-carousel";
-import { SubTitle } from "@/components/sub-title";
+import { ButtonLink } from "@/_components/button-link";
+import { Container } from "@/_components/constainer";
+import { DetailsAnime } from "@/_components/details-anime";
+import { Bganime } from "@/_components/details/bg-details";
+import { Content } from "@/_components/details/content";
+import { Galery } from "@/_components/details/galery";
+import { MainContent } from "@/_components/details/main-content";
+import { RankAnime } from "@/_components/details/rank";
+import { SkeletonCarousel } from "@/_components/details/skeleton-carousel";
+import { SubTitle } from "@/_components/sub-title";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { fetchManga, fetchPictures } from "@/services/fetch";
+} from "@/_components/ui/accordion";
+import { fetchManga, fetchPictures } from "@/_services/fetch";
 import { Suspense } from "react";
 import { CharacterCarousel } from "./components/character-carousel";
 import { RecommendationsManga } from "./components/recommendations-manga";

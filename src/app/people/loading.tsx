@@ -1,15 +1,15 @@
 "use client";
-import { ButtonLink } from "@/components/button-link";
-import { Container } from "@/components/constainer";
-import { Content } from "@/components/details/content";
-import { SkeletonCarousel } from "@/components/details/skeleton-carousel";
-import { Skeleton } from "@/components/skeleton";
-import { SubTitle } from "@/components/sub-title";
+import { ButtonLink } from "@/_components/button-link";
+import { Container } from "@/_components/constainer";
+import { Content } from "@/_components/details/content";
+import { SkeletonCarousel } from "@/_components/details/skeleton-carousel";
+import { Skeleton } from "@/_components/skeleton";
+import { SubTitle } from "@/_components/sub-title";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@/_components/ui/accordion";
 import { Heart } from "lucide-react";
 
 export default function PeopleLoading() {

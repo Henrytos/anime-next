@@ -1,24 +1,24 @@
-import { ButtonLink } from "@/components/button-link";
+import { ButtonLink } from "@/_components/button-link";
 import {
   PosterItem,
   PosterName,
   PosterimgLink,
   PostersRoot,
-} from "@/components/details/carousel-character";
-import { Container } from "@/components/constainer";
-import { Content } from "@/components/details/content";
-import { SubTitle } from "@/components/sub-title";
+} from "@/_components/details/carousel-character";
+import { Container } from "@/_components/constainer";
+import { Content } from "@/_components/details/content";
+import { SubTitle } from "@/_components/sub-title";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Separator } from "@/components/ui/separator";
-import { fetchOnePeople, fetchPeoplePictures } from "@/services/fetch";
+} from "@/_components/ui/accordion";
+import { Separator } from "@/_components/ui/separator";
+import { fetchOnePeople, fetchPeoplePictures } from "@/_services/fetch";
 import { Heart } from "lucide-react";
-import { peopleCharacterPoster } from "@/services/sorts";
-import { Galery } from "@/components/details/galery";
+import { peopleCharacterPoster } from "@/_services/sorts";
+import { Galery } from "@/_components/details/galery";
 
 interface DetailsCharecterProps {
   params: {
