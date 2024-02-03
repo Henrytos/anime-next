@@ -26,9 +26,12 @@ export default function FavoritesPage() {
         <NavLinks />
         {favorites.length > 0 ? (
           <Content className="space-y-3 grid sm:grid-cols-2 lg:gap-x-6">
-            {favorites.toReversed().map((favorite) => (
-              <FavoiteItem favorite={favorite} key={favorite.imageUrl} />
-            ))}
+            {favorites
+              .slice()
+              .reverse()
+              .map((favorite) => (
+                <FavoiteItem favorite={favorite} key={favorite.imageUrl} />
+              ))}
           </Content>
         ) : (
           <NotFavorites />

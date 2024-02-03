@@ -34,7 +34,7 @@ export function QuerysProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (data != undefined) {
       userSearchList((data?.user as any).id).then((querys) => {
-        setQuerys(querys.toReversed());
+        setQuerys(querys);
       });
     }
   }, [data]);

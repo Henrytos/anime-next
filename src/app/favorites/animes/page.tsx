@@ -28,9 +28,12 @@ export default function FavoritesAnimePage() {
         <NavLinks />
         {animesFavorites.length > 0 ? (
           <Content className="space-y-3 grid sm:grid-cols-2 lg:gap-x-6">
-            {animesFavorites.toReversed().map((favorite) => (
-              <FavoiteItem favorite={favorite} key={favorite.id} />
-            ))}
+            {animesFavorites
+              .slice()
+              .reverse()
+              .map((favorite) => (
+                <FavoiteItem favorite={favorite} key={favorite.id} />
+              ))}
           </Content>
         ) : (
           <NotFavorites />

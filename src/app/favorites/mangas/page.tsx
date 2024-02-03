@@ -26,11 +26,14 @@ export default function FavoritesMangaPage() {
           </span>
         </SubTitle>
         <NavLinks />
-        {mangasFavorites.toReversed().length > 0 ? (
+        {mangasFavorites.length > 0 ? (
           <Content className="space-y-3 grid sm:grid-cols-2 lg:gap-x-6">
-            {mangasFavorites.map((favorite) => (
-              <FavoiteItem favorite={favorite} key={favorite.id} />
-            ))}
+            {mangasFavorites
+              .slice()
+              .reverse()
+              .map((favorite) => (
+                <FavoiteItem favorite={favorite} key={favorite.id} />
+              ))}
           </Content>
         ) : (
           <NotFavorites />

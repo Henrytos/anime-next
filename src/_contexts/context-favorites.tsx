@@ -50,14 +50,13 @@ export function FavoriteProvider({ children }: { children: ReactNode }) {
     }
   }, [data]);
 
-  const mangasFavorites = useMemo(
-    () => favorites.filter((favorite) => favorite.type == "manga"),
-    [favorites]
+  const mangasFavorites = favorites.filter(
+    (favorite) => favorite.type == "manga"
   );
-  const animesFavorites = useMemo(
-    () => favorites.filter((favorite) => favorite.type == "anime"),
-    [favorites]
+  const animesFavorites = favorites.filter(
+    (favorite) => favorite.type == "anime"
   );
+
   return (
     <FavoriteContext.Provider
       value={{
