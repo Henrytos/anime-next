@@ -18,8 +18,6 @@ export interface Favorite {
 }
 interface FavoriteContextType {
   favorites: Favorite[];
-  mangasFavorites: Favorite[];
-  animesFavorites: Favorite[];
   addFavorites: (anime: Favorite) => void;
   removeFavorites: (anime: Favorite) => void;
 }
@@ -50,19 +48,10 @@ export function FavoriteProvider({ children }: { children: ReactNode }) {
     }
   }, [data]);
 
-  const mangasFavorites = favorites.filter(
-    (favorite) => favorite.type == "manga"
-  );
-  const animesFavorites = favorites.filter(
-    (favorite) => favorite.type == "anime"
-  );
-
   return (
     <FavoriteContext.Provider
       value={{
         favorites,
-        animesFavorites,
-        mangasFavorites,
         addFavorites,
         removeFavorites,
       }}

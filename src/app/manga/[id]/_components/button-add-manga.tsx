@@ -10,11 +10,11 @@ import { useContext } from "react";
 export function ButtonAddManga({ anime }: { anime: Anime }) {
   const { toast } = useToast();
 
-  const { addFavorites, mangasFavorites } = useContext(FavoriteContext);
+  const { addFavorites, favorites } = useContext(FavoriteContext);
 
   const { data } = useSession();
 
-  const isFavorite = mangasFavorites.some(
+  const isFavorite = favorites.some(
     (animeFavorite) => animeFavorite.id.toString() === anime.mal_id.toString()
   );
 
