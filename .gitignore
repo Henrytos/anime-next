@@ -4,3 +4,6 @@
 /.next/
 .vercel
 /.git-old
+
+/cypress/
+/.env
