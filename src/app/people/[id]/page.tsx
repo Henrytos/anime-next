@@ -40,8 +40,8 @@ export default async function PageVoiceActors({
   const charcterPictures = pictures;
   return (
     <Container>
-      <main className="space-y-4 ">
-        <Content>
+      <main className="space-y-4  grid xl:grid-cols-8 xl:gap-8">
+        <Content className="xl:col-span-3 xl:sticky xl:top-0 xl:h-96 ">
           <div className="flex justify-between items-end">
             <SubTitle>{name}</SubTitle>
             <span className="font-light text-sm flex gap-1 items-center">
@@ -68,49 +68,56 @@ export default async function PageVoiceActors({
                   {nickname} {alternate_names.length === i + 1 ? "" : ", "}
                 </span>
               ))}
+              <Content className="hidden xl:block">
+                <ButtonLink href={url}>ver mais</ButtonLink>
+              </Content>
             </Content>
           )}
         </Content>
-        {about && (
+        <main className="h-auto xl:col-span-5">
+          {about && (
+            <Content>
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-left pt-0 antialiased font-normal">
+                    <SubTitle>About {name}</SubTitle>
+                  </AccordionTrigger>
+                  <AccordionContent className="antialiased font-light">
+                    {about}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </Content>
+          )}
+          {charcterPictures.length > 0 && (
+            <Galery pictures={charcterPictures} />
+          )}
+
           <Content>
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionTrigger className="text-left pt-0 antialiased font-normal">
-                  <SubTitle>About {name}</SubTitle>
-                </AccordionTrigger>
-                <AccordionContent className="antialiased font-light">
-                  {about}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+            <SubTitle>Characters:</SubTitle>
+            <Separator />
+
+            <PostersRoot>
+              {charactersPoster.map((character, i) => {
+                return (
+                  <PosterItem key={character.id}>
+                    {" "}
+                    <PosterimgLink
+                      img={character.img}
+                      name={character.name}
+                      href={`/anime/${character.id}`}
+                    />{" "}
+                    <PosterName i={i}>{character.name}</PosterName>{" "}
+                  </PosterItem>
+                );
+              })}
+            </PostersRoot>
           </Content>
-        )}
-        {charcterPictures.length > 0 && <Galery pictures={charcterPictures} />}
 
-        <Content>
-          <SubTitle>Characters:</SubTitle>
-          <Separator />
-
-          <PostersRoot>
-            {charactersPoster.map((character, i) => {
-              return (
-                <PosterItem key={character.id}>
-                  {" "}
-                  <PosterimgLink
-                    img={character.img}
-                    name={character.name}
-                    href={`/anime/${character.id}`}
-                  />{" "}
-                  <PosterName i={i}>{character.name}</PosterName>{" "}
-                </PosterItem>
-              );
-            })}
-          </PostersRoot>
-        </Content>
-
-        <Content>
-          <ButtonLink href={url}>ver mais</ButtonLink>
-        </Content>
+          <Content className="xl:hidden mt-4">
+            <ButtonLink href={url}>ver mais</ButtonLink>
+          </Content>
+        </main>
       </main>
     </Container>
   );

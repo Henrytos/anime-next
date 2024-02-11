@@ -27,8 +27,8 @@ export default async function DetailsCharecter({
 
   return (
     <Container>
-      <main className="space-y-4 ">
-        <Content>
+      <main className="space-y-4  grid xl:grid-cols-8 xl:gap-8">
+        <Content className="xl:col-span-3 xl:sticky xl:top-0 xl:h-96 ">
           <div className="flex justify-between items-end">
             <SubTitle>
               {name} <span className="text-xs font-light">({name_kanji})</span>
@@ -43,7 +43,7 @@ export default async function DetailsCharecter({
             src={images.jpg.image_url}
             width={200}
             height={200}
-            className="max-w-40 sm:max-w-64 md:max-w-72  m-auto object-cover rounded"
+            className="max-w-40 sm:max-w-64 xl:max-w-72  m-auto object-cover rounded"
             alt={name}
           />
           <p className="text-center text-xs font-light text-white/75 ">
@@ -60,26 +60,33 @@ export default async function DetailsCharecter({
               ))}
             </Content>
           )}
-        </Content>
-        {about && (
-          <Content>
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionTrigger className="text-left pt-0 antialiased font-normal">
-                  <SubTitle>About {name}</SubTitle>
-                </AccordionTrigger>
-                <AccordionContent className="antialiased font-light">
-                  {about}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+          <Content className="hidden xl:block">
+            <ButtonLink href={url}>ver mais</ButtonLink>
           </Content>
-        )}
-        {charcterPictures.length > 0 && <Galery pictures={charcterPictures} />}
-
-        <Content>
-          <ButtonLink href={url}>ver mais</ButtonLink>
         </Content>
+        <main className="h-auto xl:col-span-5">
+          {about && (
+            <Content>
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-left pt-0 antialiased font-normal">
+                    <SubTitle>About {name}</SubTitle>
+                  </AccordionTrigger>
+                  <AccordionContent className="antialiased font-light">
+                    {about}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </Content>
+          )}
+          {charcterPictures.length > 0 && (
+            <Galery pictures={charcterPictures} />
+          )}
+
+          <Content className="xl:hidden">
+            <ButtonLink href={url}>ver mais</ButtonLink>
+          </Content>
+        </main>
       </main>
     </Container>
   );
