@@ -9,12 +9,7 @@ import {
 import { ApiResponseCharacter, CharacterOne, People } from "@/_types/character";
 import { ApiResponseAnimePicture } from "@/_types/picture";
 import { Api } from "./api";
-import {
-  peopleCharacterPoster,
-  sortCharacters,
-  sortPictures,
-  sortPoster,
-} from "./sorts";
+import { sortCharacters, sortPictures, sortPoster } from "./sorts";
 import { wait } from "./wait";
 
 export type AnimePicture = {
