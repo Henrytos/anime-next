@@ -21,8 +21,8 @@ export function SearchAnime() {
   const { data } = useSession();
 
   function handleSearch(dataFom: SchemaSearch) {
-    const userId = (data?.user as any).id;
     try {
+      const userId = (data?.user as any).id;
       router.push(`/query?q=${dataFom.q}`);
       const newQuery: Search = {
         userId: userId,
@@ -33,6 +33,9 @@ export function SearchAnime() {
       reset();
     } catch (error) {
       console.log(error);
+      router.push(`/query?q=${dataFom.q}`);
+
+      reset();
     }
   }
 
@@ -46,7 +49,7 @@ export function SearchAnime() {
         id="input-query"
         {...register("q", { required: true })}
         placeholder="..."
-        className="px-2 py-1 rounded border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent w-full"
+        className="px-2 py-1 rounded border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent w-full bg-neutral-900 "
       />
 
       <button type="submit" id="btn-search">
