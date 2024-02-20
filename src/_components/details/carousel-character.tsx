@@ -61,7 +61,7 @@ export function PosterimgLink({
           alt={`capa de mangá de ${name}`}
           width={150}
           height={160}
-          className=" w-full h-full object-cover rounded  shadow "
+          className=" w-full h-full object-cover rounded  shadow  "
         />
       </Link>
     </div>

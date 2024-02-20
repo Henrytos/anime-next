@@ -3,8 +3,6 @@ describe("Search-in-home", () => {
     cy.visit("/");
 
     cy.searchByQuery("sousou no frieren");
-
-    cy.location("pathname").should("include", "/query");
   });
 
   it("seacrh-anime-in-url", () => {

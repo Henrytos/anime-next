@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
-import { ThemeProvider } from "@/_contexts/theme/theme-provider";
 import { Header } from "@/_components/header/header";
 import { SideBar } from "@/_components/side-bar/side-bar";
 import { Toaster } from "@/_components/ui/toaster";
@@ -23,26 +22,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt">
+    <html lang="pt-BR">
       <body
-        className={`min-h-screen bg-background font-sans antialiased relative bg-neutral-900`}
+        className={`min-h-screen bg-background font-sans antialiased relative bg-neutral-900 dark`}
       >
         <AuthProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <FavoriteProvider>
-              <QuerysProvider>
-                <Header />
-                {children}
-              </QuerysProvider>
-              <Toaster />
-              <SideBar />
-            </FavoriteProvider>
-          </ThemeProvider>
+          <FavoriteProvider>
+            <QuerysProvider>
+              <Header />
+              {children}
+            </QuerysProvider>
+            <Toaster />
+            <SideBar />
+          </FavoriteProvider>
         </AuthProvider>
       </body>
     </html>
