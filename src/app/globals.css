@@ -69,3 +69,15 @@
 #main::-webkit-scrollbar-thumb {
   background-color: rgb(63, 63, 63); /* color of the scroll thumb */
 }
+
+#drop-animation {
+  animation: drop-animation 1s forwards;
+}
+@keyframes drop-animation {
+  0% {
+    top: -10rem;
+  }
+  100% {
+    top: 2rem;
+  }
+}

@@ -7,6 +7,7 @@ import { Toaster } from "@/_components/ui/toaster";
 import { FavoriteProvider } from "@/_contexts/context-favorites";
 import AuthProvider from "@/_providers/auth";
 import { QuerysProvider } from "@/_contexts/context-querys";
+import { CardSingIn } from "@/_components/card-sing-in";
 
 export const metadata: Metadata = {
   title: {
@@ -35,6 +36,7 @@ export default function RootLayout({
             <Toaster />
             <SideBar />
           </FavoriteProvider>
+          <CardSingIn/>
         </AuthProvider>
       </body>
     </html>

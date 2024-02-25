@@ -14,7 +14,6 @@ export default async function Home() {
   const animeToAction = await fetchAnimes(GenresType.Action);
   const animeToSchool = await fetchAnimes(GenresType.School);
   const animeToComedy = await fetchAnimes(GenresType.Comedy);
-
   return (
     <Container>
       <Content>
@@ -54,6 +53,7 @@ export default async function Home() {
           <CarouselPosters type="anime" posters={animeToSchool} />
         </Content>
       </Content>
+      
     </Container>
   );
 }
