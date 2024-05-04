@@ -1,8 +1,8 @@
 describe("Search-in-home", () => {
   it("seacrh-anime-in-home", () => {
     cy.visit("/");
-
-    cy.searchByQuery("sousou no frieren");
+    cy.contains("sim").click();
+    cy.get("input[type^='email']").click();
   });
 
   it("seacrh-anime-in-url", () => {

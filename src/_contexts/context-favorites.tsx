@@ -5,7 +5,7 @@ import { fetchFavoritesUser } from "./action";
 import {
   addToFavoriteAction,
   removeFromFavoriteAction,
-} from "@/_lib/action-favorite";
+} from "@/_actions/action-favorite";
 
 export interface Favorite {
   id: string;

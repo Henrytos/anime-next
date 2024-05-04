@@ -1,6 +1,6 @@
 "use client";
 import { useQuerys } from "@/_contexts/context-querys";
-import { Search } from "@/_lib/action-historic";
+import { Search } from "@/_actions/action-historic";
 import { Search as SearchIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";

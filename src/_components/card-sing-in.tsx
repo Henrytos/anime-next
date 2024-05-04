@@ -1,29 +1,27 @@
 "use client";
 
 import { signIn, useSession } from "next-auth/react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "./ui/dialog";
+
 import { Button } from "./ui/button";
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function CardSingIn() {
-  const { data } = useSession();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(true);
+  const { status } = useSession();
 
   const handleClickSingIn = () => signIn("google");
-  const handleClickClose = () => {
-    setIsOpen(true);
-  };
+  const handleClickClose = () => setIsOpen(true);
+
+  useEffect(() => {
+    if (status == "unauthenticated") {
+      setIsAuthenticated(false);
+    }
+  }, [status]);
 
   return (
-    !data?.user && (
+    !isAuthenticated && (
       <div
         className={clsx(
           "absolute top-0 right-0 w-screen h-screen bg-neutral-950/35",
@@ -37,8 +35,8 @@ export function CardSingIn() {
           id="drop-animation"
         >
           <img
-            src="https://animefire.plus/img/lt/nekog.webp"
-            alt=""
+            src="/imgs/character-sing-in.webp"
+            alt="pesonagem do app"
             className="h-full object-cover"
           />
           <div className="flex flex-col justify-between h-full  ">

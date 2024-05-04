@@ -1,7 +1,7 @@
 import { Button } from "@/_components/ui/button";
 import { TableCell, TableRow } from "@/_components/ui/table";
 import { useQuerys } from "@/_contexts/context-querys";
-import { Search } from "@/_lib/action-historic";
+import { Search } from "@/_actions/action-historic";
 import { formaterDate, formaterTime, formaterTitle } from "@/_lib/formater";
 import { SearchIcon, Trash } from "lucide-react";
 import Link from "next/link";

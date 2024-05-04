@@ -50,7 +50,7 @@ export function HeaderModal() {
             />
           </SubTitle>
           <Separator />
-          {data?.user ? (
+          {data?.user && (
             <>
               <Content>
                 <div className="flex gap-4 items-center">
@@ -75,28 +75,6 @@ export function HeaderModal() {
               </Content>
               <Separator />
             </>
-          ) : (
-            <>
-              <Content>
-                <div className="flex gap-4 items-center">
-                  <Avatar>
-                    <AvatarImage
-                      src={data?.user?.image?.toString()}
-                      alt={data?.user?.name?.toString()}
-                      className="animate-pulse"
-                    />
-                    <AvatarFallback></AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <h2 className="text-base font-normal">Lorem, ipsum.</h2>
-                    <h3 className="text-sm text-zinc-500 font-light">
-                      Lorem, ipsum.
-                    </h3>
-                  </div>
-                </div>
-              </Content>
-              <Separator />
-            </>
           )}
           <Content>
             <SheetDescription>
@@ -108,9 +86,11 @@ export function HeaderModal() {
                 <SideLink isInModalLink={true} icon={BookOpen} href="/manga">
                   Mangás
                 </SideLink>
-                <SideLink isInModalLink={true} icon={Heart} href="/favorites">
-                  Favoritos
-                </SideLink>
+                {data?.user && (
+                  <SideLink isInModalLink={true} icon={Heart} href="/favorites">
+                    Favoritos
+                  </SideLink>
+                )}
                 <SideLink
                   isInModalLink={true}
                   icon={AlignJustify}

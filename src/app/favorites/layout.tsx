@@ -6,6 +6,8 @@ import { SubTitle } from "@/_components/sub-title";
 import { Heart } from "lucide-react";
 import { NavLinks } from "./_components/nav-links";
 import { FavoriteContext } from "@/_contexts/context-favorites";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function LayoutPagesFavorites({
   children,
@@ -13,6 +15,11 @@ export default function LayoutPagesFavorites({
   children: ReactNode;
 }) {
   const { favorites } = useContext(FavoriteContext);
+  const router = useRouter();
+  const user = useSession();
+  if (!user) {
+    router.push("/");
+  }
   return (
     <Container>
       <MainContent>

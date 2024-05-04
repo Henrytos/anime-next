@@ -14,7 +14,7 @@ import {
   deleteOneQuerycUser,
   newUserQuery,
   userSearchList,
-} from "@/_lib/action-historic";
+} from "@/_actions/action-historic";
 
 interface ContextQuerysType {
   name: string;

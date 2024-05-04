@@ -1,6 +1,6 @@
 "use server";
 
-import { db } from "./prisma";
+import { db } from "../_lib/prisma";
 
 export async function userSearchList(userId: string): Promise<Search[]> {
   const querys = await db.historic.findMany({ where: { userId: userId } });
