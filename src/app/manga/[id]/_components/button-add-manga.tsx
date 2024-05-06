@@ -1,16 +1,16 @@
 "use client";
 import { Button } from "@/_components/ui/button";
 import { useToast } from "@/_components/ui/use-toast";
-import { FavoriteContext, Favorite } from "@/_contexts/context-favorites";
+import { Favorite, useFavorites } from "@/_contexts/context-favorites";
 import { Anime } from "@/_types/anime";
 import { Check, Heart, LogIn } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
-import { useContext } from "react";
 
 export function ButtonAddManga({ anime }: { anime: Anime }) {
+  //TODO: add useEffect prevent delay
   const { toast } = useToast();
 
-  const { addFavorites, favorites } = useContext(FavoriteContext);
+  const { addFavorites, favorites } = useFavorites();
 
   const { data } = useSession();
 
@@ -42,12 +42,12 @@ export function ButtonAddManga({ anime }: { anime: Anime }) {
 
   return (
     <>
-      {data?.user && (
+      {data?.user ? (
         <>
           {isFavorite ? (
             <Button
               className="space-x-2 w-full  bg-primary/50 text-secondary-foreground rounded cursor-not-allowed hover:bg-primary/50"
-              disabled={true}
+              disabled={isFavorite}
             >
               {" "}
               <Check /> <span>favorited</span>
@@ -63,9 +63,7 @@ export function ButtonAddManga({ anime }: { anime: Anime }) {
             </Button>
           )}
         </>
-      )}
-
-      {!data?.user && (
+      ) : (
         <Button className="space-x-4 " onClick={handleClickSingIn}>
           {" "}
           <LogIn /> <span>Sing in</span>

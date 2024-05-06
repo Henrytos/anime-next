@@ -1,6 +1,12 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { ReactNode, createContext, useEffect, useMemo, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { fetchFavoritesUser } from "./action";
 import {
   addToFavoriteAction,
@@ -60,3 +66,7 @@ export function FavoriteProvider({ children }: { children: ReactNode }) {
     </FavoriteContext.Provider>
   );
 }
+
+export const useFavorites = () => {
+  return useContext(FavoriteContext);
+};

@@ -1,26 +1,29 @@
 "use client";
-import { MagicMotion } from "react-magic-motion";
-import { Content } from "@/_components/details/content";
-import { FavoriteContext } from "@/_contexts/context-favorites";
-import { useContext } from "react";
-import { FavoiteItem } from "./_components/favorite-item";
+import { useFavorites } from "@/_contexts/context-favorites";
 import { NotFavorites } from "./_components/not-favorites";
+import { FavoriteList } from "./_components/favorite-list";
 
-export default function FavoritesPage() {
-  const { favorites } = useContext(FavoriteContext);
+interface FavoritesPageProps {
+  params: {};
+  searchParams: {
+    type?: "anime" | "manga";
+  };
+}
+
+export default function FavoritesPage(props: FavoritesPageProps) {
+  const { favorites } = useFavorites();
+
+  let favoritesCurrent = favorites;
+  const currentType = props.searchParams.type;
+
+  if (["anime", "manga"].some((type) => type === currentType)) {
+    favoritesCurrent = favorites.filter((f) => f.type === currentType);
+  }
+
   return (
     <>
-      {favorites.length > 0 ? (
-        <MagicMotion>
-          <Content className="space-y-3 grid sm:grid-cols-2 lg:gap-x-6">
-            {favorites
-              .slice()
-              .reverse()
-              .map((favorite) => (
-                <FavoiteItem favorite={favorite} key={favorite.imageUrl} />
-              ))}
-          </Content>
-        </MagicMotion>
+      {favoritesCurrent.length > 0 ? (
+        <FavoriteList favorites={favoritesCurrent} />
       ) : (
         <NotFavorites />
       )}
