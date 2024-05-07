@@ -1,9 +1,14 @@
 import { CarouselPosters } from "@/_components/carousel-poster";
 import { Container } from "@/_components/constainer";
 import { Content } from "@/_components/details/content";
+import ShowAnimesPoster from "@/_components/show-posters";
 import { SubTitle } from "@/_components/sub-title";
 import { Separator } from "@/_components/ui/separator";
-import { fetchAnimes, fetchTopAnimes } from "@/_services/fetch";
+import {
+  fetchAnimes,
+  fetchTopAnimes,
+  fetchTopAnimesPoster,
+} from "@/_services/fetch";
 import { GenresType } from "@/_types/geners-anime";
 
 export default async function Home() {
@@ -14,8 +19,10 @@ export default async function Home() {
   const animeToAction = await fetchAnimes(GenresType.Action);
   const animeToSchool = await fetchAnimes(GenresType.School);
   const animeToComedy = await fetchAnimes(GenresType.Comedy);
+  const animesPoster = await fetchTopAnimesPoster();
   return (
     <Container>
+      <ShowAnimesPoster posters={animesPoster} />
       <Content>
         <Content className="space-y-2 lg:space-y-2">
           <SubTitle>Em alta</SubTitle>
@@ -53,7 +60,6 @@ export default async function Home() {
           <CarouselPosters type="anime" posters={animeToSchool} />
         </Content>
       </Content>
-      
     </Container>
   );
 }

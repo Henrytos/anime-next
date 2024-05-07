@@ -39,6 +39,11 @@ export async function fetchTopAnimes() {
   const animes = sortPoster(data);
   return animes;
 }
+export async function fetchTopAnimesPoster() {
+  const { data }: ApiResponseAnimeTop = await Api("top/anime");
+
+  return data;
+}
 
 export async function fetchAnimes(id: number) {
   await wait(1000);
@@ -98,6 +103,10 @@ export async function fetchTopMangas() {
   const { data }: ApiResponseMangaTop = await Api("top/manga");
   const mangas = sortPoster(data);
   return mangas;
+}
+export async function fetchTopMangasPoster() {
+  const { data }: ApiResponseMangaTop = await Api("top/manga");
+  return data;
 }
 
 export async function fetchManga(id: number) {

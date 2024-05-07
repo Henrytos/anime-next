@@ -1,9 +1,14 @@
 import { CarouselPosters } from "@/_components/carousel-poster";
 import { Container } from "@/_components/constainer";
 import { Content } from "@/_components/details/content";
+import ShowPosters from "@/_components/show-posters";
 import { SubTitle } from "@/_components/sub-title";
 import { Separator } from "@/_components/ui/separator";
-import { fetchMangas, fetchTopMangas } from "@/_services/fetch";
+import {
+  fetchMangas,
+  fetchTopMangas,
+  fetchTopMangasPoster,
+} from "@/_services/fetch";
 import { GenresType } from "@/_types/geners-anime";
 
 export default async function MangasPage() {
@@ -14,9 +19,11 @@ export default async function MangasPage() {
   const mangaToAction = await fetchMangas(GenresType.Action);
   const mangaToAdventure = await fetchMangas(GenresType.Adventure);
   const mangaToSchool = await fetchMangas(GenresType.School);
+  const mangaPoster = await fetchTopMangasPoster();
 
   return (
     <Container>
+      <ShowPosters posters={mangaPoster} />
       <Content>
         <Content className="space-y-2 lg:space-y-2">
           <SubTitle>Em alta</SubTitle>
