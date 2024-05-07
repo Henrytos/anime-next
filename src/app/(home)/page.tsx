@@ -22,7 +22,7 @@ export default async function Home() {
   const animesPoster = await fetchTopAnimesPoster();
   return (
     <Container>
-      <ShowAnimesPoster posters={animesPoster} />
+      <ShowAnimesPoster posters={animesPoster} type="anime" />
       <Content>
         <Content className="space-y-2 lg:space-y-2">
           <SubTitle>Em alta</SubTitle>

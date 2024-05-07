@@ -23,7 +23,7 @@ export default async function MangasPage() {
 
   return (
     <Container>
-      <ShowPosters posters={mangaPoster} />
+      <ShowPosters posters={mangaPoster} type="manga" />
       <Content>
         <Content className="space-y-2 lg:space-y-2">
           <SubTitle>Em alta</SubTitle>
